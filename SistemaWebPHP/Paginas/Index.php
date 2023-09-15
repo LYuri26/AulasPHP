@@ -72,7 +72,7 @@ if (isset($_POST['login']) && isset($_POST['senha'])) {
         $_SESSION['login'] = $user['login'];
 
         // Redireciona o usuário para a página principal
-        header("Location: Inicio.html");
+        header("Location: Inicio.php");
 
     } else {
 
