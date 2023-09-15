@@ -1,5 +1,4 @@
 <?php
-// Inicia a sessão e conecta ao banco de dados
 session_start();
 
 $servername = "localhost";
@@ -13,17 +12,14 @@ if (!$conn) {
     die("Erro ao conectar ao banco de dados: " . mysqli_connect_error());
 }
 
-// Verifica se o usuário está autenticado
 if (!isset($_SESSION['login'])) {
-    header("Location: Index.php"); // Redireciona para a página de login
+    header("Location: index.php");
     exit();
 }
 
 $login = $_SESSION['login'];
 
-// Função para listar atividades (dados estáticos)
-function listarAtividades()
-{
+function listarAtividades() {
     return [
         ['numero' => 1, 'nome' => 'Atividade 1'],
         ['numero' => 2, 'nome' => 'Atividade 2'],
@@ -39,21 +35,21 @@ $atividades = listarAtividades();
 <html lang="pt-br">
 
 <head>
+    <link rel="styilesheet" href="/Estilos/inicio.css"> <!-- Caminho para o arquivo CSS -->
     <meta charset="UTF-8">
     <title>Página Principal do Funcionário</title>
-    <link rel="stylesheet" href="/Estilos/Estilos.css"> 
 </head>
 
 <body>
 
     <div class="header">
         <h1>Bem-vindo, <?php echo $login; ?></h1>
-        <a href="Index.php">Sair</a>
+        <a href="index.php">Sair</a>
     </div>
 
     <div class="content">
         <h2>Cadastro de Atividades</h2>
-        <a href="cadastro_atividades.php">Acessar</a> <!-- Adicionar função depois -->
+        <a href="cadastro_atividades.php">Acessar</a>
 
         <h2>Listagem de Atividades</h2>
         <table>

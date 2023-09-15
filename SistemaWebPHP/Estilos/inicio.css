@@ -1,25 +1,15 @@
-/* styles.css */
-
 body {
     font-family: Arial, sans-serif;
-    margin: 0;
 }
 
 .header {
-    background-color: #333;
-    color: #fff;
+    background-color: #f4f4f4;
     padding: 10px;
     text-align: right;
 }
 
-.header a {
-    color: #fff;
-    text-decoration: none;
-    margin-left: 10px;
-}
-
 .content {
-    padding: 20px;
+    margin: 20px;
 }
 
 table {
@@ -27,11 +17,8 @@ table {
     width: 100%;
 }
 
-table, th, td {
-    border: 1px solid #ccc;
-}
-
 th, td {
+    border: 1px solid #ddd;
     padding: 8px;
     text-align: center;
 }
@@ -41,13 +28,13 @@ th {
 }
 
 button {
-    padding: 6px 10px;
-    background-color: #333;
-    color: #fff;
+    background-color: #4CAF50;
+    color: white;
     border: none;
+    padding: 5px 10px;
     cursor: pointer;
 }
 
 button:hover {
-    background-color: #444;
+    background-color: #45a049;
 }
