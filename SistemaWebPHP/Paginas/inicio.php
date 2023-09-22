@@ -19,7 +19,7 @@ if (!isset($_SESSION['login'])) {
 
 $login = $_SESSION['login'];
 
-function listarAtividades()
+function listaratividades()
 {
     global $conn, $login;
 
@@ -39,7 +39,7 @@ function listarAtividades()
     return $atividades;
 }
 
-$atividades = listarAtividades();
+$atividades = listaratividades();
 
 ?>
 
@@ -77,7 +77,7 @@ $atividades = listarAtividades();
                     <td><?php echo $atividade['numero']; ?></td>
                     <td><?php echo $atividade['funcionario']; ?></td>
                     <td><?php echo $atividade['atividade']; ?></td>
-                    <td><button onclick="excluirAtividade(<?php echo $atividade['numero']; ?>)">Excluir</button></td>
+                    <td><button onclick="excluiratividades(<?php echo $atividade['numero']; ?>)">Excluir</button></td>
                     <td><a href="visualizaratividade.php?numero=<?php echo $atividade['numero']; ?>">Visualizar</a></td>
                 </tr>
             <?php endforeach; ?>
