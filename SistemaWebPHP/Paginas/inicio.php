@@ -19,12 +19,24 @@ if (!isset($_SESSION['login'])) {
 
 $login = $_SESSION['login'];
 
-function listarAtividades() {
-    return [
-        ['numero' => 1, 'nome' => 'Atividade 1'],
-        ['numero' => 2, 'nome' => 'Atividade 2'],
-        ['numero' => 3, 'nome' => 'Atividade 3']
-    ];
+function listarAtividades()
+{
+    global $conn, $login;
+
+    $sql = "SELECT numero, funcionario, nome as atividade FROM atividades";
+    $result = mysqli_query($conn, $sql);
+
+    if (!$result) {
+        die("Erro na consulta SQL: " . mysqli_error($conn));
+    }
+
+    $atividades = [];
+
+    while ($row = mysqli_fetch_assoc($result)) {
+        $atividades[] = $row;
+    }
+
+    return $atividades;
 }
 
 $atividades = listarAtividades();
@@ -35,7 +47,7 @@ $atividades = listarAtividades();
 <html lang="pt-br">
 
 <head>
-    <link rel="styilesheet" href="/Estilos/inicio.css"> <!-- Caminho para o arquivo CSS -->
+    <link rel="stylesheet" href="/Estilos/inicio.css"> <!-- Correção do caminho para o arquivo CSS -->
     <meta charset="UTF-8">
     <title>Página Principal do Funcionário</title>
 </head>
@@ -49,22 +61,24 @@ $atividades = listarAtividades();
 
     <div class="content">
         <h2>Cadastro de Atividades</h2>
-        <a href="cadastro_atividades.php">Acessar</a>
+        <a href="cadastroatividades.php">Cadastrar</a> <!-- Correção do texto do link -->
 
         <h2>Listagem de Atividades</h2>
         <table>
             <tr>
                 <th>Número da Atividade</th>
-                <th>Nome da Atividade</th>
+                <th>Funcionário</th>
+                <th>Atividade</th>
                 <th></th>
                 <th></th>
             </tr>
             <?php foreach ($atividades as $atividade) : ?>
                 <tr>
                     <td><?php echo $atividade['numero']; ?></td>
-                    <td><?php echo $atividade['nome']; ?></td>
+                    <td><?php echo $atividade['funcionario']; ?></td>
+                    <td><?php echo $atividade['atividade']; ?></td>
                     <td><button onclick="excluirAtividade(<?php echo $atividade['numero']; ?>)">Excluir</button></td>
-                    <td><button onclick="visualizarAtividade(<?php echo $atividade['numero']; ?>)">Visualizar</button></td>
+                    <td><a href="visualizaratividade.php?numero=<?php echo $atividade['numero']; ?>">Visualizar</a></td>
                 </tr>
             <?php endforeach; ?>
         </table>
