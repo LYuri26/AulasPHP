@@ -23,7 +23,7 @@ function listaratividades()
 {
     global $conn, $login;
 
-    $sql = "SELECT numero, funcionario, nome as atividade FROM atividades";
+    $sql = "SELECT numero, funcionario, nome as atividade FROM atividades WHERE funcionario = '$login'";
     $result = mysqli_query($conn, $sql);
 
     if (!$result) {
@@ -47,7 +47,7 @@ $atividades = listaratividades();
 <html lang="pt-br">
 
 <head>
-    <link rel="stylesheet" href="/Estilos/inicio.css"> <!-- Correção do caminho para o arquivo CSS -->
+    <link rel="stylesheet" href="/Estilos/inicio.css">
     <meta charset="UTF-8">
     <title>Página Principal do Funcionário</title>
 </head>
@@ -56,12 +56,12 @@ $atividades = listaratividades();
 
     <div class="header">
         <h1>Bem-vindo, <?php echo $login; ?></h1>
-        <a href="index.php">Sair</a>
+        <a href="sair.php">Sair</a>
     </div>
 
     <div class="content">
         <h2>Cadastro de Atividades</h2>
-        <a href="cadastroatividades.php">Cadastrar</a> <!-- Correção do texto do link -->
+        <a href="cadastroatividades.php">Cadastrar</a>
 
         <h2>Listagem de Atividades</h2>
         <table>
@@ -77,8 +77,15 @@ $atividades = listaratividades();
                     <td><?php echo $atividade['numero']; ?></td>
                     <td><?php echo $atividade['funcionario']; ?></td>
                     <td><?php echo $atividade['atividade']; ?></td>
-                    <td><button onclick="excluiratividades(<?php echo $atividade['numero']; ?>)">Excluir</button></td>
+                    <td>
+                        <form action="excluiratividade.php" method="post">
+                            <input type="hidden" name="numero" value="<?php echo $atividade['numero']; ?>">
+                            <input type="submit" value="Excluir">
+                        </form>
+                    </td>
                     <td><a href="visualizaratividade.php?numero=<?php echo $atividade['numero']; ?>">Visualizar</a></td>
+                    <td><a href="editar.php?numero=<?php echo $atividade['numero']; ?>">Editar</a></td>
+
                 </tr>
             <?php endforeach; ?>
         </table>
