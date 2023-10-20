@@ -1,20 +1,20 @@
 <?php
-session_start();
+session_start(); // Inicia a sessão PHP.
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$database = "saep_database";
+$servername = "localhost"; // Define o nome do servidor do banco de dados.
+$username = "root"; // Define o nome de usuário do banco de dados.
+$password = ""; // Define a senha do banco de dados.
+$database = "saep_database"; // Define o nome do banco de dados.
 
-$conn = mysqli_connect($servername, $username, $password, $database);
+$conn = mysqli_connect($servername, $username, $password, $database); // Conecta ao banco de dados usando MySQLi.
 
 if (!$conn) {
-    die("Erro ao conectar ao banco de dados: " . mysqli_connect_error());
+    die("Erro ao conectar ao banco de dados: " . mysqli_connect_error()); // Se a conexão falhar, exibe uma mensagem de erro e encerra o script.
 }
 
 if (!isset($_SESSION['login'])) {
-    header("Location: index.php");
-    exit();
+    header("Location: index.php"); // Redireciona para a página de login se não houver uma sessão ativa.
+    exit(); // Encerra o script.
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['numero'])) {
@@ -49,24 +49,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['editar_atividade'])) 
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
-    <link rel="stylesheet" href="/Estilos/inicio.css">
-    <meta charset="UTF-8">
-    <title>Editar Atividade</title>
+    <link rel="stylesheet" href="/Estilos/inicio.css"> <!-- Inclui um arquivo de estilo CSS. -->
+    <meta charset="UTF-8"> <!-- Define a codificação de caracteres da página. -->
+    <title>Editar Atividade</title> <!-- Define o título da página. -->
 </head>
 
 <body>
-    <h1>Editar Atividade</h1>
+    <h1>Editar Atividade</h1> <!-- Título da página -->
 
     <form action="" method="post">
-        Nome da Atividade: <input type="text" name="nome" value="<?php echo $atividade['nome']; ?>"><br>
-        Funcionário: <input type="text" name="funcionario" value="<?php echo $atividade['funcionario']; ?>"><br>
-        Detalhes: <input type="text" name="detalhes" value="<?php echo $atividade['detalhes']; ?>"><br>
-        <input type="submit" name="editar_atividade" value="Salvar Edições">
+        Nome da Atividade: <input type="text" name="nome" value="<?php echo $atividade['nome']; ?>"><br> <!-- Campo para o nome da atividade, com valor preenchido se houver uma atividade selecionada -->
+        Funcionário: <input type="text" name="funcionario" value="<?php echo $atividade['funcionario']; ?>"><br> <!-- Campo para o nome do funcionário, com valor preenchido se houver uma atividade selecionada -->
+        Detalhes: <input type="text" name="detalhes" value="<?php echo $atividade['detalhes']; ?>"><br> <!-- Campo para os detalhes da atividade, com valor preenchido se houver uma atividade selecionada -->
+        <input type="submit" name="editar_atividade" value="Salvar Edições"> <!-- Botão para enviar o formulário -->
     </form>
 </body>
 

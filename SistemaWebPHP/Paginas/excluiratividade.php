@@ -1,20 +1,20 @@
 <?php
-session_start();
+session_start(); // Inicia a sessão PHP.
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$database = "saep_database";
+$servername = "localhost"; // Define o nome do servidor do banco de dados.
+$username = "root"; // Define o nome de usuário do banco de dados.
+$password = ""; // Define a senha do banco de dados.
+$database = "saep_database"; // Define o nome do banco de dados.
 
-$conn = mysqli_connect($servername, $username, $password, $database);
+$conn = mysqli_connect($servername, $username, $password, $database); // Conecta ao banco de dados usando MySQLi.
 
 if (!$conn) {
-    die("Erro ao conectar ao banco de dados: " . mysqli_connect_error());
+    die("Erro ao conectar ao banco de dados: " . mysqli_connect_error()); // Se a conexão falhar, exibe uma mensagem de erro e encerra o script.
 }
 
 if (!isset($_SESSION['login'])) {
-    header("Location: index.php");
-    exit();
+    header("Location: index.php"); // Redireciona para a página de login se não houver uma sessão ativa.
+    exit(); // Encerra o script.
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['numero'])) {
