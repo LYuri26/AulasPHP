@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+    <link rel="stylesheet" href="../Styles/questionario.css">
+    <link rel="stylesheet" href="../Styles/index.css">
+</head>
+
+<header>
+    <img src="/Styles/Images/Senai.png" alt="Logo SENAI" class="logo-senai" />
+</header>
+
+<body>
+    <div class="container">
+        <h1>Quiz</h1>
+        <form id="quizForm" class="overlay">
+            <div class="centered">
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" maxlength="40" required>
+            </div>
+            <div class="centered" id="perguntaContainer"></div>
+            <button type="button" id="finalizarQuiz">
+                Finalizar Jogo
+            </button>
+        </form>
+
+        <div id="resultadoFinal" style="display:none;">
+            <h2>Quiz Finalizado</h2>
+            <p>Nome: <span id="resultadoNome"></span></p>
+            <p>Pontuação: <span id="resultadoPontuacao"></span></p>
+            <button id="reiniciarJogo">Reiniciar Jogo</button>
+        </div>
+
+        <footer>
+            Jogo desenvolvido pela turma de Desenvolvimento de Sistemas Trilhas de Futuro 02/2022.
+        </footer>
+    </div>
+
+    <script src="../Components/quiz.js"></script>
+    <script>
+        function handleClickOpcao(index, valor) {
+            if (nomeInput.value.trim() !== "" && currentPergunta < perguntas.length) {
+                pontuacao += valor;
+                currentPergunta++;
+                if (currentPergunta < perguntas.length) {
+                    mostrarPergunta();
+                } else {
+                    mostrarResultadoFinal();
+                }
+            }
+        }
+        finalizarQuizButton.addEventListener("click", function () {
+            if (nomeInput.value.trim() !== "") {
+                mostrarResultadoFinal(); // Enviar dados para a tabela
+            }
+        });
+    </script>
+
+</body>
+
+</html>

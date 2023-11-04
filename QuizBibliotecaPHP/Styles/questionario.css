@@ -1,0 +1,50 @@
+.overlay {
+  background-color: #fff;
+  border-radius: 10px;
+  width: 80%;
+  position: relative;
+  padding: 10px;
+margin-bottom: 30px; 
+ text-align: center;
+}
+
+.overlay * {
+  color: #000000;
+}
+
+button {
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-size: 1.2em;
+  margin: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+  background-color: #fff;
+  color: #003f72;
+  border: 2px solid #000000; /* Adiciona uma borda com a cor #003f72 */
+}
+
+button:hover {
+  background-color: #fff;
+  color: #003f72;
+  border-color: #003f72; /* Altera a cor da borda no hover */
+}
+
+h1 {
+  font-size: 2em;
+  background-color: #003f72;
+  width: 100%;
+  margin-top: 0;
+  text-align: center;
+
+
+}
+
+input[type="text"] {
+  border-radius: 10px;
+  padding: 5px 10px;
+  font-size: 1.2em;
+  margin: 5px;
+  width: 80%; /* Faz o campo ocupar 100% da largura disponível */
+  border: 2px solid #003f72; /* Adiciona uma borda com a cor #003f72 */
+}
