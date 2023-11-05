@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+</head>
+
+<body>
+    <div class="menu-container">
+        <header>
+            <a href="/">
+                <img src="../images/Senai.png" alt="Logo SENAI" class="logo-senai" />
+            </a>
+        </header>
+        <h1>Quiz Semana da Biblioteca</h1>
+
+        <label>
+            Nome:
+            <input type="text" id="nome" maxlength="40">
+        </label>
+
+        <button id="iniciarBtn" disabled>Iniciar</button>
+    </div>
+    <footer>
+        Jogo desenvolvido pela turma de Desenvolvimento de Sistemas Trilhas de Futuro 02/2022.
+    </footer>
+
+    <script>
+        document.getElementById('nome').addEventListener('input', function () {
+            const iniciarBtn = document.getElementById('iniciarBtn');
+            iniciarBtn.disabled = this.value.trim() === '';
+        });
+
+        document.getElementById('iniciarBtn').addEventListener('click', function () {
+            const nome = document.getElementById('nome').value;
+            window.location.href = `../pages/questionario.php?nome=${encodeURIComponent(nome)}`;
+        });
+    </script>
+</body>
+
+</html>

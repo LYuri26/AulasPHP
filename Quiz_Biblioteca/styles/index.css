@@ -1,0 +1,95 @@
+body,
+html {
+  margin: 0;
+  height: 100%;
+  font-size: 24px;
+  font-family: 'Nunito Sans', Arial, Helvetica, sans-serif;
+  background-image: url('../images/library-1147815_1920.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  text-align: center;
+
+
+}
+
+.header,
+.footer {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.logo-senai {
+  width: 220px;
+  height: auto;
+  max-width: 100%;
+}
+
+header,
+main,
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+header,
+footer {
+  width: 100%;
+  height: 100px;
+  padding-bottom: 15px;
+  background-color: #003f72;
+}
+
+header {
+  grid-area: header;
+  text-align: center;
+}
+
+.footer {
+  grid-area: footer;
+  position: relative;
+  bottom: 0;
+  text-align: center;
+
+}
+
+.footer p {
+  margin: 0;
+}
+
+.hide {
+  display: none !important;
+}
+
+
+
+.container {
+  display: grid;
+  grid-template-areas:
+    'header'
+    'main'
+    'footer';
+  position: relative;
+  height: 100vh;
+}
+
+@media (max-width: 450px) {
+
+  #quizz-container,
+  #score-container {
+    border: none;
+    width: 100%;
+    box-shadow: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .menu-button-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 50%;
+    margin-top: 35%;
+    text-align: center;
+  }
+}
