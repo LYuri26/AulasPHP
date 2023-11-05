@@ -1,7 +1,6 @@
 body,
 html {
   margin: 0;
-  height: 100%;
   font-size: 24px;
   font-family: 'Nunito Sans', Arial, Helvetica, sans-serif;
   background-image: url('../images/library-1147815_1920.jpg');
@@ -39,13 +38,12 @@ header {
 }
 
 footer {
-  padding: 30px;
+  padding: 50px;
   background-color: #003f72;
   color: #fff;
   font-weight: 900;
   font-size: 100%;
   /* Aumento de 20% em relação ao tamanho original */
-  margin-top: 10px;
 }
 
 .menu-container {
@@ -95,7 +93,6 @@ footer {
     'main'
     'footer';
   position: relative;
-  height: 100%;
   color: #003f72;
 }
 
@@ -182,7 +179,6 @@ button:hover {
   body,
   html {
     margin: 0;
-    height: 100%;
     font-size: 24px;
     font-family: 'Nunito Sans', Arial, Helvetica, sans-serif;
     background-image: url('../images/library-1147815_1920.jpg');

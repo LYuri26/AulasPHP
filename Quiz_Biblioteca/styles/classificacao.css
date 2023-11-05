@@ -1,3 +1,76 @@
+body,
+html {
+  margin: 0;
+  font-size: 24px;
+  font-family: 'Nunito Sans', Arial, Helvetica, sans-serif;
+  background-image: url('../images/library-1147815_1920.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  text-align: center;
+}
+
+h1 {
+  font-weight: 600;
+  margin-bottom: 0px;
+  text-align: center;
+  color: #fff;
+  background-color: #003f72;
+  width: 100%;
+  /* Adiciona largura de 100% */
+  box-sizing: border-box;
+  /* Inclui padding e bordas na largura total */
+  margin: 0;
+}
+
+.logo-senai {
+  width: 250px;
+  height: auto;
+  max-width: 100%;
+  background-color: #003f72;
+}
+
+/* Estilos para o header */
+header {
+  height: 100px;
+  padding: 30px;
+  /* Reduzi o padding para 20px */
+  background-color: #003f72;
+  color: #fff;
+}
+
+/* Estilos para o footer */
+footer {
+  padding: 20px;
+  /* Reduzi o padding para 20px */
+  background-color: #003f72;
+  color: #fff;
+  font-weight: 900;
+}
+
+/* Adicionando responsividade para celulares */
+@media (max-width: 767px) {
+
+  header,
+  footer {
+    height: auto;
+    /* Tornando a altura automática */
+    text-align: center;
+    /* Centralizando o texto */
+  }
+}
+
+.menu-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  box-sizing: border-box;
+  width: 100%;
+
+}
+
 caption {
   font-size: 2em;
   background-color: #003f72;
@@ -8,15 +81,13 @@ caption {
 
 .table-container {
   border-radius: 10px;
-  width: 70%;
+  width: 80%;
   margin: 0 auto;
-  overflow-x: auto;
-  /* Adicionado para lidar com tabelas largas em telas estreitas */
 }
+
 
 table {
   border-collapse: collapse;
-  width: 60%;
   white-space: nowrap;
   font-weight: 600;
   align-items: center;
@@ -26,7 +97,7 @@ table {
   table-layout: unset;
   margin-top: 5%;
   margin-bottom: 6%;
-  /* Adicionado um espaçamento inferior */
+  width: 100%;
 }
 
 tbody tr:nth-child(odd) {
@@ -74,7 +145,6 @@ tfoot th:last-child {
 @media (max-width: 767px) {
   .table-container {
     width: 100%;
-    overflow-x: auto;
   }
 
   table {
@@ -87,4 +157,16 @@ tfoot th:last-child {
     padding: 8px;
     font-size: 14px;
   }
+}
+
+.scrollable-table {
+  max-height: 600px;
+  /* Defina a altura máxima que você deseja para a tabela */
+  overflow-y: auto;
+  /* Adiciona barra de rolagem vertical quando necessário */
+  width: 70%;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  border-radius: 20px;
+  padding: 0;
 }

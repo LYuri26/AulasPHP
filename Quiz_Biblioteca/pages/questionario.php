@@ -133,9 +133,10 @@
         location.reload();
     });
 </script>
-</body>
 <footer>
     Jogo desenvolvido pela turma de Desenvolvimento de Sistemas Trilhas de Futuro 02/2022.
 </footer>
+</body>
+
 
 </html>

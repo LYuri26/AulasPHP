@@ -247,13 +247,6 @@ const perguntas = [
     ],
   },
   {
-    pergunta: "Quem escreveu 'O Pequeno Príncipe'?",
-    opcoes: [
-      { texto: "Antoine de Saint-Exupéry", valor: 10 },
-      { texto: "J.K. Rowling", valor: 0 },
-    ],
-  },
-  {
     pergunta:
       "Qual é o título do livro que conta a história de um grupo de animais que vivem em uma fazenda e se rebelam contra os humanos?",
     opcoes: [
@@ -261,6 +254,198 @@ const perguntas = [
       { texto: "A Ilha dos Cachorros", valor: 0 },
       { texto: "O Poderoso Chefão", valor: 0 },
       { texto: "A Máquina do Tempo", valor: 0 },
+    ],
+  },
+
+  {
+    pergunta:
+      "Qual é o título do livro que conta a história de um grupo de amigos que enfrentam um palhaço demoníaco?",
+    opcoes: [
+      { texto: "It", valor: 10 },
+      { texto: "O Iluminado", valor: 0 },
+      { texto: "Carrie, a Estranha", valor: 0 },
+      { texto: "Cemitério Maldito", valor: 0 },
+    ],
+  },
+  {
+    pergunta: "Quem escreveu 'O Pequeno Príncipe'?",
+    opcoes: [
+      { texto: "Antoine de Saint-Exupéry", valor: 10 },
+      { texto: "J.K. Rowling", valor: 0 },
+      { texto: "Gabriel García Márquez", valor: 0 },
+      { texto: "Leo Tolstoy", valor: 0 },
+    ],
+  },
+  {
+    pergunta:
+      "Qual é o título do livro que conta a história de um homem que perde a memória todos os dias?",
+    opcoes: [
+      { texto: "Amnésia", valor: 0 },
+      { texto: "Memento Mori", valor: 0 },
+      { texto: "O Estranho Caso de Benjamin Button", valor: 0 },
+      { texto: "Amor nos Tempos do Cólera", valor: 10 },
+    ],
+  },
+  {
+    pergunta: "Quem é o autor de 'O Código Da Vinci'?",
+    opcoes: [
+      { texto: "Dan Brown", valor: 10 },
+      { texto: "J.R.R. Tolkien", valor: 0 },
+      { texto: "George Orwell", valor: 0 },
+      { texto: "Agatha Christie", valor: 0 },
+    ],
+  },
+  {
+    pergunta:
+      "Qual é o título do livro que conta a história de um jovem que se apaixona por uma mulher mais velha e misteriosa?",
+    opcoes: [
+      { texto: "Lolita", valor: 0 },
+      { texto: "A Insustentável Leveza do Ser", valor: 0 },
+      { texto: "O Amante de Lady Chatterley", valor: 0 },
+      { texto: "O Amante de Lady Susan", valor: 10 },
+    ],
+  },
+  {
+    pergunta: "Quem é o autor de 'A Redoma de Vidro'?",
+    opcoes: [
+      { texto: "Sylvia Plath", valor: 10 },
+      { texto: "Virginia Woolf", valor: 0 },
+      { texto: "Harper Lee", valor: 0 },
+      { texto: "Margaret Atwood", valor: 0 },
+    ],
+  },
+  {
+    pergunta:
+      "Qual é o título do livro que conta a história de um grupo de exploradores em uma expedição ao centro da Terra?",
+    opcoes: [
+      { texto: "Viagem ao Centro da Terra", valor: 10 },
+      { texto: "A Ilha do Tesouro", valor: 0 },
+      { texto: "A Volta ao Mundo em 80 Dias", valor: 0 },
+      { texto: "A Máquina do Tempo", valor: 0 },
+    ],
+  },
+  {
+    pergunta: "Quem escreveu 'A Morte de Ivan Ilitch'?",
+    opcoes: [
+      { texto: "Liev Tolstói", valor: 10 },
+      { texto: "Fiódor Dostoiévski", valor: 0 },
+      { texto: "Gustave Flaubert", valor: 0 },
+      { texto: "James Joyce", valor: 0 },
+    ],
+  },
+  {
+    pergunta:
+      "Qual é o título do livro que conta a história de uma família que vive escondida em um sótão durante a Segunda Guerra Mundial?",
+    opcoes: [
+      { texto: "O Diário de Anne Frank", valor: 10 },
+      { texto: "A Revolução dos Bichos", valor: 0 },
+      { texto: "A Menina que Roubava Livros", valor: 0 },
+      { texto: "O Pequeno Príncipe", valor: 0 },
+    ],
+  },
+  {
+    pergunta: "Quem é o autor de 'O Médico'?",
+    opcoes: [
+      { texto: "Noah Gordon", valor: 10 },
+      { texto: "Ken Follett", valor: 0 },
+      { texto: "John Grisham", valor: 0 },
+      { texto: "Stephen King", valor: 0 },
+    ],
+  },
+
+  {
+    pergunta: "Quem é o autor de 'O Nome do Vento'?",
+    opcoes: [
+      { texto: "Patrick Rothfuss", valor: 10 },
+      { texto: "Brandon Sanderson", valor: 0 },
+      { texto: "George R.R. Martin", valor: 0 },
+      { texto: "Terry Pratchett", valor: 0 },
+    ],
+  },
+  {
+    pergunta:
+      "Qual é o título do livro que conta a história de um homem que viaja no tempo em uma máquina do tempo por diferentes eras?",
+    opcoes: [
+      { texto: "A Máquina do Tempo", valor: 10 },
+      { texto: "O Mundo Perdido", valor: 0 },
+      { texto: "A Guerra dos Mundos", valor: 0 },
+      { texto: "O Homem Invisível", valor: 0 },
+    ],
+  },
+  {
+    pergunta: "Quem escreveu 'O Médico e o Monstro'?",
+    opcoes: [
+      { texto: "Robert Louis Stevenson", valor: 10 },
+      { texto: "Edgar Allan Poe", valor: 0 },
+      { texto: "Mary Shelley", valor: 0 },
+      { texto: "Bram Stoker", valor: 0 },
+    ],
+  },
+  {
+    pergunta:
+      "Qual é o título do livro que conta a história de um homem que se torna obcecado por um retrato que parece envelhecer no seu lugar?",
+    opcoes: [
+      { texto: "O Retrato de Dorian Gray", valor: 10 },
+      { texto: "O Corcunda de Notre Dame", valor: 0 },
+      { texto: "Drácula", valor: 0 },
+      { texto: "Frankenstein", valor: 0 },
+    ],
+  },
+  {
+    pergunta: "Quem é o autor de 'O Estrangeiro'?",
+    opcoes: [
+      { texto: "Albert Camus", valor: 10 },
+      { texto: "Franz Kafka", valor: 0 },
+      { texto: "Fyodor Dostoevsky", valor: 0 },
+      { texto: "Jean-Paul Sartre", valor: 0 },
+    ],
+  },
+  {
+    pergunta:
+      "Qual é o título do livro que conta a história de um grupo de crianças que descobre poderes sobrenaturais?",
+    opcoes: [
+      { texto: "Os Garotos Corvos", valor: 0 },
+      { texto: "Percy Jackson e o Ladrão de Raios", valor: 0 },
+      { texto: "O Nome do Vento", valor: 0 },
+      { texto: "O Circo da Noite", valor: 0 },
+    ],
+  },
+  {
+    pergunta: "Quem escreveu 'Cem Anos de Solidão'?",
+    opcoes: [
+      { texto: "Gabriel García Márquez", valor: 10 },
+      { texto: "Isabel Allende", valor: 0 },
+      { texto: "Mario Vargas Llosa", valor: 0 },
+      { texto: "Julio Cortázar", valor: 0 },
+    ],
+  },
+  {
+    pergunta:
+      "Qual é o título do livro que conta a história de uma mulher que se apaixona por um vampiro?",
+    opcoes: [
+      { texto: "Crepúsculo", valor: 0 },
+      { texto: "Drácula", valor: 0 },
+      { texto: "Entrevista com o Vampiro", valor: 0 },
+      { texto: "Anjo Mecânico", valor: 0 },
+    ],
+  },
+  {
+    pergunta: "Quem é o autor de 'O Lobo do Mar'?",
+    opcoes: [
+      { texto: "Jack London", valor: 10 },
+      { texto: "Herman Melville", valor: 0 },
+      { texto: "Robert Louis Stevenson", valor: 0 },
+      { texto: "Jules Verne", valor: 0 },
+    ],
+  },
+  {
+    pergunta:
+      "Qual é o título do livro que conta a história de um grupo de jovens em busca de uma cidade secreta?",
+    opcoes: [
+      { texto: "A Cidade do Sol", valor: 0 },
+      { texto: "A Estrada", valor: 0 },
+      { texto: "A Cidade de Papel", valor: 0 },
+      { texto: "A Cidade das Esmeraldas", valor: 0 },
     ],
   },
 ];

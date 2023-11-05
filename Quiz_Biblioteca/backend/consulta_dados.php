@@ -7,23 +7,22 @@ $sql = "SELECT * FROM jogadores ORDER BY pontuacao DESC";
 $result = $pdo->query($sql);
 
 if ($result->rowCount() > 0) {
-    $posicao = 1;
+    $classificacao = 1;
     $data = array();
 
-    while($row = $result->fetch(PDO::FETCH_ASSOC)) {
-        $updatePosicao = "UPDATE jogadores SET posicao = :posicao WHERE id = :id";
-        $stmt = $pdo->prepare($updatePosicao);
-        $stmt->bindParam(':posicao', $posicao, PDO::PARAM_INT);
+    while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+        $updateclassificacao = "UPDATE jogadores SET classificacao = :classificacao WHERE id = :id";
+        $stmt = $pdo->prepare($updateclassificacao);
+        $stmt->bindParam(':classificacao', $classificacao, PDO::PARAM_INT);
         $stmt->bindParam(':id', $row['id'], PDO::PARAM_INT);
         $stmt->execute();
 
         $data[] = $row; // Adiciona os dados ao array
 
-        $posicao++;
+        $classificacao++;
     }
 
     // Retorna os dados como JSON
-    echo json_encode($data);
 } else {
     echo json_encode(array("message" => "Nenhum jogador encontrado."));
 }
