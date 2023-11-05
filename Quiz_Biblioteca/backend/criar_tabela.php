@@ -12,7 +12,5 @@ try {
     )";
 
     $pdo->exec($sql);
-    echo "Tabela criada com sucesso ou já existente!";
 } catch (PDOException $e) {
-    echo "Erro ao criar tabela: " . $e->getMessage();
 }
