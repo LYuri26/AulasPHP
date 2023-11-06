@@ -8,6 +8,8 @@
     <title>Quiz</title>
 </head>
 <header>
+    <link rel="shortcut icon" href="../images/senai.ico" type="image/x-icon">
+
     <a href="/">
         <img src="../images/Senai.png" alt="Logo SENAI" class="logo-senai" />
     </a>

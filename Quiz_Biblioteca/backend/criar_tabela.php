@@ -8,7 +8,7 @@ try {
         id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
         nome VARCHAR(50) NOT NULL,
         pontuacao INT(6) NOT NULL,
-        posicao INT(6) UNSIGNED
+        classificacao INT(6) UNSIGNED
     )";
 
     $pdo->exec($sql);

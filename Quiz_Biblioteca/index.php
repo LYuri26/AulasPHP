@@ -11,6 +11,8 @@ include_once "./backend/criar_tabela.php"
     <header>
         <img src="../images/Senai.png" alt="Logo SENAI" class="logo-senai" />
         <link rel="stylesheet" href="./styles/menu.css">
+        <link rel="shortcut icon" href="./images/senai.ico" type="image/x-icon">
+
 
     </header>
     <div class="menu-container">
@@ -18,7 +20,7 @@ include_once "./backend/criar_tabela.php"
         <div class="menu-button-container">
             <a href="./pages/questionario.php" class="menu-button">Questionário</a>
             <a href="./pages/classificacao.php" class="menu-button">Classificação</a>
-            <a href="./pages/creditos.html" class="menu-button">Créditos</a>
+            <a href="./pages/creditos.php" class="menu-button">Créditos</a>
         </div>
     </div>
     <footer>

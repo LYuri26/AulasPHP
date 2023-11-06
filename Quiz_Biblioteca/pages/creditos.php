@@ -5,6 +5,8 @@
 
 <body>
     <header>
+        <link rel="shortcut icon" href="../images/senai.ico" type="image/x-icon">
+
         <a href="/">
             <img src="../images/Senai.png" alt="Logo SENAI" class="logo-senai" />
         </a>
@@ -38,7 +40,7 @@
         </div>
     </div>
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             // Define a função toggleDropdown
             function toggleDropdown() {
                 $("#menu-list").slideToggle(); // Mostra ou oculta a lista suspensa
@@ -48,7 +50,7 @@
             $("#menu-icon").click(toggleDropdown);
 
             // Adiciona um evento de redimensionamento ao documento
-            $(window).on("resize", function () {
+            $(window).on("resize", function() {
                 // Verifica se a largura da janela é maior que 768 pixels
                 if ($(window).width() > 768) {
                     // Mostra a lista suspensa
@@ -64,7 +66,7 @@
         const navbar = document.querySelector('.navbar');
 
         // Manipule o evento de clique do botão
-        menuBtn.addEventListener('click', function () {
+        menuBtn.addEventListener('click', function() {
             // Adicione a classe "rounded" ao elemento navbar
             navbar.classList.remove('rounded');
         });

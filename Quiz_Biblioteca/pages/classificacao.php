@@ -2,14 +2,17 @@
 <html lang="pt-BR">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-
 <body>
     <header>
+        <link rel="shortcut icon" href="../images/senai.ico" type="image/x-icon">
+
         <a href="/">
             <img src="../images/Senai.png" alt="Logo SENAI" class="logo-senai">
         </a>
         <title>Classificação</title>
         <link rel="stylesheet" href="../styles/classificacao.css">
+        <meta http-equiv="refresh" content="30">
+
     </header>
     <h1>Pódio</h1>
     <div class="menu-container">
@@ -25,6 +28,7 @@
                 <tbody>
                     <?php
                     include_once '../backend/consulta_dados.php';
+
                     if (is_array($data)) {
                         foreach ($data as $item) {
                             echo "<tr>";
@@ -47,7 +51,6 @@
         </div>
     </div>
     <footer>
-
         Jogo desenvolvido pela turma de Desenvolvimento de Sistemas Trilhas de Futuro 02/2022.
     </footer>
 </body>
