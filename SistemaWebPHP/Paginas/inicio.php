@@ -71,7 +71,7 @@ $atividades = listaratividades(); // Chama a função 'listaratividades' e armaz
                 <th></th>
                 <th></th>
             </tr>
-            <?php foreach ($atividades as $atividade) : ?> <!-- Itera sobre as atividades -->
+            <?php foreach ($atividades as $atividade) : ?> <!-- Intera sobre as atividades -->
                 <tr>
                     <td><?php echo $atividade['numero']; ?></td> <!-- Exibe o número da atividade -->
                     <td><?php echo $atividade['funcionario']; ?></td> <!-- Exibe o nome do funcionário -->
