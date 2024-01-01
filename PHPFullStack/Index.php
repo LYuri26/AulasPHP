@@ -1,5 +1,5 @@
 <?php
-include 'Conexao.php'; // Inclui o arquivo de conexão
+include './DB/Conexao.php'; // Inclui o arquivo de conexão
 
 session_start(); // Inicia a sessão
 
@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if ($resultado) {
         $_SESSION['usuario'] = $resultado['usuario'];
-        header('Location: dashboard.php'); // Redireciona para a página do dashboard após o login
+        header('Location: Dashboard.php'); // Redireciona para a página do Dashboard após o login
         exit();
     } else {
         $erro = "Usuário ou senha inválidos";
