@@ -48,12 +48,19 @@ try {
 
     // Executa as queries
     $conexao->exec($queryFuncionarios);
-    $conexao->exec($queryLogFuncionarios);
-    $conexao->exec($queryHistoricoSalarios);
-    $conexao->exec($queryLogHistoricoSalarios);
+    echo "<script>console.log('Tabela funcionarios criada com sucesso!');</script>";
 
-    echo "Tabelas criadas com sucesso!";
+    $conexao->exec($queryLogFuncionarios);
+    echo "<script>console.log('Tabela log_funcionarios criada com sucesso!');</script>";
+
+    $conexao->exec($queryHistoricoSalarios);
+    echo "<script>console.log('Tabela historico_salarios criada com sucesso!');</script>";
+
+    $conexao->exec($queryLogHistoricoSalarios);
+    echo "<script>console.log('Tabela log_historico_salarios criada com sucesso!');</script>";
+
+    echo "<script>console.log('Tabelas criadas com sucesso!');</script>";
 } catch(PDOException $e) {
-    echo "Erro ao criar as tabelas: " . $e->getMessage();
+    echo "<script>console.error('Erro ao criar as tabelas: " . $e->getMessage() . "');</script>";
 }
 ?>

@@ -7,8 +7,8 @@ $password = '';
 try {
     $conexao = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
     $conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    echo "Conexão realizada com sucesso!";
+    echo "<script>console.log('Conexão realizada com sucesso!');</script>";
 } catch(PDOException $e) {
-    echo "Erro na conexão: " . $e->getMessage();
+    echo "<script>console.error('Erro na conexão: " . $e->getMessage() . "');</script>";
 }
 ?>

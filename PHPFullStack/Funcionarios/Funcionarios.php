@@ -61,6 +61,11 @@ $funcionarios = buscarFuncionarios($conexao);
 <body>
     <h2>Gerenciamento de Funcionários</h2>
 
+    <!-- Botão para voltar ao Dashboard -->
+    <a href="../Dashboard.php">Voltar ao Dashboard</a>
+    <!-- Botão para sair -->
+    <a href="logout.php">Sair</a>
+
     <!-- Formulário para inserir novo funcionário -->
     <h3>Inserir Funcionário</h3>
     <form method="POST" action="">

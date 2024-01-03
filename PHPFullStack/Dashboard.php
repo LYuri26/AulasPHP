@@ -28,6 +28,7 @@ try {
     echo "Erro: " . $e->getMessage();
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -40,6 +41,7 @@ try {
     <ul>
         <li><a href="./Funcionarios/Funcionarios.php">Gerenciamento de Funcionários</a></li>
         <li><a href="Salarios.php">Histórico de Salários</a></li>
+        <li><a href="logout.php">Sair</a></li>
     </ul>
 </body>
 </html>
