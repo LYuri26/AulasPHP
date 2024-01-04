@@ -39,7 +39,7 @@ try {
     <h2>Bem-vindo ao Dashboard, <?php echo $nomeUsuario; ?></h2>
     <h3>Selecione uma opção:</h3>
     <ul>
-        <li><a href="./Funcionarios/Funcionarios.php">Gerenciamento de Funcionários</a></li>
+        <li><a href="./funcionarios/Funcionarios.php">Gerenciamento de Funcionários</a></li>
         <li><a href="Salarios.php">Histórico de Salários</a></li>
         <li><a href="logout.php">Sair</a></li>
     </ul>
