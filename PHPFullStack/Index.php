@@ -1,7 +1,7 @@
 <?php
-include './DB/Conexao.php'; // Inclui o arquivo de conexão
-include './DB/Login.php'; // Inclui o arquivo de conexão
-include './DB/Tabelas.php'; // Inclui o arquivo de conexão
+include './db/Conexao.php'; // Inclui o arquivo de conexão
+include './db/Login.php'; // Inclui o arquivo de conexão
+include './db/Tabelas.php'; // Inclui o arquivo de conexão
 
 session_start(); // Inicia a sessão
 

@@ -1,10 +1,10 @@
 <?php
 session_start();
 
-include '../DB/Conexao.php';
+include '../db/Conexao.php';
 
 if (!isset($_SESSION['usuario'])) {
-    header('Location: Index.php');
+    header('Location: ../Index.php');
     exit();
 }
 

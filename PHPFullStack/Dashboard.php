@@ -1,7 +1,7 @@
 <?php
 session_start(); // Inicia a sessão
 
-include './DB/Conexao.php'; // Inclui o arquivo de conexão
+include './db/Conexao.php'; // Inclui o arquivo de conexão
 
 if (!isset($_SESSION['usuario'])) {
     session_destroy(); // Destroi a sessão

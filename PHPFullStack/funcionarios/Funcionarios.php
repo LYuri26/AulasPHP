@@ -1,10 +1,10 @@
 <?php
 session_start();
 
-include '../DB/Conexao.php';
+include '../db/Conexao.php';
 
 if (!isset($_SESSION['usuario'])) {
-    header('Location: Index.php');
+    header('Location: ../Index.php');
     exit();
 }
 
@@ -14,36 +14,6 @@ function buscarFuncionarios($conexao)
     $query = "SELECT * FROM funcionarios";
     $stmt = $conexao->query($query);
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
-}
-
-// Inserir funcionário
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['inserir'])) {
-    $nome = $_POST['nome'];
-    $cargo = $_POST['cargo'];
-    $departamento = $_POST['departamento'];
-
-    $query = "INSERT INTO funcionarios (nome, cargo, departamento) VALUES (:nome, :cargo, :departamento)";
-    $stmt = $conexao->prepare($query);
-    $stmt->bindParam(':nome', $nome);
-    $stmt->bindParam(':cargo', $cargo);
-    $stmt->bindParam(':departamento', $departamento);
-    $stmt->execute();
-
-    header('Location: Funcionarios.php');
-    exit();
-}
-
-// Deletar funcionário
-if (isset($_GET['delete'])) {
-    $id = $_GET['delete'];
-
-    $query = "DELETE FROM funcionarios WHERE id = :id";
-    $stmt = $conexao->prepare($query);
-    $stmt->bindParam(':id', $id);
-    $stmt->execute();
-
-    header('Location: Funcionarios.php');
-    exit();
 }
 
 // Renderizar a página
@@ -88,7 +58,7 @@ $funcionarios = buscarFuncionarios($conexao);
             <li>
                 <?php echo $funcionario['nome']; ?> -
                 <a href="EditarFuncionario.php?id=<?php echo $funcionario['id']; ?>">Editar</a> |
-                <a href="Funcionarios.php?delete=<?php echo $funcionario['id']; ?>">Deletar</a>
+                <a href="DeletarFuncionario.php?id=<?php echo $funcionario['id']; ?>">Deletar</a>
             </li>
         <?php endforeach; ?>
     </ul>
