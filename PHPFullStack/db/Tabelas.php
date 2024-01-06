@@ -28,9 +28,11 @@ try {
     $queryHistoricoSalarios = "
         CREATE TABLE IF NOT EXISTS historico_salarios (
             id INT AUTO_INCREMENT PRIMARY KEY,
+            id_funcionario INT NOT NULL,
             salario_atual DECIMAL(10, 2) NOT NULL,
             data_reajuste DATE NOT NULL,
-            tipo_reajuste VARCHAR(50) NOT NULL
+            tipo_reajuste VARCHAR(50) NOT NULL,
+            FOREIGN KEY (id_funcionario) REFERENCES funcionarios(id) ON DELETE CASCADE
         )
     ";
 

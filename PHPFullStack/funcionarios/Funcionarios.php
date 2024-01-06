@@ -26,6 +26,22 @@ $funcionarios = buscarFuncionarios($conexao);
 <head>
     <meta charset="UTF-8">
     <title>Gerenciamento de Funcionários</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
 </head>
 
 <body>
@@ -53,15 +69,30 @@ $funcionarios = buscarFuncionarios($conexao);
 
     <!-- Lista de funcionários -->
     <h3>Lista de Funcionários</h3>
-    <ul>
-        <?php foreach ($funcionarios as $funcionario) : ?>
-            <li>
-                <?php echo $funcionario['nome']; ?> -
-                <a href="EditarFuncionario.php?id=<?php echo $funcionario['id']; ?>">Editar</a> |
-                <a href="DeletarFuncionario.php?id=<?php echo $funcionario['id']; ?>">Deletar</a>
-            </li>
-        <?php endforeach; ?>
-    </ul>
+    <table>
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Cargo</th>
+                <th>Departamento</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($funcionarios as $funcionario) : ?>
+                <tr>
+                    <td><?php echo $funcionario['nome']; ?></td>
+                    <td><?php echo $funcionario['cargo']; ?></td>
+                    <td><?php echo $funcionario['departamento']; ?></td>
+                    <td>
+                        <a href="EditarFuncionario.php?id=<?php echo $funcionario['id']; ?>">Editar</a> |
+                        <a href="DeletarFuncionario.php?id=<?php echo $funcionario['id']; ?>">Deletar</a>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
 </body>
 
 </html>
+

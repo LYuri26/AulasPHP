@@ -40,7 +40,7 @@ try {
     <h3>Selecione uma opção:</h3>
     <ul>
         <li><a href="./funcionarios/Funcionarios.php">Gerenciamento de Funcionários</a></li>
-        <li><a href="Salarios.php">Histórico de Salários</a></li>
+        <li><a href="./salarios/Salarios.php">Gerenciamento de Salários</a></li>
         <li><a href="logout.php">Sair</a></li>
     </ul>
 </body>
