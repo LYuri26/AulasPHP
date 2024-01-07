@@ -69,7 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['inserir'])) {
     <!-- Botão para voltar ao Dashboard -->
     <a href="../Dashboard.php">Voltar ao Dashboard</a>
     <!-- Botão para sair -->
-    <a href="../Funcionarios/logout.php">Sair</a>
+    <a href="../funcionarios/logout.php">Sair</a>
 
     <!-- Formulário para inserir salário -->
     <h3>Inserir Salário</h3>
@@ -122,6 +122,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['inserir'])) {
             ?>
         </tbody>
     </table>
+
+    <!-- Botões para editar e deletar -->
+    <div>
+        <a href="EditarSalario.php" style="text-decoration: none; padding: 8px 16px; margin-right: 10px; background-color: #4CAF50; color: white; border: none; border-radius: 4px;">Editar Salário</a>
+        <a href="DeletarSalario.php" style="text-decoration: none; padding: 8px 16px; background-color: #f44336; color: white; border: none; border-radius: 4px;">Deletar Salário</a>
+    </div>
 </body>
 
 </html>
