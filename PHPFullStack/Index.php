@@ -2,6 +2,7 @@
 include './db/Conexao.php'; // Inclui o arquivo de conexão
 include './db/Login.php'; // Inclui o arquivo de conexão
 include './db/Tabelas.php'; // Inclui o arquivo de conexão
+include './db/Triggers.php'; // Inclui o arquivo de conexão
 
 session_start(); // Inicia a sessão
 
@@ -28,21 +29,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <title>Página de Login</title>
 </head>
+
 <body>
     <h2>Login</h2>
     <?php if (isset($erro)) echo "<p>$erro</p>"; ?>
     <form method="POST" action="">
         <label for="usuario">Usuário:</label><br>
         <input type="text" id="usuario" name="usuario"><br><br>
-        
+
         <label for="senha">Senha:</label><br>
         <input type="password" id="senha" name="senha"><br><br>
-        
+
         <input type="submit" value="Entrar">
     </form>
 </body>
+
 </html>

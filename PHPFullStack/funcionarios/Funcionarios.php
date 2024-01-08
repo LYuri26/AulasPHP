@@ -16,6 +16,31 @@ function buscarFuncionarios($conexao)
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
+// Função para inserir um novo funcionário
+function inserirFuncionario($conexao, $nome, $cargo, $departamento)
+{
+    $query = "INSERT INTO funcionarios (nome, cargo, departamento) VALUES (:nome, :cargo, :departamento)";
+    $stmt = $conexao->prepare($query);
+    $stmt->bindParam(':nome', $nome);
+    $stmt->bindParam(':cargo', $cargo);
+    $stmt->bindParam(':departamento', $departamento);
+    return $stmt->execute();
+}
+
+// Verificar se o formulário foi submetido para inserir um novo funcionário
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['inserir'])) {
+    $nome = $_POST['nome'];
+    $cargo = $_POST['cargo'];
+    $departamento = $_POST['departamento'];
+
+    if (inserirFuncionario($conexao, $nome, $cargo, $departamento)) {
+        header('Location: Funcionarios.php');
+        exit();
+    } else {
+        echo "Erro ao inserir o funcionário!";
+    }
+}
+
 // Renderizar a página
 $funcionarios = buscarFuncionarios($conexao);
 ?>
@@ -95,4 +120,3 @@ $funcionarios = buscarFuncionarios($conexao);
 </body>
 
 </html>
-

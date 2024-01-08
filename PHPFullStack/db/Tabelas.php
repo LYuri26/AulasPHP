@@ -19,8 +19,7 @@ try {
             id INT NOT NULL,
             data_modificacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
             alteracao VARCHAR(255) NOT NULL,
-            usuario VARCHAR(50) NOT NULL,
-            FOREIGN KEY (id) REFERENCES funcionarios(id) ON DELETE CASCADE
+            usuario VARCHAR(50) NOT NULL
         )
     ";
 
@@ -43,8 +42,7 @@ try {
             id INT NOT NULL,
             data_modificacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
             alteracao VARCHAR(255) NOT NULL,
-            usuario VARCHAR(50) NOT NULL,
-            FOREIGN KEY (id) REFERENCES historico_salarios(id) ON DELETE CASCADE
+            usuario VARCHAR(50) NOT NULL
         )
     ";
 

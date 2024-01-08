@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['confirmar'])) {
     $stmtDelete->bindParam(':id', $id);
     $stmtDelete->execute();
 
-    header('Location: Funcionarios.php');
+    header('Location:Funcionarios.php');
     exit();
 }
 ?>

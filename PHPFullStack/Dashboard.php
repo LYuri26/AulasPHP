@@ -41,6 +41,8 @@ try {
     <ul>
         <li><a href="./funcionarios/Funcionarios.php">Gerenciamento de Funcionários</a></li>
         <li><a href="./salarios/Salarios.php">Gerenciamento de Salários</a></li>
+        <li><a href="./logfuncionarios/LogFuncionarios.php">Log Funcionários</a></li>
+        <li><a href="./logsalarios/LogSalarios.php">Log Salários</a></li>
         <li><a href="logout.php">Sair</a></li>
     </ul>
 </body>
