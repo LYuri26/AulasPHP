@@ -3,19 +3,19 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Log de Funcionários</title>
+    <title>Log de Salários</title>
 </head>
 
 <body>
-    <h2>Log de Funcionários</h2>
+    <h2>Log de Salários</h2>
 
     <!-- Botão para voltar ao Dashboard -->
     <a href="../Dashboard.php">Voltar ao Dashboard</a>
     <!-- Botão para sair -->
     <a href="funcionarios/logout.php">Sair</a>
 
-    <!-- Tabela de Log de Funcionários -->
-    <h3>Tabela de Log de Funcionários</h3>
+    <!-- Tabela de Log de Salários -->
+    <h3>Tabela de Log de Salários</h3>
     <table border="1">
         <thead>
             <tr>
@@ -29,8 +29,8 @@
             <?php
             include '../db/Conexao.php';
 
-            // Query para buscar os registros da tabela log_funcionarios
-            $query = "SELECT * FROM log_funcionarios";
+            // Query para buscar os registros da tabela log_historico_salarios
+            $query = "SELECT * FROM log_historico_salarios";
             $stmt = $conexao->query($query);
             $logs = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
