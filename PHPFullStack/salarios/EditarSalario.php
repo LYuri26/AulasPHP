@@ -66,12 +66,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['editar'])) {
 </head>
 
 <body>
-    <h2>Editar Salário</h2>
-
-    <!-- Botão para voltar ao Dashboard -->
-    <a href="../Dashboard.php">Voltar ao Dashboard</a>
-    <!-- Botão para sair -->
-    <a href="../Funcionarios/logout.php">Sair</a>
+    <div class="header">
+        <h2>Editar Salário</h2>
+        <div class="button-container">
+            <!-- Botão para voltar ao Dashboard -->
+            <a class="voltar-button" href="../Dashboard.php">Voltar ao Dashboard</a>
+            <!-- Botão para sair -->
+            <a class="sair-button" href="../logout.php">Sair</a>
+        </div>
+    </div>
 
     <!-- Formulário para pesquisar por ID -->
     <h3>Pesquisar por ID</h3>

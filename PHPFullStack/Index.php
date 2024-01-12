@@ -33,20 +33,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
     <meta charset="UTF-8">
     <title>Página de Login</title>
+    <link rel="stylesheet" href="./css/index.css">
 </head>
 
 <body>
-    <h2>Login</h2>
-    <?php if (isset($erro)) echo "<p>$erro</p>"; ?>
-    <form method="POST" action="">
-        <label for="usuario">Usuário:</label><br>
-        <input type="text" id="usuario" name="usuario"><br><br>
+    <div class="login-container">
+        <h2>Login</h2>
+        <?php if (isset($erro)) echo "<p>$erro</p>"; ?>
+        <form method="POST" action="">
+            <label for="usuario">Usuário:</label>
+            <input type="text" id="usuario" name="usuario">
 
-        <label for="senha">Senha:</label><br>
-        <input type="password" id="senha" name="senha"><br><br>
+            <label for="senha">Senha:</label>
+            <input type="password" id="senha" name="senha">
 
-        <input type="submit" value="Entrar">
-    </form>
+            <input type="submit" value="Entrar">
+        </form>
+    </div>
 </body>
 
 </html>

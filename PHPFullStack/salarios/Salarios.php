@@ -64,13 +64,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['inserir'])) {
 </head>
 
 <body>
-    <h2>Gerenciamento de Salários</h2>
-
-    <!-- Botão para voltar ao Dashboard -->
-    <a href="../Dashboard.php">Voltar ao Dashboard</a>
-    <!-- Botão para sair -->
-    <a href="../funcionarios/logout.php">Sair</a>
-
+    <div class="header">
+        <h2>Gerenciamento de Salários</h2>
+        <div class="button-container">
+            <!-- Botão para voltar ao Dashboard -->
+            <a class="voltar-button" href="../Dashboard.php">Voltar ao Dashboard</a>
+            <!-- Botão para sair -->
+            <a class="sair-button" href="../logout.php">Sair</a>
+        </div>
+    </div>
     <!-- Formulário para inserir salário -->
     <h3>Inserir Salário</h3>
     <form method="POST" action="">

@@ -55,7 +55,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['atualizar'])) {
 </head>
 
 <body>
-    <h2>Editar Funcionário</h2>
+    <div class="header">
+        <h2>Editar Funcionário</h2>
+        <div class="button-container">
+            <!-- Botão para voltar ao Dashboard -->
+            <a class="voltar-button" href="../Dashboard.php">Voltar ao Dashboard</a>
+            <!-- Botão para sair -->
+            <a class="sair-button" href="../logout.php">Sair</a>
+        </div>
+    </div>
 
     <!-- Formulário para atualizar informações do funcionário -->
     <form method="POST" action="">
@@ -70,11 +78,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['atualizar'])) {
 
         <input type="submit" name="atualizar" value="Atualizar">
     </form>
-
-    <!-- Botão para voltar à página de Funcionários -->
-    <a href="Funcionarios.php">Voltar à página de Funcionários</a>
-    <!-- Botão para sair -->
-    <a href="logout.php">Sair</a>
 
 </body>
 

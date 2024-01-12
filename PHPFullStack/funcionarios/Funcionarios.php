@@ -33,64 +33,61 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['inserir'])) {
     $cargo = $_POST['cargo'];
     $departamento = $_POST['departamento'];
 
-    if (inserirFuncionario($conexao, $nome, $cargo, $departamento)) {
-        header('Location: Funcionarios.php');
-        exit();
+    // Verifica se os campos não estão vazios
+    if (!empty($nome) && !empty($cargo) && !empty($departamento)) {
+        if (inserirFuncionario($conexao, $nome, $cargo, $departamento)) {
+            header('Location: Funcionarios.php');
+            exit();
+        } else {
+            $mensagemErro = "Erro ao inserir o funcionário!";
+        }
     } else {
-        echo "Erro ao inserir o funcionário!";
+        $mensagemErro = "Por favor, preencha todos os campos.";
     }
 }
 
 // Renderizar a página
 $funcionarios = buscarFuncionarios($conexao);
 ?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <title>Gerenciamento de Funcionários</title>
-    <style>
-        table {
-            border-collapse: collapse;
-            width: 100%;
-        }
-
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-        }
-
-        th {
-            background-color: #f2f2f2;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="../css/Funcionarios.css">
 </head>
 
 <body>
-    <h2>Gerenciamento de Funcionários</h2>
-
-    <!-- Botão para voltar ao Dashboard -->
-    <a href="../Dashboard.php">Voltar ao Dashboard</a>
-    <!-- Botão para sair -->
-    <a href="logout.php">Sair</a>
+<div class="header">
+        <h2>Gerenciamento de Funcionários</h2>
+        <div class="button-container">
+            <!-- Botão para voltar ao Dashboard -->
+            <a class="voltar-button" href="../Dashboard.php">Voltar ao Dashboard</a>
+            <!-- Botão para sair -->
+            <a class="sair-button" href="../logout.php">Sair</a>
+        </div>
+    </div>
 
     <!-- Formulário para inserir novo funcionário -->
-    <h3>Inserir Funcionário</h3>
-    <form method="POST" action="">
-        <label for="nome">Nome:</label>
-        <input type="text" id="nome" name="nome"><br><br>
+    <div class="form-container">
+        <h3>Inserir Funcionário</h3>
+        <?php if (isset($mensagemErro)) : ?>
+            <p style="color: red;"><?php echo $mensagemErro; ?></p>
+        <?php endif; ?>
+        <form method="POST" action="">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" required><br><br>
 
-        <label for="cargo">Cargo:</label>
-        <input type="text" id="cargo" name="cargo"><br><br>
+            <label for="cargo">Cargo:</label>
+            <input type="text" id="cargo" name="cargo" required><br><br>
 
-        <label for="departamento">Departamento:</label>
-        <input type="text" id="departamento" name="departamento"><br><br>
+            <label for="departamento">Departamento:</label>
+            <input type="text" id="departamento" name="departamento" required><br><br>
 
-        <input type="submit" name="inserir" value="Inserir">
-    </form>
+            <input class="insert-button" type="submit" name="inserir" value="Inserir">
+        </form>
+    </div>
 
     <!-- Lista de funcionários -->
     <h3>Lista de Funcionários</h3>
@@ -110,8 +107,8 @@ $funcionarios = buscarFuncionarios($conexao);
                     <td><?php echo $funcionario['cargo']; ?></td>
                     <td><?php echo $funcionario['departamento']; ?></td>
                     <td>
-                        <a href="EditarFuncionario.php?id=<?php echo $funcionario['id']; ?>">Editar</a> |
-                        <a href="DeletarFuncionario.php?id=<?php echo $funcionario['id']; ?>">Deletar</a>
+                        <a class="edit-button" href="EditarFuncionario.php?id=<?php echo $funcionario['id']; ?>">Editar</a>
+                        <a class="delete-button" href="DeletarFuncionario.php?id=<?php echo $funcionario['id']; ?>">Deletar</a>
                     </td>
                 </tr>
             <?php endforeach; ?>

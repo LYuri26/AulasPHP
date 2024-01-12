@@ -1,0 +1,71 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  font-size: 16px; /* Adicione o tamanho desejado da fonte */
+}
+
+.header {
+  background-color: #3498db;
+  padding: 10px;
+  color: #fff;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto; /* Centraliza a .header */
+}
+
+h2 {
+  margin: 0; /* Remove a margem padrão do h2 */
+  flex-grow: 1; /* Permite que o texto cresça na largura restante */
+  text-align: left;
+}
+
+.sair-button {
+  padding: 8px;
+  background-color: #fff;
+  color: #3498db;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  width: 30px; /* Largura fixa para o botão "Sair" */
+  word-wrap: break-word; /* Permite que o texto quebre de linha */
+}
+
+.sair-button:hover {
+  background-color: #2980b9;
+  color: #fff;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dashboard-button {
+  display: block;
+  margin-bottom: 10px;
+  padding: 8px;
+  width: 400px; /* Tamanho desejado */
+  background-color: #3498db;
+  color: #fff;
+  text-decoration: none;
+  text-align: center;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.dashboard-button:hover {
+  background-color: #2980b9;
+}
+
+h3 {
+  color: #333;
+  text-align: center;
+}

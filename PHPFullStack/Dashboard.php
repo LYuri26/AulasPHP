@@ -31,19 +31,25 @@ try {
 
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <title>Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="./css/Dashboard.css">
 </head>
+
 <body>
-    <h2>Bem-vindo ao Dashboard, <?php echo $nomeUsuario; ?></h2>
+    <div class="header">
+        <h2>Bem-vindo ao Dashboard, <?php echo $nomeUsuario; ?></h2>
+        <a href="logout.php" class="sair-button">Sair</a>
+    </div>
     <h3>Selecione uma opção:</h3>
-    <ul>
-        <li><a href="./funcionarios/Funcionarios.php">Gerenciamento de Funcionários</a></li>
-        <li><a href="./salarios/Salarios.php">Gerenciamento de Salários</a></li>
-        <li><a href="./logfuncionarios/LogFuncionarios.php">Log Funcionários</a></li>
-        <li><a href="./logsalarios/LogSalarios.php">Log Salários</a></li>
-        <li><a href="logout.php">Sair</a></li>
-    </ul>
+    <div class="button-container">
+        <a href="./funcionarios/Funcionarios.php" class="dashboard-button">Gerenciamento de Funcionários</a>
+        <a href="./salarios/Salarios.php" class="dashboard-button">Gerenciamento de Salários</a>
+        <a href="./logfuncionarios/LogFuncionarios.php" class="dashboard-button">Log Funcionários</a>
+        <a href="./logsalarios/LogSalarios.php" class="dashboard-button">Log Salários</a>
+    </div>
 </body>
+
 </html>
