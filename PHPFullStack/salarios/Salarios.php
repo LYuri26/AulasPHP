@@ -36,7 +36,7 @@ $error = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['inserir'])) {
     $idFuncionario = $_POST['id'];
     $salario = $_POST['salario'];
-    $dataReajuste = $_POST['data_reajuste'];
+    $dataReajuste = isset($_POST['data_reajuste']) ? $_POST['data_reajuste'] : date('Y-m-d'); // Usar a data de hoje se não estiver definida
     $tipoReajuste = $_POST['tipo_reajuste'];
 
     // Verificar se o ID do funcionário existe
@@ -76,7 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['inserir'])) {
     </div>
     <!-- Formulário para inserir salário -->
     <h3>Inserir Salário</h3>
-    <form method="POST" action="">
+    <form id="formFuncionario" method="POST" action="">
         <label for="id">ID do Funcionário:</label>
         <input type="number" id="id" name="id" required>
 
@@ -84,7 +84,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['inserir'])) {
         <input type="number" id="salario" name="salario" step="0.01" required>
 
         <label for="data_reajuste">Data do Reajuste:</label>
-        <input type="date" id="data_reajuste" name="data_reajuste" required>
+        <input type="date" id="data_reajuste" name="data_reajuste" value="new Date()" readonly required>
 
         <label for="tipo_reajuste">Tipo do Reajuste:</label>
         <input type="text" id="tipo_reajuste" name="tipo_reajuste" required><br>
@@ -131,6 +131,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['inserir'])) {
         <a class="edit-button" href="EditarSalario.php">Editar Salário</a>
         <a class="delete-button" href="DeletarSalario.php">Deletar Salário</a>
     </div>
+    <script src="../js/Salarios.js"></script>
 </body>
 
 </html>

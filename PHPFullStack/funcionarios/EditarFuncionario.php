@@ -67,19 +67,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['atualizar'])) {
     </div>
 
     <!-- Formulário para atualizar informações do funcionário -->
-    <form method="POST" action="">
+    <form id="formFuncionario" method="POST" action="">
         <label for="nome">Nome:</label>
-        <input type="text" id="nome" name="nome" value="<?php echo $funcionario['nome']; ?>"><br><br>
+        <input type="text" id="nome" name="nome" required value="<?php echo $funcionario['nome']; ?>"><br><br>
 
         <label for="cargo">Cargo:</label>
-        <input type="text" id="cargo" name="cargo" value="<?php echo $funcionario['cargo']; ?>"><br><br>
+        <input type="text" id="cargo" name="cargo" required value="<?php echo $funcionario['cargo']; ?>"><br><br>
 
         <label for="departamento">Departamento:</label>
-        <input type="text" id="departamento" name="departamento" value="<?php echo $funcionario['departamento']; ?>"><br><br>
+        <input type="text" id="departamento" name="departamento" required value="<?php echo $funcionario['departamento']; ?>"><br><br>
 
         <input type="submit" name="atualizar" value="Atualizar">
     </form>
-
+    <script src="../js/EditarFuncionario.js"></script>
 </body>
 
 </html>

@@ -59,7 +59,7 @@ $funcionarios = buscarFuncionarios($conexao);
 </head>
 
 <body>
-<div class="header">
+    <div class="header">
         <h2>Gerenciamento de Funcionários</h2>
         <div class="button-container">
             <!-- Botão para voltar ao Dashboard -->
@@ -75,7 +75,7 @@ $funcionarios = buscarFuncionarios($conexao);
         <?php if (isset($mensagemErro)) : ?>
             <p style="color: red;"><?php echo $mensagemErro; ?></p>
         <?php endif; ?>
-        <form method="POST" action="">
+        <form id="formFuncionario" method="POST" action="">
             <label for="nome">Nome:</label>
             <input type="text" id="nome" name="nome" required><br><br>
 
@@ -114,6 +114,7 @@ $funcionarios = buscarFuncionarios($conexao);
             <?php endforeach; ?>
         </tbody>
     </table>
+    <script src="../js/Funcionarios.js"></script>
 </body>
 
 </html>

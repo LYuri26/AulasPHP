@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Log de Salários</title>
+    <link rel="stylesheet" type="text/css" href="../css/LogSalarios.css">
 </head>
 
 <body>
@@ -18,7 +19,7 @@
     </div>
     <!-- Tabela de Log de Salários -->
     <h3>Tabela de Log de Salários</h3>
-    <table border="1">
+    <table>
         <thead>
             <tr>
                 <th>ID do Funcionário</th>

@@ -1,0 +1,82 @@
+/* Adicionando estilo para o corpo do formulário */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+  font-size: 16px;
+  text-align: center;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #3498db;
+  padding: 10px;
+  color: #fff;
+}
+
+.voltar-button,
+.sair-button {
+  padding: 8px;
+  background-color: #fff;
+  color: #3498db;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.sair-button {
+  margin-left: 10px;
+}
+.voltar-button:hover,
+.sair-button:hover {
+  background-color: #2980b9;
+  color: #fff;
+}
+
+/* Adicionando estilo para o h2 */
+.header h2 {
+  margin: 0; /* Remove a margem padrão do h2 */
+}
+
+h3 {
+  padding: 10px;
+  text-align: center;
+}
+
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+table {
+  border-collapse: collapse;
+  width: 75%; /* Ou qualquer largura desejada */
+  margin: auto;
+  margin-bottom: 20px;
+  border-radius: 10px; /* Adicionando bordas arredondadas à tabela */
+  overflow: hidden; /* Garantindo que as bordas arredondadas sejam aplicadas corretamente */
+}
+
+th,
+td {
+  padding: 8px;
+  text-align: center;
+}
+
+th {
+  background-color: #3498db;
+  color: #fff;
+}
+
+tr:nth-child(even) {
+  background-color: #fff;
+  color: #3498db; /* Cor azul para o texto nas linhas pares */
+}
+
+tr:nth-child(odd) {
+  background-color: #3498db;
+  color: #fff; /* Cor branca para o texto nas linhas ímpares */
+}
