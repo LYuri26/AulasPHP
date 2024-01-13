@@ -52,6 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['confirmar'])) {
 <head>
     <meta charset="UTF-8">
     <title>Deletar Salário</title>
+    <link rel="stylesheet" type="text/css" href="../css/DeletarSalario.css">
 </head>
 
 <body>
@@ -83,7 +84,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['confirmar'])) {
             Tipo do Reajuste: <?php echo $salario['tipo_reajuste']; ?><br><br>
             <!-- Botões para confirmar ou cancelar a exclusão -->
             <input type="submit" name="confirmar" value="Confirmar Exclusão">
-            <a href="">Cancelar</a>
+            <button class="cancelar-button" type="button" onclick="window.location.href='Salarios.php'">Cancelar</button>
+
         </form>
     <?php elseif ($error) : ?>
         <!-- Mensagem de erro -->

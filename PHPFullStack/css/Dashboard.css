@@ -1,12 +1,11 @@
+/* Adicionando estilo para o corpo do formulário */
 body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
   background-color: #f4f4f4;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  font-size: 16px; /* Adicione o tamanho desejado da fonte */
+  font-size: 16px;
+  text-align: center;
 }
 
 .header {

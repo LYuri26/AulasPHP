@@ -61,6 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['inserir'])) {
 <head>
     <meta charset="UTF-8">
     <title>Gerenciamento de Salários</title>
+    <link rel="stylesheet" type="text/css" href="../css/Salarios.css">
 </head>
 
 <body>
@@ -77,18 +78,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['inserir'])) {
     <h3>Inserir Salário</h3>
     <form method="POST" action="">
         <label for="id">ID do Funcionário:</label>
-        <input type="number" id="id" name="id" required><br><br>
+        <input type="number" id="id" name="id" required>
 
         <label for="salario">Salário Atual:</label>
-        <input type="number" id="salario" name="salario" step="0.01" required><br><br>
+        <input type="number" id="salario" name="salario" step="0.01" required>
 
         <label for="data_reajuste">Data do Reajuste:</label>
-        <input type="date" id="data_reajuste" name="data_reajuste" required><br><br>
+        <input type="date" id="data_reajuste" name="data_reajuste" required>
 
         <label for="tipo_reajuste">Tipo do Reajuste:</label>
-        <input type="text" id="tipo_reajuste" name="tipo_reajuste" required><br><br>
+        <input type="text" id="tipo_reajuste" name="tipo_reajuste" required><br>
 
-        <input type="submit" name="inserir" value="Inserir">
+        <input class="insert-button" type="submit" name="inserir" value="Inserir">
     </form>
 
     <!-- Mensagem de erro -->
@@ -98,7 +99,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['inserir'])) {
 
     <!-- Tabela de salários -->
     <h3>Tabela de Salários</h3>
-    <table border="1">
+    <table>
         <thead>
             <tr>
                 <th>ID do Funcionário</th>
@@ -126,9 +127,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['inserir'])) {
     </table>
 
     <!-- Botões para editar e deletar -->
-    <div>
-        <a href="EditarSalario.php" style="text-decoration: none; padding: 8px 16px; margin-right: 10px; background-color: #4CAF50; color: white; border: none; border-radius: 4px;">Editar Salário</a>
-        <a href="DeletarSalario.php" style="text-decoration: none; padding: 8px 16px; background-color: #f44336; color: white; border: none; border-radius: 4px;">Deletar Salário</a>
+    <div class="button-container">
+        <a class="edit-button" href="EditarSalario.php">Editar Salário</a>
+        <a class="delete-button" href="DeletarSalario.php">Deletar Salário</a>
     </div>
 </body>
 

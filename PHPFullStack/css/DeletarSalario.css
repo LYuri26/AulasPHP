@@ -1,0 +1,119 @@
+/* Adicionando estilo para o corpo do formulário */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+  font-size: 16px;
+  text-align: center;
+}
+
+/* Adicionando estilo para a seção do cabeçalho */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #3498db;
+  padding: 10px;
+  color: #fff;
+}
+
+/* Estilo para os botões Voltar e Sair */
+.voltar-button,
+.sair-button {
+  padding: 8px;
+  background-color: #fff;
+  color: #3498db;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+/* Estilo específico para o botão Sair, adicionando uma margem à esquerda */
+.sair-button {
+  margin-left: 10px;
+}
+
+/* Efeito de hover para os botões */
+.voltar-button:hover,
+.sair-button:hover {
+  background-color: #2980b9;
+  color: #fff;
+}
+
+/* Adicionando estilo para o h2 no cabeçalho */
+.header h2 {
+  margin: 0;
+}
+
+/* Adicionando estilo para o formulário */
+form {
+  max-width: 300px;
+  margin: 20px auto;
+  text-align: center;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  text-align: center;
+}
+
+/* Estilo específico para o botão de atualizar */
+input[type="submit"] {
+  background-color: #3498db;
+  color: #fff;
+  padding: 8px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+}
+
+/* Efeito de hover para o botão de atualizar */
+input[type="submit"]:hover {
+  background-color: #2980b9;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+}
+
+h3 {
+  padding: 10px;
+  text-align: center;
+}
+input[type="number"] {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  text-align: center; /* Alinhando o texto no centro */
+}
+
+.cancelar-button {
+  /* Estilos específicos para o botão Inserir */
+  background-color: #3498db;
+  color: #fff;
+  padding: 8px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-family: Arial, sans-serif;
+  font-size: 16px; /* Adicione o tamanho desejado da fonte */
+}
+
+.cancelar-button:hover {
+  /* Estilos ao passar o mouse para o botão Inserir */
+  background-color: #2980b9;
+}

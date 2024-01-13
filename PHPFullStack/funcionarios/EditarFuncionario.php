@@ -52,6 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['atualizar'])) {
 <head>
     <meta charset="UTF-8">
     <title>Editar Funcionário</title>
+    <link rel="stylesheet" type="text/css" href="../css/EditarFuncionario.css">
 </head>
 
 <body>

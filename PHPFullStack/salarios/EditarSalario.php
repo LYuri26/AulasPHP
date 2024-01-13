@@ -63,6 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['editar'])) {
 <head>
     <meta charset="UTF-8">
     <title>Editar Salário</title>
+    <link rel="stylesheet" type="text/css" href="../css/EditarSalario.css">
 </head>
 
 <body>

@@ -7,6 +7,7 @@ body {
   margin: 0;
   background-color: #f4f4f4;
   font-size: 16px; /* Adicione o tamanho desejado da fonte */
+  text-align: center;
 }
 
 .login-container {
@@ -33,19 +34,20 @@ input[type="password"] {
   padding: 10px;
   margin: 5px 0;
   box-sizing: border-box;
+  text-align: center;
 }
 
 input[type="submit"] {
-    background-color: #3498db;
-    color: #fff;
-    padding: 8px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    font-family: Arial, sans-serif;
-    font-size: 16px;
-    margin-top: 5px;
+  background-color: #3498db;
+  color: #fff;
+  padding: 8px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  margin-top: 5px;
 }
 
 input[type="submit"]:hover {

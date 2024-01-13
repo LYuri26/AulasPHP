@@ -6,6 +6,7 @@ body {
   background-color: #f4f4f4;
   font-size: 16px;
   text-align: center;
+  margin-bottom: 20px;
 }
 
 .header {
@@ -30,6 +31,7 @@ body {
 .sair-button {
   margin-left: 10px;
 }
+
 .voltar-button:hover,
 .sair-button:hover {
   background-color: #2980b9;
@@ -48,7 +50,7 @@ h3 {
 
 .button-container {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
 }
 
 .edit-button,
@@ -64,6 +66,7 @@ h3 {
   text-align: center;
   border-radius: 5px;
   transition: background-color 0.3s ease;
+  align-items: center;
 }
 
 .edit-button:hover,
@@ -104,50 +107,33 @@ tr:nth-child(odd) {
   color: #fff; /* Cor branca para o texto nas linhas ímpares */
 }
 
-/* Adicione as seguintes regras para os botões de editar e deletar nas linhas */
-tr:nth-child(even) .edit-button,
-tr:nth-child(even) .delete-button {
-  background-color: #3498db;
-  color: #fff;
-}
-
-tr:nth-child(odd) .edit-button,
-tr:nth-child(odd) .delete-button {
-  background-color: #fff;
-  color: #3498db;
-}
-
-/* Adicione estilos de hover */
-tr:nth-child(even) .edit-button:hover,
-tr:nth-child(even) .delete-button:hover {
-  background-color: #e6e3e3;
-  color: #3498db;
-}
-
-tr:nth-child(odd) .edit-button:hover,
-tr:nth-child(odd) .delete-button:hover {
-  background-color: #2980b9;
-  color: #fff;
-}
-
 .form-container {
   max-width: 300px;
   margin: 20px auto;
   text-align: center;
 }
 
+form {
+  max-width: 20%;
+  margin: 20px auto; /* Centralizando verticalmente e horizontalmente */
+  text-align: center;
+}
+
 label {
   display: block;
   margin-bottom: 5px;
+  text-align: center;
 }
 
+input[type="number"],
+input[type="date"],
 input[type="text"] {
   width: 100%;
   padding: 8px;
   margin-bottom: 10px;
   font-family: Arial, sans-serif;
   font-size: 16px;
-  text-align: center;
+  text-align: center; /* Alinhando o texto no centro */
 }
 
 .insert-button {
