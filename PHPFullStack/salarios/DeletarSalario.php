@@ -67,7 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['confirmar'])) {
     </div>
     <!-- Formulário para pesquisar por ID -->
     <h3>Pesquisar por ID</h3>
-    <form method="POST" action="">
+    <form method="POST" id="formFuncionario" action="">
         <label for="id">ID do Salário:</label>
         <input type="number" id="id" name="id" required><br><br>
         <input type="submit" name="pesquisar" value="Pesquisar">
@@ -91,7 +91,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['confirmar'])) {
         <!-- Mensagem de erro -->
         <p style="color: red;"><?php echo $error; ?></p>
     <?php endif; ?>
-
+    <script src="../js/DeletarSalario.js"></script>
 </body>
 
 </html>

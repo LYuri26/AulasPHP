@@ -30,6 +30,15 @@ document.addEventListener("DOMContentLoaded", function () {
       return false;
     }
 
+    // Validar se o tipo de reajuste é 'redução' ou 'aumento'
+    if (
+      !["redução", "aumento"].includes(tipoReajuste.value.toLowerCase())
+    ) {
+      alert("Tipo de reajuste inválido. Escolha 'redução' ou 'aumento'.");
+      tipoReajuste.value = "";
+      return false;
+    }
+
     if (id.value < 0 || isNaN(id.value)) {
       alert("ID deve ser um número positivo.");
       id.value = "";

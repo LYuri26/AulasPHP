@@ -79,7 +79,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['editar'])) {
 
     <!-- Formulário para pesquisar por ID -->
     <h3>Pesquisar por ID</h3>
-    <form method="POST" action="">
+    <form method="POST" id="formFuncionarioInicio" action="">
         <label for="id">ID do Salário:</label>
         <input type="number" id="id" name="id" required><br><br>
         <input type="submit" name="pesquisar" value="Pesquisar">
@@ -88,13 +88,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['editar'])) {
     <!-- Exibir dados do salário para edição -->
     <?php if ($salario) : ?>
         <h3>Dados do Salário</h3>
-        <form method="POST" action="">
+        <form method="POST" id="formFuncionarioFim" action="">
             <!-- Campos de dados do salário -->
             <!-- Substitua esses campos pelos dados que deseja editar -->
             <input type="hidden" name="id_salario" value="<?php echo $salario['id']; ?>">
-            Salário Atual: <input type="text" name="novo_salario" value="<?php echo $salario['salario_atual']; ?>"><br><br>
-            Data do Reajuste: <input type="date" name="nova_data_reajuste" value="<?php echo $salario['data_reajuste']; ?>"><br><br>
-            Tipo do Reajuste: <input type="text" name="novo_tipo_reajuste" value="<?php echo $salario['tipo_reajuste']; ?>"><br><br>
+            Salário Atual: <input type="text" name="novo_salario" id="novo_salario" required value="<?php echo $salario['salario_atual']; ?>"><br><br>
+            Data do Reajuste: <input type="date" name="nova_data_reajuste" id="nova_data_reajuste" readonly value="<?php echo $salario['data_reajuste']; ?>"><br><br>
+            Tipo do Reajuste: <input type="text" name="novo_tipo_reajuste" id="novo_tipo_reajuste" required value="<?php echo $salario['tipo_reajuste']; ?>"><br><br>
             <!-- Botão para editar -->
             <input type="submit" name="editar" value="Editar">
         </form>
@@ -102,7 +102,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['editar'])) {
         <!-- Mensagem de erro -->
         <p style="color: red;"><?php echo $error; ?></p>
     <?php endif; ?>
-
+    <script src="../js/EditarSalario.js"></script>
 </body>
 
 </html>
