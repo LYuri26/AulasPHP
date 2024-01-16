@@ -1,0 +1,123 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Raleway", sans-serif; /* Fonte personalizada */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* 100% da altura da viewport */
+  padding-top: 60px; /* Ajuste o valor conforme necessário para compensar o espaço do cabeçalho */
+}
+
+header,
+footer {
+  background-color: #2ecc71; /* Verde */
+  color: #fff; /* Texto branco */
+  text-align: center;
+  padding: 10px;
+}
+
+header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1; /* Para ficar sobre o conteúdo */
+}
+
+/* Animação sutil nas letras do cabeçalho */
+header h1 {
+  animation: fadeInUp 1s ease-out;
+  font-size: 24px; /* Aumenta o tamanho da fonte */
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.cardapio {
+  margin-top: 80px;
+  flex: 1; /* Ocupa o espaço restante no meio */
+  margin: 20px auto 80px auto; /* Ajuste os valores conforme necessário para repelir o conteúdo */
+  max-width: 500px; /* Define a largura máxima */
+}
+
+/* Estilo para as tags de imagem nos itens do cardápio com animação */
+.item-cardapio {
+  overflow: hidden; /* Garante que as bordas arredondadas sejam aplicadas corretamente */
+  margin-bottom: 10px;
+}
+
+.item-cardapio img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 20px; /* Bordas arredondadas */
+  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out; /* Adicionando transição na transformação e na sombra */
+}
+
+/* Animação nas imagens ao passar o mouse */
+.item-cardapio img:hover {
+  transform: scale(1.03); /* Aumenta a escala ao passar o mouse */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Adiciona uma sombra sutil ao passar o mouse */
+}
+
+.item-cardapio p.preco {
+  display: inline; /* Faz com que o preço fique ao lado do checkbox */
+  margin-left: 10px; /* Espaço entre a imagem e o preço */
+  font-size: 18px; /* Aumenta o tamanho da fonte */
+  color: #2ecc71; /* Verde */
+}
+
+.contador {
+  display: inline; /* Faz com que o preço fique ao lado do checkbox */
+  margin-left: 10px; /* Espaço entre a imagem e o preço */
+  font-size: 18px; /* Aumenta o tamanho da fonte */
+  color: #2ecc71; /* Verde */
+}
+
+/* Estilo para o checkbox */
+.item-cardapio input[type="checkbox"] {
+  vertical-align: middle; /* Alinha o checkbox verticalmente com o texto */
+  transform: scale(1.5); /* Aumenta o tamanho do checkbox */
+  margin-right: 5px; /* Espaço entre o checkbox e o texto */
+}
+
+/* Estilo para o checkbox quando selecionado */
+.item-cardapio input[type="checkbox"]:checked {
+  background-color: #2ecc71; /* Verde */
+  border-color: #2ecc71; /* Verde */
+}
+
+.resumo {
+  margin-bottom: 80px;
+  text-align: center;
+}
+
+footer {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  z-index: 1; /* Para ficar sobre o conteúdo */
+}
+
+.item-cardapio img.pulso {
+  animation: pulsoAnimacao 1s infinite; /* Define a animação de pulso */
+}
+
+/* Define a animação de pulso */
+@keyframes pulsoAnimacao {
+  0% {
+    transform: scale(1); /* Estado inicial */
+  }
+  50% {
+    transform: scale(1.03); /* Aumento da escala no meio da animação */
+  }
+  100% {
+    transform: scale(1); /* Retorna ao tamanho original */
+  }
+}
