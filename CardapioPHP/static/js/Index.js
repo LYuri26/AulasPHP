@@ -120,9 +120,22 @@ function enviarPedido() {
   var totalText = document.getElementById("total").textContent;
   var total = parseFloat(totalText.replace("Total: R$ ", "").replace(",", "."));
 
-  if (isNaN(total) || total <= 0) {
+  if (total <= 0) {
     alert("Selecione pelo menos um item antes de enviar o pedido.");
     return;
+  }
+
+  if (total > 600) {
+    // Se o total ultrapassar 600 reais, exibir um alerta com confirmação
+    var confirmacao = confirm(
+      "Tem certeza disso? Por acaso está brincando com a gente? Vai alimentar um batalhão?"
+    );
+
+    if (!confirmacao) {
+      // Se o usuário clicar em "Não, errei!", cancelar o envio e limpar a página
+      checarCheckboxes(); // Limpar checkboxes e resetar total
+      return;
+    }
   }
 
   var checkboxes = document.querySelectorAll('input[name="pedido"]:checked');
@@ -158,7 +171,7 @@ function enviarPedido() {
       if (xhr.status == 200) {
         // Pedido enviado com sucesso
         console.log(xhr.responseText);
-        alert("Pedido enviado com sucesso!");
+        alert("Pedido de R$ " + total.toFixed(2) + " enviado com sucesso!");
       } else {
         // Erro no envio do pedido
         alert("Erro ao enviar o pedido. Por favor, tente novamente.");
