@@ -1,39 +1,47 @@
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
-        <meta charset="UTF-8">
+        <meta charset="UTF-8"> <!-- Define a codificação de caracteres -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Define a escala inicial para dispositivos móveis -->
         <title>Cardápio da Lanchonete DS Burgers</title>
+        <!-- Título da página -->
         <link rel="stylesheet" href="./static/css/index.css">
+        <!-- Inclui o arquivo de estilo CSS -->
         <link
             href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap"
-            rel="stylesheet">
+            rel="stylesheet"> <!-- Inclui a fonte Raleway do Google Fonts -->
     </head>
     <body>
 
         <header>
-            <h1>DS Burgers - Cardápio</h1>
+            <h1>DS Burgers - Cardápio</h1> <!-- Título principal da página -->
         </header>
 
         <section class="cardapio">
             <!-- Início dos itens do cardápio -->
+            <!-- Cada article representa um item do cardápio -->
             <article class="item-cardapio">
-                <h2>Java Burger</h2>
+                <h2>Java Burger</h2> <!-- Nome do item -->
                 <p>Hamburguer de carne, queijo, alface e molho especial.</p>
+                <!-- Descrição do item -->
                 <img src="/static/img/Java Burger.jpeg" alt="Java Burger">
-                <p class="preco">R$ 25,99</p>
+                <!-- Imagem do item -->
+                <p class="preco">R$ 25,99</p> <!-- Preço do item -->
                 <label>
                     <input class="checar" type="checkbox" name="pedido"
                         value="25.99">
-                    Selecionar
+                    Selecionar <!-- Checkbox para selecionar o item -->
                 </label>
-                <!-- Contador -->
+                <!-- Contador para selecionar a quantidade do item -->
                 <div class="contador">
                     <button class="somar"
                         onclick="decrementarContador (this)">-</button>
-                    <span>0</span>
+                    <!-- Botão para decrementar a quantidade -->
+                    <span>0</span> <!-- Quantidade selecionada -->
                     <button class="subtrair"
                         onclick="incrementarContador (this)">+</button>
+                    <!-- Botão para incrementar a quantidade -->
                 </div>
             </article>
 
@@ -379,19 +387,23 @@
         </section>
 
         <section class="resumo">
-            <h2>Resumo do Pedido</h2>
+            <h2>Resumo do Pedido</h2> <!-- Título da seção -->
             <form id="formulario-pedido">
-                <!-- Os itens selecionados serão exibidos aqui -->
-                <p id="total">Total: R$ 0,00</p>
+                <!-- Formulário para enviar o pedido -->
+                <!-- O resumo do pedido será exibido aqui -->
+                <p id="total">Total: R$ 0,00</p> <!-- Total do pedido -->
                 <button type="button" class="glow-on-hover" id="enviar"
                     onclick="enviarPedido()">Enviar Pedido</button>
+                <!-- Botão para enviar o pedido -->
             </form>
         </section>
 
         <footer>
             <p>&copy; 2024 DS Burgers. Todos os direitos reservados.</p>
+            <!-- Rodapé da página -->
         </footer>
 
         <script src="./static/js/Index.js"></script>
+        <!-- Inclui o arquivo de script JavaScript -->
     </body>
 </html>

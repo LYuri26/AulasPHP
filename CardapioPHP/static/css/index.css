@@ -1,107 +1,115 @@
+/* Define o estilo básico do corpo da página */
 body {
-  margin: 0;
-  padding: 0;
-  font-family: "Raleway", sans-serif; /* Fonte personalizada */
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh; /* 100% da altura da viewport */
-  padding-top: 60px; /* Ajuste o valor conforme necessário para compensar o espaço do cabeçalho */
-  font-size: 18px;
+  margin: 0; /* Remove as margens padrão */
+  padding: 0; /* Remove o preenchimento padrão */
+  font-family: "Raleway", sans-serif; /* Define a fonte do texto como Raleway */
+  display: flex; /* Define um layout flexível */
+  flex-direction: column; /* Define a direção dos itens como coluna */
+  min-height: 100vh; /* Garante que o corpo ocupe toda a altura da viewport */
+  padding-top: 60px; /* Adiciona um preenchimento superior para compensar o cabeçalho */
+  font-size: 18px; /* Define o tamanho da fonte */
 }
 
+/* Estiliza o cabeçalho e o rodapé */
 header,
 footer {
-  background-color: #2ecc71; /* Verde */
-  color: #fff; /* Texto branco */
-  text-align: center;
-  font-family: "Raleway", sans-serif; /* Fonte personalizada */
-  padding: 10px;
+  background-color: #2ecc71; /* Define a cor de fundo como verde */
+  color: #fff; /* Define a cor do texto como branco */
+  text-align: center; /* Centraliza o texto */
+  font-family: "Raleway", sans-serif; /* Define a fonte do texto como Raleway */
+  padding: 10px; /* Adiciona um preenchimento interno */
 }
 
+/* Estiliza o cabeçalho */
 header {
-  position: fixed;
-  width: 100%;
-  top: 0;
-  z-index: 1; /* Para ficar sobre o conteúdo */
-  font-family: "Raleway", sans-serif; /* Fonte personalizada */
-  font-size: 16px;
+  position: fixed; /* Fixa o cabeçalho na parte superior da janela */
+  width: 100%; /* Define a largura como 100% */
+  top: 0; /* Alinha o topo do cabeçalho com o topo da janela */
+  z-index: 1; /* Garante que o cabeçalho fique sobre os demais elementos */
+  font-size: 16px; /* Define o tamanho da fonte */
 }
 
 /* Animação sutil nas letras do cabeçalho */
 header h1 {
-  animation: fadeInUp 1s ease-out;
+  animation: fadeInUp 1s ease-out; /* Define a animação fadeInUp */
 }
 
 @keyframes fadeInUp {
   from {
-    opacity: 0;
-    transform: translateY(-20px);
+    opacity: 0; /* Define a opacidade inicial como 0 */
+    transform: translateY(-20px); /* Move o elemento para cima */
   }
   to {
-    opacity: 1;
-    transform: translateY(0);
+    opacity: 1; /* Define a opacidade final como 1 */
+    transform: translateY(0); /* Retorna o elemento à sua posição original */
   }
 }
 
+/* Define o estilo do contêiner principal do cardápio */
 .cardapio {
-  margin-top: 80px;
-  flex: 1; /* Ocupa o espaço restante no meio */
-  margin: 20px auto 80px auto; /* Ajuste os valores conforme necessário para repelir o conteúdo */
+  margin-top: 80px; /* Adiciona margem superior para compensar o cabeçalho */
+  flex: 1; /* Faz o contêiner ocupar o espaço restante */
+  margin: 20px auto 80px auto; /* Define margens */
   max-width: 500px; /* Define a largura máxima */
-  font-family: "Raleway", sans-serif; /* Fonte personalizada */
-  font-size: 18px;
+  font-family: "Raleway", sans-serif; /* Define a fonte do texto como Raleway */
+  font-size: 18px; /* Define o tamanho da fonte */
 }
 
 /* Estilo para as tags de imagem nos itens do cardápio com animação */
 .item-cardapio {
-  overflow: hidden; /* Garante que as bordas arredondadas sejam aplicadas corretamente */
-  margin-bottom: 10px;
+  overflow: hidden; /* Esconde qualquer conteúdo que transborde */
+  margin-bottom: 10px; /* Adiciona margem inferior */
 }
 
+/* Estiliza as imagens dos itens do cardápio */
 .item-cardapio img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 20px; /* Bordas arredondadas */
-  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out; /* Adicionando transição na transformação e na sombra */
+  max-width: 100%; /* Define a largura máxima como 100% */
+  height: auto; /* Mantém a proporção da imagem */
+  border-radius: 20px; /* Adiciona bordas arredondadas */
+  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out; /* Adiciona transições */
 }
 
 /* Animação nas imagens ao passar o mouse */
 .item-cardapio img:hover {
-  transform: scale(1.03); /* Aumenta a escala ao passar o mouse */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Adiciona uma sombra sutil ao passar o mouse */
+  transform: scale(1.03); /* Aumenta a escala */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Adiciona uma sombra */
 }
 
+/* Estiliza o preço dos itens do cardápio */
 .item-cardapio p.preco {
   display: inline; /* Faz com que o preço fique ao lado do checkbox */
-  margin-left: 10px; /* Espaço entre a imagem e o preço */
-  font-size: 26px; /* Aumenta o tamanho da fonte */
-  color: #2ecc71; /* Verde */
+  margin-left: 10px; /* Adiciona margem à esquerda */
+  font-size: 26px; /* Define o tamanho da fonte */
+  color: #2ecc71; /* Define a cor do texto como verde */
 }
 
+/* Estiliza o contador */
 .contador {
-  display: inline; /* Faz com que o preço fique ao lado do checkbox */
-  margin-left: 10px; /* Espaço entre a imagem e o preço */
-  font-size: 26px; /* Aumenta o tamanho da fonte */
-  color: #2ecc71; /* Verde */
+  display: inline; /* Faz com que o contador fique ao lado do checkbox */
+  margin-left: 10px; /* Adiciona margem à esquerda */
+  font-size: 26px; /* Define o tamanho da fonte */
+  color: #2ecc71; /* Define a cor do texto como verde */
 }
 
+/* Estilo para botões com efeito de brilho ao passar o mouse */
 .glow-on-hover {
-  width: 220px;
-  height: 50px;
-  border: none;
-  outline: none;
-  color: #fff;
-  background: #ff0000;
-  cursor: pointer;
-  position: relative;
-  z-index: 0;
-  border-radius: 10px;
-  font-family: "Raleway", sans-serif; /* Fonte personalizada */
-  font-size: 26px; /* Aumenta o tamanho da fonte */
+  width: 220px; /* Define a largura */
+  height: 50px; /* Define a altura */
+  border: none; /* Remove a borda */
+  outline: none; /* Remove o contorno ao focar */
+  color: #fff; /* Define a cor do texto como branco */
+  background: #ff0000; /* Define a cor de fundo como vermelho */
+  cursor: pointer; /* Altera o cursor para apontador */
+  position: relative; /* Define uma posição relativa */
+  z-index: 0; /* Define a ordem de empilhamento */
+  border-radius: 10px; /* Adiciona bordas arredondadas */
+  font-family: "Raleway", sans-serif; /* Define a fonte do texto como Raleway */
+  font-size: 26px; /* Define o tamanho da fonte */
 }
 
+/* Efeito de brilho ao passar o mouse */
 .glow-on-hover:before {
-  content: "";
+  content: ""; /* Adiciona conteúdo antes */
   background: linear-gradient(
     45deg,
     #ff0000,
@@ -113,92 +121,100 @@ header h1 {
     #7a00ff,
     #ff00c8,
     #ff0000
-  );
-  position: absolute;
-  top: -2px;
-  left: -2px;
-  background-size: 400%;
-  z-index: -1;
-  filter: blur(5px);
-  width: calc(100% + 4px);
-  height: calc(100% + 4px);
-  animation: glowing 20s linear infinite;
-  opacity: 0;
-  transition: opacity 0.3s ease-in-out;
-  border-radius: 10px;
-  font-family: "Raleway", sans-serif; /* Fonte personalizada */
-  font-size: 26px; /* Aumenta o tamanho da fonte */
+  ); /* Define um gradiente linear */
+  position: absolute; /* Define uma posição absoluta */
+  top: -2px; /* Move para cima */
+  left: -2px; /* Move para a esquerda */
+  background-size: 400%; /* Define o tamanho do gradiente */
+  z-index: -1; /* Define a ordem de empilhamento */
+  filter: blur(5px); /* Aplica um desfoque */
+  width: calc(100% + 4px); /* Calcula a largura */
+  height: calc(100% + 4px); /* Calcula a altura */
+  animation: glowing 20s linear infinite; /* Define a animação */
+  opacity: 0; /* Define a opacidade como 0 */
+  transition: opacity 0.3s ease-in-out; /* Adiciona uma transição */
+  border-radius: 10px; /* Adiciona bordas arredondadas */
+  font-family: "Raleway", sans-serif; /* Define a fonte do texto como Raleway */
+  font-size: 26px; /* Define o tamanho da fonte */
 }
 
+/* Define a cor do texto e da fonte quando o botão é clicado */
 .glow-on-hover:active {
-  color: #fff;
-  font-family: "Raleway", sans-serif; /* Fonte personalizada */
-  font-size: 26px; /* Aumenta o tamanho da fonte */
+  color: #fff; /* Define a cor do texto como branco */
+  font-family: "Raleway", sans-serif; /* Define a fonte do texto como Raleway */
+  font-size: 26px; /* Define o tamanho da fonte */
 }
 
+/* Remove o brilho após o clique */
 .glow-on-hover:active:after {
-  background: transparent;
-  font-family: "Raleway", sans-serif; /* Fonte personalizada */
-  font-size: 26px; /* Aumenta o tamanho da fonte */
+  background: transparent; /* Define a cor de fundo como transparente */
+  font-family: "Raleway", sans-serif; /* Define a fonte do texto como Raleway */
+  font-size: 26px; /* Define o tamanho da fonte */
 }
 
+/* Efeito de brilho ao passar o mouse */
 .glow-on-hover:hover:before {
-  opacity: 1;
-  font-family: "Raleway", sans-serif; /* Fonte personalizada */
-  font-size: 26px; /* Aumenta o tamanho da fonte */
+  opacity: 1; /* Define a opacidade como 1 */
+  font-family: "Raleway", sans-serif; /* Define a fonte do texto como Raleway */
+  font-size: 26px; /* Define o tamanho da fonte */
 }
 
+/* Estiliza o fundo após o efeito de brilho */
 .glow-on-hover:after {
-  z-index: -1;
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: #2ecc71;
-  left: 0;
-  top: 0;
-  border-radius: 10px;
-  font-family: "Raleway", sans-serif; /* Fonte personalizada */
-  font-size: 26px; /* Aumenta o tamanho da fonte */
+  z-index: -1; /* Define a ordem de empilhamento */
+  content: ""; /* Adiciona conteúdo */
+  position: absolute; /* Define uma posição absoluta */
+  width: 100%; /* Define a largura como 100% */
+  height: 100%; /* Define a altura como 100% */
+  background: #2ecc71; /* Define a cor de fundo como verde */
+  left: 0; /* Alinha à esquerda */
+  top: 0; /* Alinha ao topo */
+  border-radius: 10px; /* Adiciona bordas arredondadas */
+  font-family: "Raleway", sans-serif; /* Define a fonte do texto como Raleway */
+  font-size: 26px; /* Define o tamanho da fonte */
 }
 
+/* Define a animação de brilho */
 @keyframes glowing {
   0% {
-    background-position: 0 0;
+    background-position: 0 0; /* Define a posição inicial */
   }
   50% {
-    background-position: 400% 0;
+    background-position: 400% 0; /* Define a posição intermediária */
   }
   100% {
-    background-position: 0 0;
+    background-position: 0 0; /* Define a posição final */
   }
 }
 
-/* Estilo para o checkbox */
+/* Estiliza o checkbox */
 .item-cardapio input[type="checkbox"] {
   vertical-align: middle; /* Alinha o checkbox verticalmente com o texto */
   transform: scale(1.5); /* Aumenta o tamanho do checkbox */
-  margin-right: 5px; /* Espaço entre o checkbox e o texto */
+  margin-right: 5px; /* Adiciona margem à direita */
 }
 
 /* Estilo para o checkbox quando selecionado */
 .item-cardapio input[type="checkbox"]:checked {
-  background-color: #2ecc71; /* Verde */
-  border-color: #2ecc71; /* Verde */
+  background-color: #2ecc71; /* Define a cor de fundo como verde */
+  border-color: #2ecc71; /* Define a cor da borda como verde */
 }
 
+/* Estiliza o resumo do pedido */
 .resumo {
-  margin-bottom: 80px;
-  text-align: center;
+  margin-bottom: 80px; /* Adiciona margem inferior */
+  text-align: center; /* Centraliza o texto */
 }
 
+/* Estiliza o rodapé */
 footer {
-  position: fixed;
-  width: 100%;
-  bottom: 0;
-  z-index: 1; /* Para ficar sobre o conteúdo */
+  position: fixed; /* Fixa o rodapé na parte inferior da janela */
+  width: 100%; /* Define a largura como 100% */
+  bottom: 0; /* Alinha à parte inferior */
+  z-index: 1; /* Define a ordem de empilhamento */
 }
 
+/* Define a animação de pulso para as imagens */
 .item-cardapio img.pulso {
   animation: pulsoAnimacao 1s infinite; /* Define a animação de pulso */
 }

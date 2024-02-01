@@ -1,6 +1,6 @@
 <?php
 
-include('Conexao.php');
+include('Conexao.php'); // Inclui o arquivo de conexão com o banco de dados
 
 try {
     // SQL para criar a tabela de hamburgueres
@@ -48,9 +48,9 @@ try {
     $conexao->exec($sqlCriacaoTrigger);
 
     // Mensagem para o console.log do navegador - Trigger criado
-   // echo "<script>console.log('Trigger criado com sucesso.');</script>";
+    // echo "<script>console.log('Trigger criado com sucesso.');</script>";
 } catch (PDOException $e) {
-   //echo "<script>console.error('Erro na criação das tabelas ou trigger: " . $e->getMessage() . "');</script>";
+    //echo "<script>console.error('Erro na criação das tabelas ou trigger: " . $e->getMessage() . "');</script>";
 } finally {
     // Fechando a conexão
     $conexao = null;
