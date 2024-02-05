@@ -1,0 +1,118 @@
+/* Estilos para o cabeçalho */
+header {
+  background-color: #808080; /* Cinza */
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+  margin: 0;
+}
+
+/* Estilos para o rodapé */
+footer {
+  background-color: #808080; /* Cinza */
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+  margin: 0;
+}
+
+/* Estilos para o corpo da página */
+body {
+  background-color: #f5deb3; /* Cor de palha */
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+/* Estilos para o botão de login */
+.menu-button {
+  width: 400px; /* Largura definida */
+  padding: 10px;
+  background-color: #28a745; /* Cor verde */
+  color: #fff;
+  border: none;
+  border-radius: 20px; /* Arredondamento do botão */
+  cursor: pointer;
+  transition: background-color 0.3s; /* Transição suave da cor de fundo */
+  margin: 10px auto; /* Centraliza horizontalmente */
+  display: block; /* Torna o botão um bloco para centralizar */
+  font-weight: bold; /* Deixa o texto em negrito */
+  font-size: 32px; /* Tamanho da fonte */
+  text-decoration: none; /* Remove a linha de baixo do link */
+}
+
+.menu-button:hover {
+  background-color: #218838; /* Cor verde mais escura no hover */
+}
+
+/* Estilos para o link */
+a {
+  text-decoration: none; /* Remover sublinhado do link */
+}
+
+#sair {
+  width: 200px; /* Largura definida */
+  padding: 10px;
+  background-color: #28a745; /* Cor verde */
+  color: #fff;
+  border: none;
+  border-radius: 20px; /* Arredondamento do botão */
+  cursor: pointer;
+  transition: background-color 0.3s; /* Transição suave da cor de fundo */
+  margin: 10px auto; /* Centraliza horizontalmente */
+  display: block; /* Torna o botão um bloco para centralizar */
+  text-decoration: none; /* Remove a linha de baixo do link */
+  font-weight: bold; /* Deixa o texto em negrito */
+}
+
+#sair:hover {
+  background-color: #218838; /* Cor verde mais escura no hover */
+}
+
+/* Estilos para o formulário */
+form {
+  margin: 20px auto; /* Centraliza horizontalmente */
+  width: 60%; /* Define a largura do formulário */
+  background-color: #fff; /* Cor de fundo do formulário */
+  padding: 10px; /* Adiciona espaço interno ao formulário */
+  border-radius: 10px; /* Arredondamento das bordas do formulário */
+  border: 1px solid #ddd; /* Adiciona borda ao formulário */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Adiciona sombra ao formulário */
+}
+
+/* Estilos para os campos do formulário */
+form div {
+  margin-bottom: 15px; /* Adiciona espaço entre os campos */
+}
+
+label {
+  display: block; /* Mostra cada rótulo em uma nova linha */
+  font-weight: bold; /* Deixa o rótulo em negrito */
+}
+
+input[type="text"],
+input[type="number"],
+input[type="date"],
+select {
+  width: 60%; /* Define a largura total para os campos de entrada */
+  padding: 10px; /* Adiciona preenchimento interno aos campos de entrada */
+  border: 1px solid #ddd; /* Adiciona borda aos campos de entrada */
+  border-radius: 5px; /* Arredondamento das bordas dos campos de entrada */
+  box-sizing: border-box; /* Garante que o padding não aumente o tamanho total do campo */
+  text-align: center;
+}
+
+/* Estilos para o botão de envio */
+button[type="submit"] {
+  padding: 10px 20px; /* Adiciona preenchimento ao botão */
+  background-color: #808080; /* Cor de fundo do botão */
+  color: #fff; /* Cor do texto do botão */
+  border: none; /* Remove a borda do botão */
+  border-radius: 5px; /* Arredondamento das bordas do botão */
+  cursor: pointer; /* Altera o cursor ao passar sobre o botão */
+}
+
+button[type="submit"]:hover {
+  background-color: #606060; /* Cor de fundo do botão ao passar o mouse */
+}

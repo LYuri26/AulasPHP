@@ -1,0 +1,22 @@
+db
+├── sql
+│   └── script.sql
+└── db_connect.php
+paginas
+├── contato.html
+├── inserir_pedido.php
+├── principal.html
+└── tabela_solicitacoes.php
+static
+├── css
+│   ├── contato.css
+│   ├── index.css
+│   ├── inserir_pedido.css
+│   ├── login.css
+│   ├── principal.css
+│   └── tabela_solicitacoes.css
+├── images
+└── js
+    └── script.js
+index.html
+login.php

@@ -1,0 +1,54 @@
+/* Estilos para o cabeçalho */
+header {
+  background-color: #808080; /* Cinza */
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Estilos para o rodapé */
+footer {
+  background-color: #808080; /* Cinza */
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+/* Estilos para o corpo da página */
+body {
+  background-color: #f5deb3; /* Cor de palha */
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Estilos para o botão de login */
+#loginButton {
+  width: 400px; /* Largura definida */
+  padding: 10px;
+  background-color: #28a745; /* Cor verde */
+  color: #fff;
+  border: none;
+  border-radius: 20px; /* Arredondamento do botão */
+  cursor: pointer;
+  transition: background-color 0.3s; /* Transição suave da cor de fundo */
+  margin: 0 auto; /* Centraliza horizontalmente */
+  display: block; /* Torna o botão um bloco para centralizar */
+  font-weight: bold; /* Deixa o texto em negrito */
+  font-size: 32px; /* Tamanho da fonte */
+  text-decoration: none; /* Remove a linha de baixo do link */
+}
+
+#loginButton:hover {
+  background-color: #218838; /* Cor verde mais escura no hover */
+}
+
+/* Estilos para o link */
+a {
+    text-decoration: none; /* Remover sublinhado do link */
+  }
+  

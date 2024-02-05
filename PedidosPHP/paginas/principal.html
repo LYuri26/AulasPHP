@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Página Principal</title>
+        <link rel="stylesheet" href="../static/css/principal.css">
+        <script src="../static/js/script.js"></script>
+    </head>
+    <body>
+        <header>
+            <button onclick="logout()" id="sair">Sair</button>
+            <h1>SGI da Indústria GrãosBR!</h1>
+        </header>
+        <div class="content">
+            <button class="menu-button"
+                onclick="showRedirectAlert('Tabela de Solicitações')">Tabela de
+                Solicitações</button>
+            <button class="menu-button"
+                onclick="showRedirectAlert('Inserir Pedido')">Inserir
+                Pedido</button>
+            <button class="menu-button"
+                onclick="showRedirectAlert('Contato')">Contato</button>
+        </div>
+        <footer>
+            <div class="contato">
+                <p>Entre em contato:</p>
+                <p>Email: <a
+                        href="mailto:09113875@senaimgdocente.com.br">09113875@senaimgdocente.com.br</a></p>
+            </div>
+            <div class="informacoes-adicionais">
+                <p>&copy; 2024 GrãosBR. Todos os direitos reservados.</p>
+                <p>Endereço: Praça Frei Eugênio, R. São Benedito, 85, Uberaba -
+                    MG, 38010-280</p>
+            </div>
+        </footer>
+    </body>
+</html>
