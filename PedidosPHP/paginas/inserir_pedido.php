@@ -48,10 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <!DOCTYPE html>
 <html lang="pt-br">
-<link rel="stylesheet" href="./css/style.css">
-<script src="../static/js/script.js"></script>
-
-
+    
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
