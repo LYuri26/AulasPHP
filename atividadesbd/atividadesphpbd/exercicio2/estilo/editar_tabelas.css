@@ -1,0 +1,102 @@
+/* Estilos para a página de editar fã */
+
+/* Estilos gerais para o corpo da página */
+body {
+  font-family: Arial, sans-serif; /* Define a fonte para Arial ou similar e sem serifa */
+  background-color: #f0f0f0; /* Define a cor de fundo como um cinza claro */
+  margin: 0; /* Remove margens externas */
+  padding: 0; /* Remove preenchimento externo */
+}
+
+/* Estilos para o contêiner principal */
+.container {
+  max-width: 800px; /* Define a largura máxima do contêiner */
+  margin: 20px auto; /* Centraliza o contêiner na página com margem de 20px na parte superior e inferior */
+  padding: 20px; /* Define o preenchimento interno do contêiner */
+  background-color: #fff; /* Cor de fundo branca para o contêiner */
+  border: 1px solid #ccc; /* Borda sólida de 1px cinza */
+  border-radius: 5px; /* Borda arredondada com raio de 5px */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra leve ao redor do contêiner */
+}
+
+/* Estilos para o título principal */
+h2 {
+  text-align: center; /* Centraliza o título */
+}
+
+/* Estilos para labels do formulário */
+.form-cadastro label {
+  display: block; /* Exibe as labels em blocos */
+  margin-bottom: 5px; /* Espaçamento inferior de 5px */
+}
+
+/* Estilos para inputs do formulário */
+.form-cadastro input[type="text"],
+.form-cadastro input[type="date"] {
+  width: calc(
+    100% - 20px
+  ); /* Define a largura dos inputs, ajustando para o preenchimento */
+  padding: 8px; /* Define o preenchimento interno dos inputs */
+  margin-bottom: 10px; /* Espaçamento inferior de 10px */
+  border: 1px solid #ddd; /* Borda sólida de 1px cinza */
+  border-radius: 4px; /* Borda arredondada com raio de 4px */
+}
+
+/* Estilos para botões de confirmação e voltar */
+.btn-confirmar,
+.btn-voltar {
+  background-color: #007bff; /* Cor de fundo azul para os botões */
+  color: #fff; /* Cor do texto branco para os botões */
+  border: none; /* Remove a borda dos botões */
+  padding: 10px 20px; /* Preenchimento interno dos botões */
+  cursor: pointer; /* Cursor do mouse como ponteiro */
+  border-radius: 4px; /* Borda arredondada com raio de 4px */
+  text-decoration: none; /* Remove decoração de texto */
+  display: inline-block; /* Exibe os botões como elementos de bloco em linha */
+  margin-top: 10px; /* Espaçamento superior de 10px */
+}
+
+/* Estilos para botões ao passar o mouse */
+.btn-confirmar:hover,
+.btn-voltar:hover {
+  background-color: #0056b3; /* Tom mais escuro do azul ao passar o mouse */
+}
+
+/* Estilos específicos para o botão de voltar */
+.btn-voltar {
+  background-color: #6c757d; /* Cor de fundo cinza para o botão de voltar */
+}
+
+/* Estilos para o botão de voltar ao passar o mouse */
+.btn-voltar:hover {
+  background-color: #5a6268; /* Tom mais escuro do cinza ao passar o mouse */
+}
+
+/* Estilos para a mensagem de feedback */
+.mensagem {
+  margin-top: 10px; /* Espaçamento superior de 10px */
+  background-color: #f8d7da; /* Cor de fundo vermelha */
+  color: #721c24; /* Cor do texto vermelho escuro */
+  padding: 10px; /* Preenchimento interno de 10px */
+  border: 1px solid #f5c6cb; /* Borda sólida vermelha */
+  border-radius: 4px; /* Borda arredondada com raio de 4px */
+}
+
+/* Estilos para dispositivos móveis */
+@media (max-width: 768px) {
+  .container {
+    padding: 10px; /* Reduz o preenchimento do contêiner para dispositivos móveis */
+  }
+
+  .form-cadastro input[type="text"],
+    .form-cadastro input[type="date"] {
+    width: 100%; /* Define a largura total para inputs em dispositivos móveis */
+  }
+
+  .btn-confirmar,
+  .btn-voltar {
+    width: 100%; /* Define a largura total para botões em dispositivos móveis */
+    margin-right: 0; /* Remove margem direita dos botões em dispositivos móveis */
+    margin-bottom: 10px; /* Espaçamento inferior de 10px entre os botões em dispositivos móveis */
+  }
+}

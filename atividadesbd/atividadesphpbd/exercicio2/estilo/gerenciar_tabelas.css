@@ -1,0 +1,135 @@
+/* Estilos para a página de gerenciar tabelas */
+
+/* Estilos gerais para o corpo da página */
+body {
+  font-family: Arial, sans-serif; /* Define a fonte para Arial ou similar e sem serifa */
+  background-color: #f0f0f0; /* Define a cor de fundo como um cinza claro */
+  margin: 0; /* Remove margens externas */
+  padding: 0; /* Remove preenchimento externo */
+}
+
+/* Estilos para o contêiner principal */
+.container {
+  max-width: 800px; /* Define a largura máxima do contêiner */
+  margin: 20px auto; /* Centraliza o contêiner na página com margem de 20px na parte superior e inferior */
+  padding: 20px; /* Define o preenchimento interno do contêiner */
+  background-color: #fff; /* Cor de fundo branca para o contêiner */
+  border: 1px solid #ccc; /* Borda sólida de 1px cinza */
+  border-radius: 5px; /* Borda arredondada com raio de 5px */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra leve ao redor do contêiner */
+}
+
+/* Estilos para os títulos h2 e h3 */
+h2,
+h3 {
+  text-align: center; /* Centraliza o texto dos títulos */
+}
+
+/* Estilos para os rótulos dos campos do formulário */
+.form-cadastro label {
+  display: block; /* Exibe os rótulos como blocos para alinhamento vertical */
+  margin-bottom: 5px; /* Espaçamento inferior de 5px entre os rótulos */
+}
+
+/* Estilos para os campos de entrada de texto, email e data */
+.form-cadastro input[type="text"],
+.form-cadastro input[type="email"],
+.form-cadastro input[type="date"] {
+  width: calc(
+    100% - 20px
+  ); /* Define a largura dos campos de entrada subtraindo 20px para acomodar o padding e a borda */
+  padding: 8px; /* Preenchimento interno de 8px nos campos de entrada */
+  margin-bottom: 10px; /* Espaçamento inferior de 10px entre os campos */
+  border: 1px solid #ddd; /* Borda sólida de 1px cinza claro */
+  border-radius: 4px; /* Borda arredondada com raio de 4px */
+}
+
+/* Estilos para os botões de ação e de navegação */
+.form-cadastro button,
+.btn-editar,
+.btn-excluir,
+.btn-voltar {
+  background-color: #007bff; /* Cor de fundo azul para os botões */
+  color: #fff; /* Cor do texto branco para os botões */
+  border: none; /* Remove a borda dos botões */
+  padding: 10px 20px; /* Preenchimento interno dos botões */
+  cursor: pointer; /* Cursor do mouse como ponteiro */
+  border-radius: 4px; /* Borda arredondada com raio de 4px */
+  margin-right: 10px; /* Espaçamento direito de 10px entre os botões */
+  margin-top: 10px; /* Espaçamento superior de 10px entre os botões */
+  text-decoration: none; /* Remove decoração de texto */
+}
+
+/* Estilos de hover para os botões */
+.form-cadastro button:hover,
+.btn-editar:hover,
+.btn-excluir:hover,
+.btn-voltar:hover {
+  background-color: #0056b3; /* Tom mais escuro do azul ao passar o mouse */
+}
+
+/* Estilos específicos para o botão de exclusão */
+.btn-excluir {
+  background-color: #dc3545; /* Cor de fundo vermelha para o botão de exclusão */
+}
+
+.btn-excluir:hover {
+  background-color: #c82333; /* Tom mais escuro do vermelho ao passar o mouse */
+}
+
+/* Estilos para a mensagem de feedback */
+.mensagem {
+  margin-top: 10px; /* Espaçamento superior de 10px para a mensagem */
+  background-color: #f8d7da; /* Cor de fundo rosa claro para a mensagem */
+  color: #721c24; /* Cor do texto vermelho escuro para a mensagem */
+  padding: 10px; /* Preenchimento interno de 10px para a mensagem */
+  border: 1px solid #f5c6cb; /* Borda sólida de 1px rosa para a mensagem */
+  border-radius: 4px; /* Borda arredondada com raio de 4px */
+}
+
+/* Estilos para a tabela de fãs */
+.tabela-musica {
+  width: 100%; /* Largura total para a tabela */
+  border-collapse: collapse; /* Colapso das bordas da tabela */
+  margin-top: 20px; /* Espaçamento superior de 20px para a tabela */
+}
+
+/* Estilos para os cabeçalhos da tabela */
+.tabela-musica th {
+  padding: 8px; /* Preenchimento interno de 8px para os cabeçalhos */
+  text-align: center; /* Alinhamento centralizado do texto nos cabeçalhos */
+  border: 1px solid #ddd; /* Borda sólida de 1px cinza claro para os cabeçalhos */
+  background-color: #007bff; /* Cor de fundo azul para os cabeçalhos */
+  color: #fff; /* Cor do texto branco para os cabeçalhos */
+}
+
+/* Estilos para as células da tabela */
+.tabela-musica td {
+  padding: 8px; /* Preenchimento interno de 8px para as células */
+  text-align: center; /* Alinhamento centralizado do texto nas células */
+  border: 1px solid #ddd; /* Borda sólida de 1px cinza claro para as células */
+  background-color: #f9f9f9; /* Cor de fundo cinza claro para as células */
+}
+
+/* Estilos responsivos para telas menores que 768px */
+@media (max-width: 768px) {
+  .container {
+    padding: 10px; /* Reduz o preenchimento interno do contêiner para 10px */
+  }
+
+  .form-cadastro input[type="text"],
+  .form-cadastro input[type="email"],
+  .form-cadastro input[type="date"] {
+    width: 100%; /* Define a largura dos campos de entrada como 100% */
+  }
+
+  .form-cadastro button,
+  .btn-editar,
+  .btn-excluir,
+  .btn-voltar {
+    width: 100%; /* Define a largura dos botões como 100% */
+    margin-right: 0; /* Remove o espaçamento direito entre os botões */
+    margin-bottom: 10px; /* Espaçamento inferior de 10px entre os botões */
+    margin-top: 10px; /* Espaçamento superior de 10px entre os botões */
+  }
+}

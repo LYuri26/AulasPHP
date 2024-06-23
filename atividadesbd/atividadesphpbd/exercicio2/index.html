@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Show do Linkin Park</title>
+    <link rel="stylesheet" href="./estilo/index.css">
+</head>
+<body>
+    <!-- Formulário de login -->
+    <form action="./gerenciamento/processa_login.php" method="POST" class="login-form">
+        <h2>Login - Músicas do Linkin Park</h2> <!-- Título mudado para "Músicas do Linkin Park" -->
+        <label for="cantor">Cantor:</label> <!-- Campo de entrada mudado de "email" para "cantor" -->
+        <input type="text" id="cantor" name="cantor" required> <!-- Tipo de entrada mudado para "text" -->
+        <label for="senha">Senha:</label>
+        <input type="password" id="senha" name="senha" required>
+        <input type="submit" value="Entrar">
+    </form>
+</body>
+</html>
