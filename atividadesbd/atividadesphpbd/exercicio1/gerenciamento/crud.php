@@ -17,6 +17,21 @@ function getFanById($pdo, $id)
     return $stmt->fetch(PDO::FETCH_ASSOC);
 }
 
+// Função para cadastrar um novo fã na tabela
+function cadastrarFan($pdo, $nome, $email, $data_nascimento, $cidade, $estado, $pais)
+{
+    $sql = "INSERT INTO fas (nome, email, data_nascimento, cidade, estado, pais) 
+            VALUES (:nome, :email, :data_nascimento, :cidade, :estado, :pais)";
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':nome', $nome, PDO::PARAM_STR);
+    $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+    $stmt->bindParam(':data_nascimento', $data_nascimento, PDO::PARAM_STR);
+    $stmt->bindParam(':cidade', $cidade, PDO::PARAM_STR);
+    $stmt->bindParam(':estado', $estado, PDO::PARAM_STR);
+    $stmt->bindParam(':pais', $pais, PDO::PARAM_STR);
+    return $stmt->execute();
+}
+
 // Função para editar um fã na tabela
 function editarFan($pdo, $id, $nome, $email, $data_nascimento, $cidade, $estado, $pais)
 {
@@ -49,7 +64,7 @@ function editarFan($pdo, $id, $nome, $email, $data_nascimento, $cidade, $estado,
         // Retornando true se a atualização for bem-sucedida
         return true;
     } catch (PDOException $e) {
-        // Aqui, apenas retornaremos false para indicar falha na atualização
+        // Em caso de exceção, retornamos false para indicar falha na atualização
         return false;
     }
 }
@@ -64,22 +79,8 @@ function excluirFan($pdo, $id)
         $stmt->execute();
         return true;
     } catch (PDOException $e) {
+        // Em caso de exceção, retornamos false para indicar falha na exclusão
         return false;
     }
-}
-
-// Função para cadastrar um novo fã na tabela
-function cadastrarFan($pdo, $nome, $email, $data_nascimento, $cidade, $estado, $pais)
-{
-    $sql = "INSERT INTO fas (nome, email, data_nascimento, cidade, estado, pais) 
-            VALUES (:nome, :email, :data_nascimento, :cidade, :estado, :pais)";
-    $stmt = $pdo->prepare($sql);
-    $stmt->bindParam(':nome', $nome, PDO::PARAM_STR);
-    $stmt->bindParam(':email', $email, PDO::PARAM_STR);
-    $stmt->bindParam(':data_nascimento', $data_nascimento, PDO::PARAM_STR);
-    $stmt->bindParam(':cidade', $cidade, PDO::PARAM_STR);
-    $stmt->bindParam(':estado', $estado, PDO::PARAM_STR);
-    $stmt->bindParam(':pais', $pais, PDO::PARAM_STR);
-    return $stmt->execute();
 }
 ?>

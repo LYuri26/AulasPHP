@@ -1,71 +1,79 @@
 /* Estilos para a página de excluir fã */
 
+/* Estilos gerais para o corpo da página */
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f0f0f0;
-  margin: 0;
-  padding: 0;
+  font-family: Arial, sans-serif; /* Define a fonte para Arial ou similar e sem serifa */
+  background-color: #f0f0f0; /* Define a cor de fundo como um cinza claro */
+  margin: 0; /* Remove margens externas */
+  padding: 0; /* Remove preenchimento externo */
 }
 
+/* Estilos para o contêiner principal */
 .container {
-  max-width: 600px;
-  margin: 20px auto;
-  padding: 20px;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 600px; /* Define a largura máxima do contêiner */
+  margin: 20px auto; /* Centraliza o contêiner na página com margem de 20px na parte superior e inferior */
+  padding: 20px; /* Define o preenchimento interno do contêiner */
+  background-color: #fff; /* Cor de fundo branca para o contêiner */
+  border: 1px solid #ccc; /* Borda sólida de 1px cinza */
+  border-radius: 5px; /* Borda arredondada com raio de 5px */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra leve ao redor do contêiner */
 }
 
+/* Estilos para o título principal */
 h2 {
-  text-align: center;
+  text-align: center; /* Centraliza o título */
 }
 
+/* Estilos para os dados do fã a ser excluído */
 .dados-fa {
-  margin-bottom: 20px;
+  margin-bottom: 20px; /* Espaçamento inferior de 20px para os dados do fã */
 }
 
 .dados-fa p {
-  margin: 5px 0;
+  margin: 5px 0; /* Espaçamento interno de 5px para cada parágrafo dos dados */
 }
 
+/* Estilos para o formulário de confirmação de exclusão */
 form {
-  text-align: center;
+  text-align: center; /* Centraliza o formulário */
 }
 
+/* Estilos para os botões de ação */
 .btn-excluir,
 .btn-cancelar,
 .btn-voltar {
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-  border-radius: 4px;
-  margin-right: 10px;
-  text-decoration: none;
+  color: #fff; /* Cor do texto branco para os botões */
+  border: none; /* Remove a borda dos botões */
+  padding: 10px 20px; /* Preenchimento interno dos botões */
+  cursor: pointer; /* Cursor do mouse como ponteiro */
+  border-radius: 4px; /* Borda arredondada com raio de 4px */
+  margin-right: 10px; /* Espaçamento direito de 10px entre os botões */
+  text-decoration: none; /* Remove decoração de texto */
 }
 
+/* Estilos específicos para o botão de exclusão */
 .btn-excluir {
-  background-color: #dc3545;
+  background-color: #dc3545; /* Cor de fundo vermelha para o botão de exclusão */
 }
 
 .btn-excluir:hover {
-    background-color: #aa1818;
-  }
-  
+  background-color: #aa1818; /* Tom mais escuro do vermelho ao passar o mouse */
+}
 
+/* Estilos para o botão de voltar */
 .btn-voltar {
-  background-color: #6c757d;
+  background-color: #6c757d; /* Cor de fundo cinza para o botão de voltar */
 }
 
 .btn-voltar:hover {
-  background-color: #5a6268;
+  background-color: #5a6268; /* Tom mais escuro do cinza ao passar o mouse */
 }
 
+/* Estilos para o botão de cancelar */
 .btn-cancelar {
-  background-color: #007bff;
+  background-color: #007bff; /* Cor de fundo azul para o botão de cancelar */
 }
 
 .btn-cancelar:hover {
-  background-color: #0056b3;
+  background-color: #0056b3; /* Tom mais escuro do azul ao passar o mouse */
 }

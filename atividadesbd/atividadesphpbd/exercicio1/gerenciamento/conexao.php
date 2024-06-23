@@ -1,13 +1,15 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "linkin_park_fas";
+// Configurações de conexão com o banco de dados
+$servername = "localhost"; // Nome do servidor MySQL
+$username = "root"; // Nome de usuário do MySQL
+$password = ""; // Senha do MySQL (vazia neste exemplo)
+$dbname = "linkin_park_fas"; // Nome do banco de dados
 
+// Tentativa de conexão com o banco de dados usando PDO
 try {
     $pdo = new PDO("mysql:host=$servername;dbname=$dbname;charset=utf8", $username, $password);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); // Configura o modo de erro para lançar exceções
 } catch (PDOException $e) {
-    die("Erro de conexão: " . $e->getMessage());
+    die("Erro de conexão: " . $e->getMessage()); // Em caso de erro, mostra a mensagem de erro
 }
 ?>

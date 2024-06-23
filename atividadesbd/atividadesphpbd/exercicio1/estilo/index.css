@@ -1,61 +1,73 @@
+/* Estilos para o corpo da página */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+  font-family: Arial, sans-serif; /* Define a fonte para Arial ou similar e sem serifa */
+  background-color: #f0f0f0; /* Cor de fundo cinza claro */
+  margin: 0; /* Remove margens externas */
+  padding: 0; /* Remove preenchimento externo */
+  display: flex; /* Usa flexbox para alinhar conteúdo */
+  justify-content: center; /* Centraliza horizontalmente */
+  align-items: center; /* Centraliza verticalmente */
+  height: 100vh; /* Define a altura para 100% da altura da viewport */
 }
 
+/* Estilos para o formulário de login */
 .login-form {
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    width: 300px;
+  background-color: #fff; /* Cor de fundo branca */
+  padding: 30px; /* Preenchimento interno de 30px */
+  border-radius: 8px; /* Borda arredondada com raio de 8px */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Sombra ao redor do formulário */
+  width: 300px; /* Largura fixa do formulário */
 }
 
+/* Estilos para o título h2 */
 h2 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #007bff; /* Cor azul do botão */
+  text-align: center; /* Alinhamento centralizado do texto */
+  margin-bottom: 20px; /* Espaçamento inferior de 20px */
+  color: #007bff; /* Cor azul para o texto */
 }
 
+/* Estilos para rótulos dos campos */
 label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: bold;
+  display: block; /* Exibe os rótulos como blocos para alinhamento vertical */
+  margin-bottom: 8px; /* Espaçamento inferior de 8px */
+  font-weight: bold; /* Texto em negrito */
 }
 
-input[type="text"], input[type="email"], input[type="password"] {
-    width: 90%;
-    padding: 12px;
-    margin-bottom: 20px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 16px;
-    transition: border-color 0.3s ease-in-out;
+/* Estilos para os campos de entrada de texto, email e senha */
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 90%; /* Largura de 90% do elemento pai */
+  padding: 12px; /* Preenchimento interno de 12px */
+  margin-bottom: 20px; /* Espaçamento inferior de 20px */
+  border: 1px solid #ddd; /* Borda sólida de 1px cinza claro */
+  border-radius: 4px; /* Borda arredondada com raio de 4px */
+  font-size: 16px; /* Tamanho da fonte de 16px */
+  transition: border-color 0.3s ease-in-out; /* Transição suave na cor da borda */
 }
 
-input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus {
-    outline: none;
-    border-color: #007bff; /* Cor azul do botão ao focar */
+/* Estilos para os campos de entrada ao focar */
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+  outline: none; /* Remove o contorno ao focar */
+  border-color: #007bff; /* Cor azul da borda ao focar */
 }
 
+/* Estilos para o botão de envio */
 input[type="submit"] {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    padding: 14px;
-    cursor: pointer;
-    border-radius: 4px;
-    width: 100%;
-    font-size: 16px;
-    transition: background-color 0.3s ease-in-out;
+  background-color: #007bff; /* Cor de fundo azul para o botão de envio */
+  color: #fff; /* Cor do texto branco para o botão de envio */
+  border: none; /* Remove a borda do botão */
+  padding: 14px; /* Preenchimento interno de 14px */
+  cursor: pointer; /* Cursor do mouse como ponteiro */
+  border-radius: 4px; /* Borda arredondada com raio de 4px */
+  width: 100%; /* Largura de 100% do elemento pai */
+  font-size: 16px; /* Tamanho da fonte de 16px */
+  transition: background-color 0.3s ease-in-out; /* Transição suave na cor de fundo */
 }
 
+/* Estilos para o botão de envio ao passar o mouse */
 input[type="submit"]:hover {
-    background-color: #0056b3; /* Tom mais escuro do azul */
+  background-color: #0056b3; /* Tom mais escuro do azul ao passar o mouse */
 }

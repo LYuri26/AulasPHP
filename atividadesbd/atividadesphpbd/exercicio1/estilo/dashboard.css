@@ -1,61 +1,71 @@
+/* Estilos gerais para o corpo da página */
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f0f0f0;
-  margin: 0;
-  padding: 0;
+  font-family: Arial, sans-serif; /* Define a fonte para Arial ou similar e sem serifa */
+  background-color: #f0f0f0; /* Define a cor de fundo como um cinza claro */
+  margin: 0; /* Remove margens externas */
+  padding: 0; /* Remove preenchimento externo */
 }
 
+/* Estilos para o contêiner principal */
 .container {
-  max-width: 500px;
-  margin: 50px auto;
-  padding: 30px;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-  text-align: center;
+  max-width: 500px; /* Define a largura máxima do contêiner */
+  margin: 50px auto; /* Centraliza o contêiner na página verticalmente com margem superior de 50px */
+  padding: 30px; /* Define o preenchimento interno do contêiner */
+  background-color: #fff; /* Cor de fundo branca para o contêiner */
+  border: 1px solid #ccc; /* Borda sólida de 1px cinza */
+  border-radius: 8px; /* Borda arredondada com raio de 8px */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Sombra leve ao redor do contêiner */
+  text-align: center; /* Centraliza o conteúdo do texto no centro */
 }
 
+/* Estilos para o título principal */
 h2 {
-  color: #007bff; /* Cor azul do botão */
+  color: #007bff; /* Cor azul para o título */
 }
 
+/* Estilos para parágrafos */
 p {
-  margin-bottom: 20px;
+  margin-bottom: 20px; /* Espaçamento inferior de 20px para parágrafos */
 }
 
+/* Estilos para links */
 a {
-  color: #007bff; /* Cor azul do botão */
-  text-decoration: none;
-  transition: color 0.3s ease-in-out;
+  color: #007bff; /* Cor azul para links */
+  text-decoration: none; /* Remove decoração de sublinhado dos links */
+  transition: color 0.3s ease-in-out; /* Transição suave de cor ao passar o mouse */
 }
 
+/* Estilos para links ao passar o mouse */
 a:hover {
-  color: #0056b3; /* Tom mais escuro do azul */
+  color: #0056b3; /* Cor azul mais escura ao passar o mouse */
 }
 
+/* Estilos para botões */
 .btn {
-    display: inline-block;
-    background-color: #007bff; /* Cor azul */
-    color: #fff; /* Cor do texto branco */
-    border: none;
-    padding: 12px 24px;
-    text-align: center;
-    text-decoration: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease-in-out;
-    margin-right: 10px; /* Espaçamento entre os botões */
+  display: inline-block; /* Exibe o botão como um elemento de bloco em linha */
+  background-color: #007bff; /* Cor de fundo azul para o botão */
+  color: #fff; /* Cor do texto branca para o botão */
+  border: none; /* Remove a borda do botão */
+  padding: 12px 24px; /* Preenchimento interno do botão */
+  text-align: center; /* Centraliza o texto no botão */
+  text-decoration: none; /* Remove decoração de texto */
+  border-radius: 4px; /* Borda arredondada com raio de 4px */
+  cursor: pointer; /* Cursor do mouse como ponteiro */
+  transition: background-color 0.3s ease-in-out; /* Transição suave de cor ao passar o mouse */
+  margin-right: 10px; /* Espaçamento à direita entre os botões */
 }
 
+/* Estilos para botões ao passar o mouse */
 .btn:hover {
-    background-color: #0056b3; /* Tom mais escuro do azul ao passar o mouse */
+  background-color: #0056b3; /* Cor azul mais escura ao passar o mouse */
 }
 
+/* Estilos específicos para o botão de logout */
 .btn-logout {
-    background-color: #dc3545; /* Vermelho */
+  background-color: #dc3545; /* Cor vermelha para o botão de logout */
 }
 
+/* Estilos para o botão de logout ao passar o mouse */
 .btn-logout:hover {
-    background-color: #c82333; /* Tom mais escuro do vermelho ao passar o mouse */
+  background-color: #c82333; /* Tom mais escuro do vermelho ao passar o mouse */
 }

@@ -8,6 +8,7 @@ include '../gerenciamento/crud.php';
 
 // Verificar se o usuário está logado
 if (!isset($_SESSION['nome'])) {
+    // Usuário não está logado, redireciona para a página de login
     header("Location: ../index.html");
     exit();
 }
@@ -17,6 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['acao'])) {
     $acao = $_POST['acao'];
 
     if ($acao == 'cadastrar') {
+        // Obtém os dados do formulário
         $nome = $_POST['nome'];
         $email = $_POST['email'];
         $data_nascimento = $_POST['data_nascimento'];
@@ -24,6 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['acao'])) {
         $estado = $_POST['estado'];
         $pais = $_POST['pais'];
 
+        // Chama a função para cadastrar o fã
         if (cadastrarFan($pdo, $nome, $email, $data_nascimento, $cidade, $estado, $pais)) {
             $mensagem = "Fã cadastrado com sucesso!";
         } else {
@@ -94,10 +97,12 @@ $fas = getFans($pdo);
                         <td><?php echo $fas[$i]['estado']; ?></td>
                         <td><?php echo $fas[$i]['pais']; ?></td>
                         <td>
+                            <!-- Formulário para editar o fã -->
                             <form action="./editar_tabelas.php" method="post">
                                 <input type="hidden" name="id" value="<?php echo $fas[$i]['id']; ?>">
                                 <button type="submit" class="btn-editar">Editar</button>
                             </form>
+                            <!-- Formulário para excluir o fã -->
                             <form action="./excluir_tabelas.php" method="post">
                                 <input type="hidden" name="id" value="<?php echo $fas[$i]['id']; ?>">
                                 <button type="submit" class="btn-excluir">Excluir</button>
