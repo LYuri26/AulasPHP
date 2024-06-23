@@ -1,0 +1,61 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 30px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+h2 {
+  color: #007bff; /* Cor azul do botão */
+}
+
+p {
+  margin-bottom: 20px;
+}
+
+a {
+  color: #007bff; /* Cor azul do botão */
+  text-decoration: none;
+  transition: color 0.3s ease-in-out;
+}
+
+a:hover {
+  color: #0056b3; /* Tom mais escuro do azul */
+}
+
+.btn {
+    display: inline-block;
+    background-color: #007bff; /* Cor azul */
+    color: #fff; /* Cor do texto branco */
+    border: none;
+    padding: 12px 24px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+    margin-right: 10px; /* Espaçamento entre os botões */
+}
+
+.btn:hover {
+    background-color: #0056b3; /* Tom mais escuro do azul ao passar o mouse */
+}
+
+.btn-logout {
+    background-color: #dc3545; /* Vermelho */
+}
+
+.btn-logout:hover {
+    background-color: #c82333; /* Tom mais escuro do vermelho ao passar o mouse */
+}

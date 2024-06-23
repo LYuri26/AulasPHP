@@ -1,0 +1,71 @@
+/* Estilos para a página de excluir fã */
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  text-align: center;
+}
+
+.dados-fa {
+  margin-bottom: 20px;
+}
+
+.dados-fa p {
+  margin: 5px 0;
+}
+
+form {
+  text-align: center;
+}
+
+.btn-excluir,
+.btn-cancelar,
+.btn-voltar {
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-right: 10px;
+  text-decoration: none;
+}
+
+.btn-excluir {
+  background-color: #dc3545;
+}
+
+.btn-excluir:hover {
+    background-color: #aa1818;
+  }
+  
+
+.btn-voltar {
+  background-color: #6c757d;
+}
+
+.btn-voltar:hover {
+  background-color: #5a6268;
+}
+
+.btn-cancelar {
+  background-color: #007bff;
+}
+
+.btn-cancelar:hover {
+  background-color: #0056b3;
+}

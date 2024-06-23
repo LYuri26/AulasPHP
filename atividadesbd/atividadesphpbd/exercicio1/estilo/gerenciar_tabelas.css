@@ -1,0 +1,121 @@
+/* Estilos para a página de gerenciar tabelas */
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2,
+h3 {
+  text-align: center;
+}
+
+.form-cadastro label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-cadastro input[type="text"],
+.form-cadastro input[type="email"],
+.form-cadastro input[type="date"] {
+  width: calc(100% - 20px);
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.form-cadastro button,
+.btn-editar,
+.btn-excluir,
+.btn-voltar {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-right: 10px; /* Aumentei a distância entre os botões para 10px */
+  margin-top: 10px; /* Aumentei a distância entre os botões para 10px */
+  text-decoration: none;
+}
+
+.form-cadastro button:hover,
+.btn-editar:hover,
+.btn-excluir:hover,
+.btn-voltar:hover {
+  background-color: #0056b3;
+}
+
+.btn-excluir {
+  background-color: #dc3545;
+}
+
+.btn-excluir:hover {
+  background-color: #c82333;
+}
+
+.mensagem {
+  margin-top: 10px;
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 10px;
+  border: 1px solid #f5c6cb;
+  border-radius: 4px;
+}
+
+.tabela-fas {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.tabela-fas th,
+.tabela-fas td {
+  padding: 8px;
+  text-align: center;
+  border: 1px solid #ddd;
+}
+
+.tabela-fas th {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.tabela-fas td {
+  background-color: #f9f9f9;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 10px;
+  }
+
+  .form-cadastro input[type="text"],
+  .form-cadastro input[type="email"],
+  .form-cadastro input[type="date"] {
+    width: 100%;
+  }
+
+  .form-cadastro button,
+  .btn-editar,
+  .btn-excluir,
+  .btn-voltar {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 10px;
+    margin-top: 10px;
+  }
+}

@@ -1,0 +1,92 @@
+/* Estilos para a página de editar fã */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  h2 {
+    text-align: center;
+  }
+  
+  .form-cadastro label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .form-cadastro input[type="text"],
+  .form-cadastro input[type="email"],
+  .form-cadastro input[type="date"] {
+    width: calc(100% - 20px);
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  .btn-confirmar,
+  .btn-voltar {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 4px;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 10px;
+  }
+  
+  .btn-confirmar:hover,
+  .btn-voltar:hover {
+    background-color: #0056b3;
+  }
+  
+  .btn-voltar {
+    background-color: #6c757d;
+  }
+  
+  .btn-voltar:hover {
+    background-color: #5a6268;
+  }
+  
+  .mensagem {
+    margin-top: 10px;
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 10px;
+    border: 1px solid #f5c6cb;
+    border-radius: 4px;
+  }
+  
+  @media (max-width: 768px) {
+    .container {
+      padding: 10px;
+    }
+  
+    .form-cadastro input[type="text"],
+    .form-cadastro input[type="email"],
+    .form-cadastro input[type="date"] {
+      width: 100%;
+    }
+  
+    .btn-confirmar,
+    .btn-voltar {
+      width: 100%;
+      margin-right: 0;
+      margin-bottom: 10px;
+    }
+  }
+  
