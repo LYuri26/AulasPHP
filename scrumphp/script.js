@@ -8,33 +8,67 @@ import { generalPenalties } from "./gerais.js";
 import { bonuses } from "./bonus.js";
 
 document.addEventListener("DOMContentLoaded", function () {
+  // Elementos do DOM
   const teamForm = document.getElementById("teamForm");
   const teamsList = document.getElementById("teamsList");
   const startButton = document.getElementById("startButton");
+  const resetButton = document.getElementById("resetButton");
   const penaltyDisplay = document.getElementById("penaltyDisplay");
   const penaltyHistory = document.getElementById("penaltyHistory");
-  const loansContainer = document.createElement("div");
+  const addRequestBtn = document.getElementById("addRequestBtn");
+  const urgentRequest = document.getElementById("urgentRequest");
+  const requestTime = document.getElementById("requestTime");
+  const activeRequests = document.getElementById("activeRequests");
 
-  // Configuração do container de empréstimos
-  loansContainer.className = "card mb-4";
-  loansContainer.innerHTML = `
-    <div class="card-body">
-      <h2 class="card-title">Empréstimos</h2>
-      <div id="loansForm"></div>
-      <div id="activeLoans"></div>
-    </div>
-  `;
-  teamForm.parentNode.insertBefore(loansContainer, teamForm.nextSibling);
+  // Toast
+  const toastEl = document.getElementById("liveToast");
+  const toast = new bootstrap.Toast(toastEl);
+  const toastTitle = document.getElementById("toastTitle");
+  const toastMessage = document.getElementById("toastMessage");
 
+  // Estado da aplicação
   let teams = [];
   let recentPenalties = [];
   let activeLoans = [];
+  let urgentRequests = [];
   let penaltyTimer = null;
   let penaltyCycleInterval = null;
+  let isSimulationRunning = false;
+
+  // Função para mostrar notificação
+  function showNotification(title, message, type = "info") {
+    toastTitle.textContent = title;
+    toastMessage.textContent = message;
+
+    // Reset classes
+    toastEl.querySelector(".toast-header").className = "toast-header";
+    toastEl.querySelector(".toast-header").classList.add("text-white");
+
+    // Adicionar classe baseada no tipo
+    if (type === "success") {
+      toastEl.querySelector(".toast-header").classList.add("bg-success");
+    } else if (type === "warning") {
+      toastEl.querySelector(".toast-header").classList.add("bg-warning");
+    } else if (type === "danger") {
+      toastEl.querySelector(".toast-header").classList.add("bg-danger");
+    } else if (type === "info") {
+      toastEl.querySelector(".toast-header").classList.add("bg-info");
+    } else {
+      toastEl.querySelector(".toast-header").classList.add("bg-primary");
+    }
+
+    toast.show();
+  }
 
   // Adicionar equipe
   teamForm.addEventListener("submit", function (e) {
     e.preventDefault();
+
+    if (!teamForm.checkValidity()) {
+      e.stopPropagation();
+      teamForm.classList.add("was-validated");
+      return;
+    }
 
     const team = {
       name: document.getElementById("teamName").value,
@@ -43,107 +77,263 @@ document.addEventListener("DOMContentLoaded", function () {
       frontendDev: document.getElementById("frontendDev").value,
       backendDev: document.getElementById("backendDev").value,
       designer: document.getElementById("designer").value,
-      time: 480 * 60, // Agora em segundos (8 horas = 480 minutos = 28800 segundos)
+      time: 480 * 60, // 8 horas em segundos
       money: 200000,
       penalties: [],
       timerInterval: null,
-      lastUpdate: Date.now(), // Adicionado para controle preciso do tempo
+      lastUpdate: Date.now(),
+      activeRequests: [],
     };
 
     teams.push(team);
     updateTeamsList();
     teamForm.reset();
-    updateLoansForm();
+    teamForm.classList.remove("was-validated");
+
+    showNotification(
+      "Equipe Adicionada",
+      `A equipe "${team.name}" foi criada com sucesso!`,
+      "success"
+    );
   });
 
-  // Função para atualizar o formulário de empréstimos
-  function updateLoansForm() {
-    const loansForm = document.getElementById("loansForm");
-    loansForm.innerHTML = "";
+  // Adicione esta função para verificar e remover demandas expiradas
+  function checkAndRemoveExpiredRequests() {
+    const now = new Date();
 
-    for (let i = 1; i <= 6; i++) {
-      loansForm.innerHTML += `
-        <div class="loan-form mb-3">
-          <h5>Empréstimo ${i}</h5>
-          <input type="text" id="loanName${i}" class="form-control mb-2" placeholder="Nome do recurso">
-          <input type="number" id="loanTime${i}" class="form-control mb-2" placeholder="Tempo (minutos)">
-          <button class="btn btn-primary mb-3" onclick="startLoan(${i})">Iniciar Empréstimo</button>
-        </div>
-      `;
+    // Verifica demandas globais
+    urgentRequests = urgentRequests.filter((request) => {
+      const requestEndTime = new Date(request.addedAt);
+      requestEndTime.setMinutes(requestEndTime.getMinutes() + request.time);
+      return now < requestEndTime;
+    });
+
+    // Verifica demandas em cada equipe
+    teams.forEach((team) => {
+      if (team.activeRequests && team.activeRequests.length > 0) {
+        team.activeRequests = team.activeRequests.filter((request) => {
+          const requestEndTime = new Date(request.addedAt);
+          requestEndTime.setMinutes(requestEndTime.getMinutes() + request.time);
+          return now < requestEndTime;
+        });
+      }
+    });
+
+    updateActiveRequests();
+    updateTeamsList();
+  }
+
+  // Adicionar demanda repentina
+  addRequestBtn.addEventListener("click", function (e) {
+    e.preventDefault(); // Isso evita o recarregamento da página
+
+    const description = urgentRequest.value.trim();
+    const time = parseInt(requestTime.value);
+
+    if (!description || isNaN(time)) {
+      showNotification(
+        "Erro",
+        "Por favor, preencha todos os campos corretamente.",
+        "danger"
+      );
+      return;
+    }
+
+    const requestId = Date.now();
+    const request = {
+      id: requestId,
+      description,
+      time,
+      addedAt: new Date(),
+    };
+
+    urgentRequests.push(request);
+    updateActiveRequests(); // Atualiza apenas a lista de demandas ativas
+
+    // Aplicar a todas as equipes
+    teams.forEach((team) => {
+      team.activeRequests.push({ ...request });
+      updateTeamCard(team.name); // Atualiza apenas o card da equipe específica
+    });
+
+    urgentRequest.value = "";
+    requestTime.value = "";
+
+    showNotification(
+      "Demanda Adicionada",
+      `Nova demanda do cliente adicionada para todas as equipes: "${description}"`,
+      "warning"
+    );
+
+    // Configurar timer para remover a demanda quando expirar
+    setTimeout(() => {
+      // Remove a demanda global
+      urgentRequests = urgentRequests.filter((req) => req.id !== requestId);
+
+      // Remove das equipes
+      teams.forEach((team) => {
+        team.activeRequests = team.activeRequests.filter(
+          (req) => req.id !== requestId
+        );
+        updateTeamCard(team.name); // Atualiza apenas o card da equipe específica
+      });
+
+      updateActiveRequests();
+    }, time * 60 * 1000); // Converter minutos para milissegundos
+  });
+
+  // Nova função para atualizar apenas o card de uma equipe específica
+  function updateTeamCard(teamName) {
+    const team = teams.find((t) => t.name === teamName);
+    if (!team) return;
+
+    const requestsContainer = document.getElementById(`requests-${teamName}`);
+    if (requestsContainer) {
+      requestsContainer.innerHTML =
+        team.activeRequests.length > 0
+          ? team.activeRequests
+              .map(
+                (req) => `
+          <div class="alert alert-warning py-2 px-3 mb-2">
+              <div class="d-flex justify-content-between">
+                  <span>${req.description}</span>
+                  <strong>${req.time} min</strong>
+              </div>
+          </div>
+        `
+              )
+              .join("")
+          : '<p class="text-muted small">Nenhuma demanda ativa</p>';
     }
   }
 
-  // Função para iniciar um empréstimo
-  window.startLoan = function (loanNumber) {
-    const name = document.getElementById(`loanName${loanNumber}`).value;
-    const time = parseInt(
-      document.getElementById(`loanTime${loanNumber}`).value
-    );
+  // Atualizar demandas ativas
+  function updateActiveRequests() {
+    if (urgentRequests.length === 0) {
+      activeRequests.innerHTML =
+        '<p class="text-muted">Nenhuma demanda ativa no momento.</p>';
+      return;
+    }
 
-    if (!name || isNaN(time)) return;
+    // Cria um fragmento de documento para melhor performance
+    const fragment = document.createDocumentFragment();
 
-    const endTime = new Date();
-    endTime.setMinutes(endTime.getMinutes() + time);
-
-    const loan = {
-      id: Date.now(),
-      name,
-      endTime,
-      timer: setInterval(() => {
-        updateLoanTimer(loan.id);
-      }, 1000),
-    };
-
-    activeLoans.push(loan);
-    updateActiveLoans();
-  };
-
-  // Função para atualizar os empréstimos ativos
-  function updateActiveLoans() {
-    const activeLoansDiv = document.getElementById("activeLoans");
-    activeLoansDiv.innerHTML = "<h4>Empréstimos Ativos</h4>";
-
-    activeLoans.forEach((loan) => {
-      const remaining = Math.max(
-        0,
-        Math.round((loan.endTime - new Date()) / 1000)
-      );
-      if (remaining <= 0) {
-        clearInterval(loan.timer);
-        activeLoans = activeLoans.filter((l) => l.id !== loan.id);
-        updateActiveLoans();
-        return;
-      }
-
-      const loanDiv = document.createElement("div");
-      loanDiv.className = "loan-item mb-2";
-      loanDiv.innerHTML = `
-        <p><strong>${loan.name}</strong> - Tempo restante: ${formatTime(
-        remaining
-      )}</p>
-      `;
-      activeLoansDiv.appendChild(loanDiv);
+    urgentRequests.forEach((request) => {
+      const requestElement = document.createElement("div");
+      requestElement.className = "request-item fade-in";
+      requestElement.innerHTML = `
+      <div class="request-info">
+          <strong>${request.description}</strong>
+          <small class="text-muted d-block">Adicionado em ${request.addedAt.toLocaleTimeString()}</small>
+      </div>
+      <div class="request-time">${request.time} min</div>
+    `;
+      fragment.appendChild(requestElement);
     });
+
+    // Limpa o container e adiciona todos os itens de uma vez
+    activeRequests.innerHTML = "";
+    activeRequests.appendChild(fragment);
   }
-
-  // Função para atualizar o timer de um empréstimo
-  function updateLoanTimer(loanId) {
-    const loan = activeLoans.find((l) => l.id === loanId);
-    if (!loan) return;
-
-    updateActiveLoans();
-  }
-
   // Iniciar o gerenciamento de equipes
   startButton.addEventListener("click", function () {
-    if (!startButton.classList.contains("started")) {
-      startButton.classList.add("started");
+    if (teams.length === 0) {
+      showNotification(
+        "Atenção",
+        "Adicione pelo menos uma equipe antes de iniciar.",
+        "warning"
+      );
+      return;
+    }
+
+    if (!isSimulationRunning) {
+      isSimulationRunning = true;
+      startButton.innerHTML =
+        '<i class="fas fa-pause me-2"></i>Pausar Simulação';
+      startButton.classList.remove("btn-primary");
+      startButton.classList.add("btn-warning");
+
       teams.forEach((team) => {
         if (!team.timerInterval) {
           startTimer(team);
         }
       });
+
       startPenaltyCycle();
+      showNotification(
+        "Simulação Iniciada",
+        "O gerenciamento das equipes foi iniciado.",
+        "success"
+      );
+    } else {
+      isSimulationRunning = false;
+      startButton.innerHTML =
+        '<i class="fas fa-play me-2"></i>Continuar Simulação';
+      startButton.classList.remove("btn-warning");
+      startButton.classList.add("btn-primary");
+
+      teams.forEach((team) => {
+        if (team.timerInterval) {
+          clearInterval(team.timerInterval);
+          team.timerInterval = null;
+        }
+      });
+
+      if (penaltyCycleInterval) {
+        clearInterval(penaltyCycleInterval);
+        penaltyCycleInterval = null;
+      }
+
+      showNotification(
+        "Simulação Pausada",
+        "O gerenciamento das equipes foi pausado.",
+        "info"
+      );
+    }
+  });
+
+  // Reiniciar simulação
+  resetButton.addEventListener("click", function () {
+    if (
+      confirm(
+        "Tem certeza que deseja reiniciar a simulação? Todos os dados serão perdidos."
+      )
+    ) {
+      teams.forEach((team) => {
+        if (team.timerInterval) {
+          clearInterval(team.timerInterval);
+        }
+      });
+
+      if (penaltyCycleInterval) {
+        clearInterval(penaltyCycleInterval);
+      }
+
+      if (penaltyTimer) {
+        clearTimeout(penaltyTimer);
+      }
+
+      teams = [];
+      recentPenalties = [];
+      activeLoans = [];
+      urgentRequests = [];
+      isSimulationRunning = false;
+
+      updateTeamsList();
+      updatePenaltyHistory();
+      updateActiveRequests();
+      clearPenalty();
+
+      startButton.innerHTML =
+        '<i class="fas fa-play me-2"></i>Iniciar Simulação';
+      startButton.classList.remove("btn-warning");
+      startButton.classList.add("btn-primary");
+
+      showNotification(
+        "Simulação Reiniciada",
+        "Todas as equipes e dados foram resetados.",
+        "info"
+      );
     }
   });
 
@@ -162,13 +352,23 @@ document.addEventListener("DOMContentLoaded", function () {
       const penalty = generalPenalties[randomPenaltyIndex];
       addToPenaltyHistory(team.name, "Equipe", "Todos", penalty);
       showPenalty(team.name, "Equipe", "Todos", penalty);
+      showNotification(
+        "Penalidade Geral",
+        `A equipe ${team.name} recebeu uma penalidade geral!`,
+        "danger"
+      );
     }
     // 10% de chance de bônus
     else if (Math.random() < 0.1) {
       const randomBonusIndex = Math.floor(Math.random() * bonuses.length);
       const bonus = bonuses[randomBonusIndex];
       addToPenaltyHistory(team.name, "Equipe", "Todos", "BÔNUS: " + bonus);
-      showPenalty(team.name, "Equipe", "Todos", "BÔNUS: " + bonus);
+      showBonus(team.name, "Equipe", "Todos", bonus);
+      showNotification(
+        "Bônus!",
+        `A equipe ${team.name} recebeu um bônus!`,
+        "success"
+      );
     }
     // 70% de chance de penalidade específica
     else {
@@ -214,6 +414,12 @@ document.addEventListener("DOMContentLoaded", function () {
         penalty
       );
       showPenalty(team.name, selectedRole.role, selectedRole.name, penalty);
+
+      showNotification(
+        "Penalidade Aplicada",
+        `${selectedRole.name} (${selectedRole.role}) da equipe ${team.name} recebeu uma penalidade!`,
+        "danger"
+      );
     }
 
     // Timer para limpar a penalidade após 10 minutos
@@ -248,6 +454,7 @@ document.addEventListener("DOMContentLoaded", function () {
       memberRole,
       memberName,
       penalty,
+      timestamp: new Date(),
     });
 
     if (recentPenalties.length > 5) {
@@ -260,69 +467,195 @@ document.addEventListener("DOMContentLoaded", function () {
   // Função para atualizar o histórico de penalidades
   function updatePenaltyHistory() {
     penaltyHistory.innerHTML = `
-      <h3>Histórico de Penalidades</h3>
-      <ul>
-        ${recentPenalties
-          .map(
-            (penalty) => `
-          <li>
-            <strong>Equipe:</strong> ${penalty.teamName} |
-            <strong>Membro:</strong> ${penalty.memberName} (${penalty.memberRole}) |
-            <strong>Penalidade:</strong> ${penalty.penalty}
-          </li>
-        `
-          )
-          .join("")}
-      </ul>
-    `;
+            <h3><i class="fas fa-history me-2"></i>Histórico de Eventos</h3>
+            <ul class="mt-3">
+                ${recentPenalties
+                  .map(
+                    (penalty) => `
+                    <li class="fade-in">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <strong class="text-primary">${
+                                  penalty.teamName
+                                }</strong> |
+                                <span class="text-muted">${
+                                  penalty.memberName
+                                } (${penalty.memberRole})</span>
+                            </div>
+                            <small class="text-muted">${penalty.timestamp.toLocaleTimeString()}</small>
+                        </div>
+                        <div class="mt-1">${penalty.penalty}</div>
+                    </li>
+                `
+                  )
+                  .join("")}
+            </ul>
+        `;
   }
 
   // Função para exibir a penalidade
   function showPenalty(teamName, memberRole, memberName, penalty) {
     penaltyDisplay.innerHTML = `
-      <div class="penalty-card">
-        <h3>Penalidade Aplicada</h3>
-        <p><strong>Equipe:</strong> ${teamName}</p>
-        <p><strong>Membro:</strong> ${memberName} (${memberRole})</p>
-        <p><strong>Penalidade:</strong> ${penalty}</p>
-      </div>
-    `;
+            <div class="penalty-card fade-in">
+                <h3><i class="fas fa-exclamation-triangle me-2"></i>Penalidade Aplicada</h3>
+                <div class="mt-3">
+                    <p><strong><i class="fas fa-users me-2"></i>Equipe:</strong> ${teamName}</p>
+                    <p><strong><i class="fas fa-user me-2"></i>Membro:</strong> ${memberName} (${memberRole})</p>
+                    <p class="mt-3 alert alert-danger"><strong><i class="fas fa-bolt me-2"></i>Penalidade:</strong> ${penalty}</p>
+                </div>
+            </div>
+        `;
+
+    // Efeito visual
+    penaltyDisplay.classList.add("pulse");
+    setTimeout(() => {
+      penaltyDisplay.classList.remove("pulse");
+    }, 500);
+  }
+
+  // Função para exibir bônus
+  function showBonus(teamName, memberRole, memberName, bonus) {
+    penaltyDisplay.innerHTML = `
+            <div class="bonus-card fade-in">
+                <h3><i class="fas fa-gift me-2"></i>Bônus Concedido!</h3>
+                <div class="mt-3">
+                    <p><strong><i class="fas fa-users me-2"></i>Equipe:</strong> ${teamName}</p>
+                    <p><strong><i class="fas fa-user me-2"></i>Membro:</strong> ${memberName} (${memberRole})</p>
+                    <p class="mt-3 alert alert-success"><strong><i class="fas fa-star me-2"></i>Bônus:</strong> ${bonus}</p>
+                </div>
+            </div>
+        `;
+
+    // Efeito visual
+    penaltyDisplay.classList.add("pulse");
+    setTimeout(() => {
+      penaltyDisplay.classList.remove("pulse");
+    }, 500);
   }
 
   // Função para remover a penalidade
   function clearPenalty() {
-    penaltyDisplay.innerHTML = "";
+    penaltyDisplay.innerHTML = `
+            <div class="text-center py-4 text-muted">
+                <i class="fas fa-check-circle fa-3x mb-3"></i>
+                <h4>Nenhuma penalidade ativa no momento</h4>
+                <p>A próxima penalidade será aplicada automaticamente</p>
+            </div>
+        `;
   }
 
   // Função para atualizar a lista de equipes
   function updateTeamsList() {
     teamsList.innerHTML = "";
+
+    if (teams.length === 0) {
+      teamsList.innerHTML = `
+                <div class="col-12 text-center py-5 text-muted">
+                    <i class="fas fa-users fa-4x mb-4"></i>
+                    <h4>Nenhuma equipe cadastrada</h4>
+                    <p>Adicione sua primeira equipe usando o formulário acima</p>
+                </div>
+            `;
+      return;
+    }
+
     teams.forEach((team) => {
       const teamCard = document.createElement("div");
-      teamCard.className = "team-card";
+      teamCard.className = "col-md-6";
       teamCard.innerHTML = `
-        <h3>${team.name}</h3>
-        <p><strong>Scrum Master:</strong> ${team.scrumMaster}</p>
-        <p><strong>Product Owner:</strong> ${team.productOwner}</p>
-        <p><strong>Desenvolvedor Frontend:</strong> ${team.frontendDev}</p>
-        <p><strong>Desenvolvedor Backend:</strong> ${team.backendDev}</p>
-        <p><strong>Designer UX/UI:</strong> ${team.designer}</p>
-        <h4>Timer: <span id="timer-${team.name}">${formatTime(
-        team.time
-      )}</span></h4>
-        <h4>Dinheiro: <span id="money-${team.name}">${team.money}</span></h4>
-        <input type="number" id="timeIncrement-${
-          team.name
-        }" placeholder="Ajustar tempo (min)" />
-        <input type="number" id="moneyIncrement-${
-          team.name
-        }" placeholder="Ajustar dinheiro" />
-        <button onclick="changeTime('${team.name}')">Alterar Tempo</button>
-        <button onclick="changeMoney('${team.name}')">Alterar Dinheiro</button>
-        <ul id="penalties-${team.name}">
-          ${team.penalties.map((penalty) => `<li>${penalty}</li>`).join("")}
-        </ul>
-      `;
+                <div class="team-card">
+                    <div class="d-flex justify-content-between align-items-start">
+                        <h3>${team.name}</h3>
+                        <span class="badge bg-${
+                          isSimulationRunning ? "success" : "secondary"
+                        }">
+                            ${isSimulationRunning ? "Ativa" : "Inativa"}
+                        </span>
+                    </div>
+                    
+                    <p><i class="fas fa-user-tie me-2 text-primary"></i><strong>Scrum Master:</strong> ${
+                      team.scrumMaster
+                    }</p>
+                    <p><i class="fas fa-user-check me-2 text-primary"></i><strong>Product Owner:</strong> ${
+                      team.productOwner
+                    }</p>
+                    <p><i class="fas fa-laptop-code me-2 text-primary"></i><strong>Frontend:</strong> ${
+                      team.frontendDev
+                    }</p>
+                    <p><i class="fas fa-server me-2 text-primary"></i><strong>Backend:</strong> ${
+                      team.backendDev
+                    }</p>
+                    <p><i class="fas fa-paint-brush me-2 text-primary"></i><strong>Designer:</strong> ${
+                      team.designer
+                    }</p>
+                    
+                    <div class="team-meta mt-3">
+                        <div>
+                            <span id="timer-${
+                              team.name
+                            }" class="display-6">${formatTime(team.time)}</span>
+                            <small>Tempo Restante</small>
+                        </div>
+                        <div>
+                            <span id="money-${
+                              team.name
+                            }" class="display-6">R$ ${team.money.toLocaleString(
+        "pt-BR"
+      )}</span>
+                            <small>Orçamento</small>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-3">
+                        <h5><i class="fas fa-tasks me-2"></i>Demandas Ativas</h5>
+                        <div id="requests-${team.name}" class="mt-2">
+                            ${
+                              team.activeRequests.length > 0
+                                ? team.activeRequests
+                                    .map(
+                                      (req) => `
+                                    <div class="alert alert-warning py-2 px-3 mb-2">
+                                        <div class="d-flex justify-content-between">
+                                            <span>${req.description}</span>
+                                            <strong>${req.time} min</strong>
+                                        </div>
+                                    </div>
+                                `
+                                    )
+                                    .join("")
+                                : '<p class="text-muted small">Nenhuma demanda ativa</p>'
+                            }
+                        </div>
+                    </div>
+                    
+                    <div class="mt-3 row g-2">
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                <input type="number" id="timeIncrement-${
+                                  team.name
+                                }" class="form-control form-control-sm" placeholder="Minutos">
+                                <button class="btn btn-sm btn-outline-primary" onclick="changeTime('${
+                                  team.name
+                                }')">
+                                    <i class="fas fa-clock"></i> Ajustar
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                <input type="number" id="moneyIncrement-${
+                                  team.name
+                                }" class="form-control form-control-sm" placeholder="Valor">
+                                <button class="btn btn-sm btn-outline-primary" onclick="changeMoney('${
+                                  team.name
+                                }')">
+                                    <i class="fas fa-money-bill-wave"></i> Ajustar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
       teamsList.appendChild(teamCard);
     });
   }
@@ -334,30 +667,100 @@ document.addEventListener("DOMContentLoaded", function () {
     const minutes = Math.floor((totalSeconds % 3600) / 60);
     const seconds = totalSeconds % 60;
 
-    // Formatar para sempre mostrar 2 dígitos nos segundos
+    // Formatar para sempre mostrar 2 dígitos
+    const formattedHours = hours.toString().padStart(2, "0");
+    const formattedMinutes = minutes.toString().padStart(2, "0");
     const formattedSeconds = seconds.toString().padStart(2, "0");
-    return `${hours}h ${minutes}m ${formattedSeconds}s`;
+
+    return `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
   }
 
-  // Função para iniciar o timer da equipe (agora em segundos)
+  // Modifique a função startTimer para atualização assíncrona
   function startTimer(team) {
     if (!team.timerInterval) {
-      team.lastUpdate = Date.now(); // Registrar o momento de início
+      team.lastUpdate = Date.now();
 
       team.timerInterval = setInterval(() => {
-        const now = Date.now();
-        const elapsedSeconds = (now - team.lastUpdate) / 1000;
-        team.lastUpdate = now;
+        // Usa requestAnimationFrame para atualizações suaves
+        requestAnimationFrame(() => {
+          const now = Date.now();
+          const elapsedSeconds = (now - team.lastUpdate) / 1000;
+          team.lastUpdate = now;
 
-        if (team.time > 0) {
-          team.time -= elapsedSeconds; // Diminuir o tempo decorrido
-          if (team.time < 0) team.time = 0; // Garantir que não fique negativo
-          updateTimer(team);
-        } else {
-          clearInterval(team.timerInterval);
-          team.timerInterval = null;
+          if (team.time > 0) {
+            team.time -= elapsedSeconds;
+
+            // Atualiza apenas se o tempo mudou visualmente
+            const currentDisplay = formatTime(team.time);
+            const timerElement = document.getElementById(`timer-${team.name}`);
+
+            if (timerElement && timerElement.textContent !== currentDisplay) {
+              // Atualiza o timer de forma otimizada
+              timerElement.textContent = currentDisplay;
+
+              // Atualiza a cor se necessário
+              const isCritical = team.time < 3600;
+              if (isCritical) {
+                timerElement.classList.remove("text-dark");
+                timerElement.classList.add("text-danger");
+              } else {
+                timerElement.classList.remove("text-danger");
+                timerElement.classList.add("text-dark");
+              }
+            }
+          } else {
+            clearInterval(team.timerInterval);
+            team.timerInterval = null;
+            showNotification(
+              "Tempo Esgotado",
+              `O tempo da equipe ${team.name} acabou!`,
+              "danger"
+            );
+          }
+        });
+      }, 1000);
+    }
+  }
+
+  // Função otimizada para verificar demandas expiradas
+  function checkAndRemoveExpiredRequests() {
+    const now = new Date();
+    let needsUpdate = false;
+
+    // Verifica demandas globais
+    const newUrgentRequests = urgentRequests.filter((request) => {
+      const requestEndTime = new Date(request.addedAt);
+      requestEndTime.setMinutes(requestEndTime.getMinutes() + request.time);
+      return now < requestEndTime;
+    });
+
+    if (newUrgentRequests.length !== urgentRequests.length) {
+      urgentRequests = newUrgentRequests;
+      needsUpdate = true;
+    }
+
+    // Verifica demandas em cada equipe
+    teams.forEach((team) => {
+      if (team.activeRequests && team.activeRequests.length > 0) {
+        const newActiveRequests = team.activeRequests.filter((request) => {
+          const requestEndTime = new Date(request.addedAt);
+          requestEndTime.setMinutes(requestEndTime.getMinutes() + request.time);
+          return now < requestEndTime;
+        });
+
+        if (newActiveRequests.length !== team.activeRequests.length) {
+          team.activeRequests = newActiveRequests;
+          needsUpdate = true;
         }
-      }, 1000); // Atualiza a cada segundo
+      }
+    });
+
+    // Atualiza apenas se necessário
+    if (needsUpdate) {
+      requestAnimationFrame(() => {
+        updateActiveRequests();
+        updateTeamsList();
+      });
     }
   }
 
@@ -366,6 +769,16 @@ document.addEventListener("DOMContentLoaded", function () {
     const timerElement = document.getElementById(`timer-${team.name}`);
     if (timerElement) {
       timerElement.textContent = formatTime(team.time);
+
+      // Mudar cor se o tempo estiver acabando
+      if (team.time < 3600) {
+        // Menos de 1 hora
+        timerElement.classList.remove("text-dark");
+        timerElement.classList.add("text-danger");
+      } else {
+        timerElement.classList.remove("text-danger");
+        timerElement.classList.add("text-dark");
+      }
     }
   }
 
@@ -379,6 +792,15 @@ document.addEventListener("DOMContentLoaded", function () {
     if (team && !isNaN(incrementValue)) {
       team.time += incrementValue * 60; // Converter minutos para segundos
       updateTimer(team);
+      document.getElementById(`timeIncrement-${teamName}`).value = "";
+
+      showNotification(
+        "Tempo Ajustado",
+        `O tempo da equipe ${teamName} foi ${
+          incrementValue >= 0 ? "aumentado" : "reduzido"
+        } em ${Math.abs(incrementValue)} minutos.`,
+        "info"
+      );
     }
   };
 
@@ -392,8 +814,72 @@ document.addEventListener("DOMContentLoaded", function () {
       team.money += incrementValue;
       const moneyElement = document.getElementById(`money-${teamName}`);
       if (moneyElement) {
-        moneyElement.textContent = team.money;
+        moneyElement.textContent = `R$ ${team.money.toLocaleString("pt-BR")}`;
       }
+      document.getElementById(`moneyIncrement-${teamName}`).value = "";
+
+      showNotification(
+        "Orçamento Ajustado",
+        `O orçamento da equipe ${teamName} foi ${
+          incrementValue >= 0 ? "aumentado" : "reduzido"
+        } em R$ ${Math.abs(incrementValue).toLocaleString("pt-BR")}.`,
+        "info"
+      );
     }
   };
+
+  // Função para salvar o estado no localStorage
+  function saveStateToLocalStorage() {
+    const appState = {
+      teams,
+      recentPenalties,
+      urgentRequests,
+      activePenalty: recentPenalties[0] || null,
+      isSimulationRunning,
+      lastUpdate: new Date().toISOString(),
+    };
+
+    localStorage.setItem("scrumSimulatorData", JSON.stringify(appState));
+  }
+
+  // Salvar o estado sempre que houver mudanças
+  teamForm.addEventListener("submit", function () {
+    setTimeout(saveStateToLocalStorage, 100);
+  });
+
+  addRequestBtn.addEventListener("click", function () {
+    setTimeout(saveStateToLocalStorage, 100);
+  });
+
+  startButton.addEventListener("click", saveStateToLocalStorage);
+  resetButton.addEventListener("click", saveStateToLocalStorage);
+
+  // Salvar periodicamente (a cada 5 segundos) para garantir sincronização
+  setInterval(saveStateToLocalStorage, 60000);
+
+  let lastSavedState = null;
+
+  function saveStateToLocalStorage() {
+    const currentState = {
+      teams,
+      recentPenalties,
+      urgentRequests,
+      activePenalty: recentPenalties[0] || null,
+      isSimulationRunning,
+      lastUpdate: new Date().toISOString(),
+    };
+
+    // Só salva se o estado tiver mudado
+    if (JSON.stringify(currentState) !== JSON.stringify(lastSavedState)) {
+      localStorage.setItem("scrumSimulatorData", JSON.stringify(currentState));
+      lastSavedState = currentState;
+    }
+  }
+
+  // Salvar estado inicial
+  saveStateToLocalStorage();
+  // Inicializar a exibição de penalidades
+  clearPenalty();
+  updatePenaltyHistory();
+  updateActiveRequests();
 });
