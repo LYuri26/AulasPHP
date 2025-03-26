@@ -88,6 +88,53 @@
             </div>
         </div>
 
+        <!-- Seção de Empréstimo de Funcionários -->
+        <div class="card mb-4 shadow-sm">
+            <div class="card-header bg-secondary text-white">
+                <h2 class="h5 mb-0"><i class="fas fa-exchange-alt me-2"></i>Empréstimo de Funcionários</h2>
+            </div>
+            <div class="card-body">
+                <form id="loanForm" class="needs-validation" novalidate>
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <label for="employeeName" class="form-label">Nome do Funcionário:</label>
+                            <input type="text" id="employeeName" class="form-control" required>
+                            <div class="invalid-feedback">Por favor, insira o nome do funcionário.</div>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="requestingCompany" class="form-label">Empresa Solicitante:</label>
+                            <input type="text" id="requestingCompany" class="form-control" required>
+                            <div class="invalid-feedback">Por favor, insira a empresa solicitante.</div>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="originCompany" class="form-label">Empresa de Origem:</label>
+                            <input type="text" id="originCompany" class="form-control" required>
+                            <div class="invalid-feedback">Por favor, insira a empresa de origem.</div>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="employeePosition" class="form-label">Cargo:</label>
+                            <input type="text" id="employeePosition" class="form-control" required>
+                            <div class="invalid-feedback">Por favor, insira o cargo do funcionário.</div>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="loanTime" class="form-label">Tempo de Contrato (minutos):</label>
+                            <input type="number" id="loanTime" class="form-control" required>
+                            <div class="invalid-feedback">Por favor, insira o tempo de contrato.</div>
+                        </div>
+                        <div class="col-md-4 d-flex align-items-end">
+                            <button type="submit" class="btn btn-primary w-100">
+                                <i class="fas fa-plus me-2"></i>Adicionar Empréstimo
+                            </button>
+                        </div>
+                    </div>
+                </form>
+                <div id="activeLoans" class="mt-4">
+                    <h5 class="mb-3"><i class="fas fa-clock me-2"></i>Empréstimos Ativos</h5>
+                    <div id="loansList" class="row g-3"></div>
+                </div>
+            </div>
+        </div>
+
         <!-- Seção de Demandas Repentinas -->
         <div class="card mb-4 shadow-sm">
             <div class="card-header bg-warning text-dark">

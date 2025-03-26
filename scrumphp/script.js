@@ -35,6 +35,166 @@ document.addEventListener("DOMContentLoaded", function () {
   let penaltyCycleInterval = null;
   let isSimulationRunning = false;
 
+  // Elementos do formulário de empréstimo
+  const loanForm = document.getElementById("loanForm");
+  const loansList = document.getElementById("loansList");
+
+  // Adicionar empréstimo
+  loanForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    if (!loanForm.checkValidity()) {
+      e.stopPropagation();
+      loanForm.classList.add("was-validated");
+      return;
+    }
+
+    const loan = {
+      id: Date.now(),
+      employeeName: document.getElementById("employeeName").value,
+      requestingCompany: document.getElementById("requestingCompany").value,
+      originCompany: document.getElementById("originCompany").value,
+      position: document.getElementById("employeePosition").value,
+      time: parseInt(document.getElementById("loanTime").value),
+      remainingTime: parseInt(document.getElementById("loanTime").value) * 60, // Converter para segundos
+      addedAt: new Date(),
+      timerInterval: null,
+    };
+
+    activeLoans.push(loan);
+    updateLoansList();
+    loanForm.reset();
+    loanForm.classList.remove("was-validated");
+
+    // Iniciar timer para este empréstimo
+    startLoanTimer(loan);
+
+    showNotification(
+      "Empréstimo Adicionado",
+      `Empréstimo de ${loan.employeeName} registrado por ${loan.time} minutos.`,
+      "success"
+    );
+  });
+
+  // Função para iniciar o timer de um empréstimo
+  function startLoanTimer(loan) {
+    if (loan.timerInterval) {
+      clearInterval(loan.timerInterval);
+    }
+
+    loan.timerInterval = setInterval(() => {
+      loan.remainingTime--;
+
+      // Salva o estado atualizado a cada segundo
+      saveLoansToLocalStorage();
+
+      if (loan.remainingTime <= 0) {
+        clearInterval(loan.timerInterval);
+        loan.timerInterval = null;
+        removeLoan(loan.id);
+        showNotification(
+          "Empréstimo Finalizado",
+          `O tempo de empréstimo de ${loan.employeeName} expirou.`,
+          "info"
+        );
+      } else {
+        updateLoanDisplay(loan);
+      }
+    }, 1000);
+  }
+
+  // Função para remover um empréstimo
+  function removeLoan(loanId) {
+    const loanIndex = activeLoans.findIndex((loan) => loan.id === loanId);
+    if (loanIndex !== -1) {
+      const loan = activeLoans[loanIndex];
+      if (loan.timerInterval) {
+        clearInterval(loan.timerInterval);
+      }
+      activeLoans.splice(loanIndex, 1);
+      updateLoansList();
+    }
+  }
+
+  // Função para atualizar a exibição de um empréstimo
+  function updateLoanDisplay(loan) {
+    const loanElement = document.getElementById(`loan-${loan.id}`);
+    if (loanElement) {
+      const timeElement = loanElement.querySelector(".loan-time");
+      if (timeElement) {
+        timeElement.textContent = formatLoanTime(loan.remainingTime);
+
+        // Mudar cor se o tempo estiver acabando (menos de 5 minutos)
+        if (loan.remainingTime < 300) {
+          timeElement.classList.remove("text-success");
+          timeElement.classList.add("text-danger");
+        } else {
+          timeElement.classList.remove("text-danger");
+          timeElement.classList.add("text-success");
+        }
+      }
+    }
+  }
+
+  // Função para formatar o tempo do empréstimo
+  function formatLoanTime(seconds) {
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${mins
+      .toString()
+      .padStart(2, "0")}:${secs.toString().padStart(2, "0")}`;
+  }
+
+  // Função para atualizar a lista de empréstimos
+  function updateLoansList() {
+    loansList.innerHTML = "";
+
+    if (activeLoans.length === 0) {
+      loansList.innerHTML = `
+            <div class="col-12 text-center py-3 text-muted">
+                <i class="fas fa-exchange-alt fa-2x mb-2"></i>
+                <p>Nenhum empréstimo ativo no momento</p>
+            </div>
+        `;
+      return;
+    }
+
+    activeLoans.forEach((loan) => {
+      const loanCard = document.createElement("div");
+      loanCard.className = "col-md-6";
+      loanCard.id = `loan-${loan.id}`;
+      loanCard.innerHTML = `
+            <div class="loan-card">
+                <div class="d-flex justify-content-between align-items-start">
+                    <h5>${loan.employeeName}</h5>
+                    <span class="loan-time text-success">${formatLoanTime(
+                      loan.remainingTime
+                    )}</span>
+                </div>
+                <div class="loan-details">
+                    <p><strong>Cargo:</strong> ${loan.position}</p>
+                    <p><strong>Empresa Solicitante:</strong> ${
+                      loan.requestingCompany
+                    }</p>
+                    <p><strong>Empresa de Origem:</strong> ${
+                      loan.originCompany
+                    }</p>
+                    <p class="small text-muted">Iniciado em: ${loan.addedAt.toLocaleTimeString()}</p>
+                </div>
+                <button class="btn btn-sm btn-outline-danger w-100" onclick="removeLoan(${
+                  loan.id
+                })">
+                    <i class="fas fa-times me-2"></i>Remover
+                </button>
+            </div>
+        `;
+      loansList.appendChild(loanCard);
+    });
+  }
+
+  // Adicione esta função ao objeto window para ser acessível globalmente
+  window.removeLoan = removeLoan;
+
   // Função para mostrar notificação
   function showNotification(title, message, type = "info") {
     toastTitle.textContent = title;
@@ -829,16 +989,17 @@ document.addEventListener("DOMContentLoaded", function () {
   };
 
   // Função para salvar o estado no localStorage
-  function saveStateToLocalStorage() {
-    const appState = {
-      teams,
-      recentPenalties,
-      urgentRequests,
-      activePenalty: recentPenalties[0] || null,
-      isSimulationRunning,
-      lastUpdate: new Date().toISOString(),
-    };
-
+  function saveLoansToLocalStorage() {
+    const appState =
+      JSON.parse(localStorage.getItem("scrumSimulatorData")) || {};
+    appState.activeLoans = activeLoans.map((loan) => {
+      return {
+        ...loan,
+        remainingTime:
+          Math.max(0, loan.time * 60) -
+          Math.floor((Date.now() - new Date(loan.addedAt).getTime()) / 1000),
+      };
+    });
     localStorage.setItem("scrumSimulatorData", JSON.stringify(appState));
   }
 
@@ -867,6 +1028,13 @@ document.addEventListener("DOMContentLoaded", function () {
       activePenalty: recentPenalties[0] || null,
       isSimulationRunning,
       lastUpdate: new Date().toISOString(),
+      activeLoans: activeLoans.map((loan) => ({
+        ...loan,
+        // Calcula o tempo restante baseado no tempo inicial e no tempo decorrido
+        remainingTime:
+          Math.max(0, loan.time * 60) -
+          Math.floor((Date.now() - new Date(loan.addedAt).getTime()) / 1000),
+      })),
     };
 
     // Só salva se o estado tiver mudado

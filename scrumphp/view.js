@@ -3,6 +3,7 @@ const domElements = {
   teamsList: document.getElementById("teamsList"),
   penaltyHistory: document.getElementById("penaltyHistory"),
   activeRequests: document.getElementById("activeRequests"),
+  activeLoans: document.getElementById("activeLoans"),
   penaltyDisplay: document.getElementById("penaltyDisplay"),
   connectionStatus: document.getElementById("connectionStatus"),
   lastUpdate: document.getElementById("lastUpdate"),
@@ -16,7 +17,16 @@ let previousState = {
   activePenalty: null,
   isSimulationRunning: null,
   lastUpdate: null,
+  activeLoans: null,
 };
+
+// Timestamps para controle de atualização
+let lastPenaltyUpdate = 0;
+let lastRequestsUpdate = 0;
+let lastBatchUpdate = 0;
+const PENALTY_UPDATE_INTERVAL = 60000; // 1 minuto em milissegundos
+const REQUESTS_UPDATE_INTERVAL = 60000; // 1 minuto
+const BATCH_UPDATE_INTERVAL = 60000; // 1 minuto
 
 // Formatação de tempo (segundos para HH:MM)
 function formatTime(totalSeconds) {
@@ -24,6 +34,16 @@ function formatTime(totalSeconds) {
   const hours = Math.floor(totalSeconds / 3600);
   const minutes = Math.floor((totalSeconds % 3600) / 60);
   return `${hours.toString().padStart(2, "0")}:${minutes
+    .toString()
+    .padStart(2, "0")}`;
+}
+
+// Formatação de tempo para empréstimos (MM:SS)
+function formatLoanTime(seconds) {
+  seconds = Math.round(seconds);
+  const mins = Math.floor(seconds / 60);
+  const secs = seconds % 60;
+  return `${mins.toString().padStart(2, "0")}:${secs
     .toString()
     .padStart(2, "0")}`;
 }
@@ -134,33 +154,6 @@ function updateTeamsList(teams, isSimulationRunning) {
                         }
                     </div>
                 </div>
-                
-                <div class="mt-3 row g-2">
-                    <div class="col-md-6">
-                        <div class="input-group">
-                            <input type="number" id="timeIncrement-${
-                              team.name
-                            }" class="form-control form-control-sm" placeholder="Minutos">
-                            <button class="btn btn-sm btn-outline-primary" onclick="changeTime('${
-                              team.name
-                            }')">
-                                <i class="fas fa-clock"></i> Ajustar
-                            </button>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="input-group">
-                            <input type="number" id="moneyIncrement-${
-                              team.name
-                            }" class="form-control form-control-sm" placeholder="Valor">
-                            <button class="btn btn-sm btn-outline-primary" onclick="changeMoney('${
-                              team.name
-                            }')">
-                                <i class="fas fa-money-bill-wave"></i> Ajustar
-                            </button>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     `
@@ -174,6 +167,44 @@ function updateTeamsList(teams, isSimulationRunning) {
     if (timeInput) timeInput.value = inputsState[`time-${team.name}`] || "";
     if (moneyInput) moneyInput.value = inputsState[`money-${team.name}`] || "";
   });
+}
+
+// Atualiza a lista de empréstimos ativos
+function updateActiveLoans(activeLoans) {
+  if (!activeLoans || activeLoans.length === 0) {
+    domElements.activeLoans.innerHTML =
+      '<p class="text-muted">Nenhum empréstimo ativo no momento</p>';
+    return;
+  }
+
+  const loansHTML = activeLoans
+    .map(
+      (loan) => `
+      <div class="loan-item mb-3 p-3 border rounded bg-light">
+        <div class="d-flex justify-content-between align-items-center">
+          <div>
+            <h5 class="mb-1"><i class="fas fa-user me-2"></i>${
+              loan.employeeName
+            }</h5>
+            <p class="mb-1"><strong><i class="fas fa-building me-2"></i>Empresa Solicitante:</strong> ${
+              loan.requestingCompany
+            }</p>
+            <p class="small text-muted"><i class="fas fa-clock me-2"></i>Iniciado em: ${new Date(
+              loan.addedAt
+            ).toLocaleTimeString()}</p>
+          </div>
+          <div class="loan-time ${
+            loan.remainingTime < 300 ? "text-danger" : "text-success"
+          }">
+            ${formatLoanTime(loan.remainingTime)}
+          </div>
+        </div>
+      </div>
+    `
+    )
+    .join("");
+
+  domElements.activeLoans.innerHTML = loansHTML;
 }
 
 // Verifica demandas expiradas
@@ -223,16 +254,25 @@ function updatePenaltyHistory(recentPenalties) {
   `;
 }
 
-// Atualiza demandas ativas
-function updateActiveRequests(urgentRequests) {
+// Modificado para usar timestamp de cache
+function updateActiveRequests(urgentRequests, forceUpdate = false) {
   if (!urgentRequests) return;
+
+  const now = Date.now();
+
+  // Só atualiza se passou 1 minuto ou se for forçado
+  if (!forceUpdate && now - lastRequestsUpdate < REQUESTS_UPDATE_INTERVAL) {
+    return;
+  }
+
+  lastRequestsUpdate = now;
 
   domElements.activeRequests.innerHTML =
     urgentRequests.length > 0
       ? urgentRequests
           .map(
             (request) => `
-            <div class="request-item fade-in">
+            <div class="request-item">
                 <div class="request-info">
                     <strong>${request.description}</strong>
                     <small class="text-muted d-block">Adicionado em ${new Date(
@@ -326,7 +366,25 @@ function loadAndUpdateData() {
       activePenalty = null,
       isSimulationRunning = false,
       lastUpdate = new Date().toISOString(),
+      activeLoans = [],
     } = appState;
+
+    const now = Date.now();
+
+    // Atualiza o tempo restante dos empréstimos
+    activeLoans = activeLoans
+      .map((loan) => {
+        const addedAt = new Date(loan.addedAt);
+        const elapsedSeconds = (now - addedAt.getTime()) / 1000;
+        const remainingTime = Math.max(0, loan.time * 60 - elapsedSeconds);
+
+        return {
+          ...loan,
+          remainingTime: remainingTime,
+          addedAt: addedAt,
+        };
+      })
+      .filter((loan) => loan.remainingTime > 0);
 
     // Filtrar demandas expiradas
     urgentRequests = checkExpiredRequests(urgentRequests);
@@ -336,13 +394,19 @@ function loadAndUpdateData() {
       }
     });
 
-    // Atualizações otimizadas
+    // Atualizações que devem ocorrer sempre (frequentes)
     updateTeamsList(teams, isSimulationRunning);
     updateTeamTimers(teams);
-    updatePenaltyHistory(recentPenalties);
-    updateActiveRequests(urgentRequests);
-    showPenalty(activePenalty);
+    updateActiveLoans(activeLoans);
     updateConnectionStatus(lastUpdate);
+
+    // Atualizações em lote (a cada 1 minuto)
+    if (now - lastBatchUpdate > BATCH_UPDATE_INTERVAL) {
+      updatePenaltyHistory(recentPenalties);
+      showPenalty(activePenalty);
+      updateActiveRequests(urgentRequests, true); // Força atualização
+      lastBatchUpdate = now;
+    }
 
     // Atualiza o estado anterior
     previousState = {
@@ -352,6 +416,7 @@ function loadAndUpdateData() {
       activePenalty: activePenalty ? { ...activePenalty } : null,
       isSimulationRunning,
       lastUpdate,
+      activeLoans: [...activeLoans],
     };
   } catch (error) {
     console.error("Erro ao carregar dados:", error);
@@ -374,7 +439,11 @@ const visibilityObserver = new IntersectionObserver(
   { threshold: 0.1 }
 );
 
-visibilityObserver.observe(document);
+// Observa o container principal
+const mainContainer = document.querySelector(".container");
+if (mainContainer) {
+  visibilityObserver.observe(mainContainer);
+}
 
 // Atualiza os dados periodicamente (com otimização quando a janela não está visível)
 function optimizedUpdate() {
@@ -385,53 +454,6 @@ function optimizedUpdate() {
     setTimeout(optimizedUpdate, 5000); // Atualiza a cada 5s quando oculto
   }
 }
-
-// Funções globais para os botões
-window.changeTime = function (teamName) {
-  const team = previousState.teams.find((t) => t.name === teamName);
-  const incrementValue = parseFloat(
-    document.querySelector(`#timeIncrement-${teamName}`).value
-  );
-
-  if (team && !isNaN(incrementValue)) {
-    // Atualiza o estado local
-    team.time += incrementValue * 60;
-
-    // Atualiza o display imediatamente
-    const timerElement = document.querySelector(`#timer-${teamName}`);
-    if (timerElement) {
-      timerElement.textContent = formatTime(team.time);
-    }
-
-    document.querySelector(`#timeIncrement-${teamName}`).value = "";
-
-    // Dispara notificação (você precisará implementar showNotification)
-    // showNotification("Tempo Ajustado", `O tempo da equipe ${teamName} foi ajustado`, "info");
-  }
-};
-
-window.changeMoney = function (teamName) {
-  const team = previousState.teams.find((t) => t.name === teamName);
-  const incrementValue = parseInt(
-    document.querySelector(`#moneyIncrement-${teamName}`).value
-  );
-
-  if (team && !isNaN(incrementValue)) {
-    // Atualiza o estado local
-    team.money += incrementValue;
-
-    // Atualiza o display imediatamente
-    const moneyElement = document.querySelector(`#money-${teamName}`);
-    if (moneyElement) {
-      moneyElement.textContent = `R$ ${team.money.toLocaleString("pt-BR")}`;
-    }
-
-    document.querySelector(`#moneyIncrement-${teamName}`).value = "";
-
-    // Dispara notificação (você precisará implementar showNotification)
-    // showNotification("Orçamento Ajustado", `O orçamento da equipe ${teamName} foi ajustado`, "info");
-  }
-};
 
 // Inicia o ciclo de atualização
 document.addEventListener("DOMContentLoaded", function () {
