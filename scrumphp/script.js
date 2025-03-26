@@ -1,11 +1,11 @@
 // Importando as penalidades específicas
-import { scrumMasterPenalties } from "./scrummaster.js";
-import { productOwnerPenalties } from "./productowner.js";
-import { frontendDevPenalties } from "./desenvolvedorfrontend.js";
-import { backendDevPenalties } from "./desenvolvedorbackend.js";
-import { designerPenalties } from "./designer.js";
-import { generalPenalties } from "./gerais.js";
-import { bonuses } from "./bonus.js";
+import { scrumMasterPenalties } from "./penalidades/scrummaster.js";
+import { productOwnerPenalties } from "./penalidades/productowner.js";
+import { frontendDevPenalties } from "./penalidades/desenvolvedorfrontend.js";
+import { backendDevPenalties } from "./penalidades/desenvolvedorbackend.js";
+import { designerPenalties } from "./penalidades/designer.js";
+import { generalPenalties } from "./penalidades/gerais.js";
+import { bonuses } from "./penalidades/bonus.js";
 
 document.addEventListener("DOMContentLoaded", function () {
   // Elementos do DOM
