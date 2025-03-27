@@ -604,7 +604,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Configurar o intervalo para 20 minutos (1200000 ms)
     penaltyCycleInterval = setInterval(() => {
       applyRandomPenalty();
-    }, 1200000); // Aplicar penalidade a cada 20 minutos
+    }, 300000); // Aplicar penalidade a cada 5 minutos
   }
 
   // Função para adicionar uma penalidade ao histórico
