@@ -191,3 +191,31 @@ h6 {
     transform: scale(1);
   }
 }
+
+/* Estilos para o rodapé */
+.footer {
+  border-top: 1px solid #e3e6f0;
+  background-color: #f8f9fc !important;
+  color: #5a5c69;
+  transition: all 0.3s ease;
+}
+
+.footer a {
+  color: #6e707e;
+  transition: color 0.3s ease;
+}
+
+.footer a:hover {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.footer strong {
+  color: var(--dark-color);
+  font-weight: 600;
+}
+
+/* Ajuste de margem para o conteúdo principal */
+.container {
+  padding-bottom: 80px; /* Para evitar que o conteúdo fique muito próximo do rodapé */
+}
