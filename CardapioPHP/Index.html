@@ -1,409 +1,355 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-    <head>
-        <meta charset="UTF-8"> <!-- Define a codificação de caracteres -->
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!-- Define a escala inicial para dispositivos móveis -->
-        <title>Cardápio da Lanchonete DS Burgers</title>
-        <!-- Título da página -->
-        <link rel="stylesheet" href="./static/css/index.css">
-        <!-- Inclui o arquivo de estilo CSS -->
-        <link
-            href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap"
-            rel="stylesheet"> <!-- Inclui a fonte Raleway do Google Fonts -->
-    </head>
-    <body>
 
-        <header>
-            <h1>DS Burgers - Cardápio</h1> <!-- Título principal da página -->
-        </header>
+<head>
+    <meta charset="UTF-8"> <!-- Define a codificação de caracteres -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Define a escala inicial para dispositivos móveis -->
+    <title>Cardápio da Lanchonete DS Burgers</title>
+    <!-- Título da página -->
+    <link rel="stylesheet" href="./static/css/index.css">
+    <!-- Inclui o arquivo de estilo CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Inclui a fonte Raleway do Google Fonts -->
+</head>
 
-        <section class="cardapio">
-            <!-- Início dos itens do cardápio -->
-            <!-- Cada article representa um item do cardápio -->
-            <article class="item-cardapio">
-                <h2>Java Burger</h2> <!-- Nome do item -->
-                <p>Hamburguer de carne, queijo, alface e molho especial.</p>
-                <!-- Descrição do item -->
-                <img src="/static/img/Java Burger.jpeg" alt="Java Burger">
-                <!-- Imagem do item -->
-                <p class="preco">R$ 25,99</p> <!-- Preço do item -->
-                <label>
-                    <input class="checar" type="checkbox" name="pedido"
-                        value="25.99">
-                    Selecionar <!-- Checkbox para selecionar o item -->
-                </label>
-                <!-- Contador para selecionar a quantidade do item -->
-                <div class="contador">
-                    <button class="somar"
-                        onclick="decrementarContador (this)">-</button>
-                    <!-- Botão para decrementar a quantidade -->
-                    <span>0</span> <!-- Quantidade selecionada -->
-                    <button class="subtrair"
-                        onclick="incrementarContador (this)">+</button>
-                    <!-- Botão para incrementar a quantidade -->
-                </div>
-            </article>
+<body>
 
-            <article class="item-cardapio">
-                <h2>JavaScript Joy</h2>
-                <p>Hamburguer vegetariano com hambúrguer de quinoa, abobrinha
-                    grelhada, alface e molho de ervas.</p>
-                <img src="/static/img/JavaScript Joy.jpg" alt="JavaScript Joy">
-                <p class="preco">R$ 23,99</p>
-                <label>
-                    <input class="checar" type="checkbox" name="pedido"
-                        value="23.99">
-                    Selecionar
-                </label>
-                <!-- Contador -->
-                <div class="contador">
-                    <button class="somar"
-                        onclick="decrementarContador (this)">-</button>
-                    <span>0</span>
-                    <button class="subtrair"
-                        onclick="incrementarContador (this)">+</button>
-                </div>
-            </article>
+    <header>
+        <h1>DS Burgers - Cardápio</h1> <!-- Título principal da página -->
+    </header>
 
-            <article class="item-cardapio">
-                <h2>HTML Heat</h2>
-                <p>Hamburguer de carne, bacon, queijo pepper jack, jalapeños e
-                    molho picante.</p>
-                <img src="/static/img/HTML Heat.jpg" alt="HTML Heat">
-                <p class="preco">R$ 29,99</p>
-                <label>
-                    <input class="checar" type="checkbox" name="pedido"
-                        value="29.99">
-                    Selecionar
-                </label>
-                <!-- Contador -->
-                <div class="contador">
-                    <button class="somar"
-                        onclick="decrementarContador (this)">-</button>
-                    <span>0</span>
-                    <button class="subtrair"
-                        onclick="incrementarContador (this)">+</button>
-                </div>
-            </article>
+    <section class="cardapio">
+        <!-- Início dos itens do cardápio -->
+        <!-- Cada article representa um item do cardápio -->
+        <article class="item-cardapio">
+            <h2>Java Burger</h2> <!-- Nome do item -->
+            <p>Hamburguer de carne, queijo, alface e molho especial.</p>
+            <!-- Descrição do item -->
+            <img src="/static/img/Java Burger.jpeg" alt="Java Burger">
+            <!-- Imagem do item -->
+            <p class="preco">R$ 25,99</p> <!-- Preço do item -->
+            <label>
+                <input class="checar" type="checkbox" name="pedido" value="25.99">
+                Selecionar <!-- Checkbox para selecionar o item -->
+            </label>
+            <!-- Contador para selecionar a quantidade do item -->
+            <div class="contador">
+                <button class="somar" onclick="incrementarContador (this)">+</button>
+                <!-- Botão para decrementar a quantidade -->
+                <span>0</span> <!-- Quantidade selecionada -->
+                <button class="subtrair" onclick="decrementarContador (this)">-</button>
+                <!-- Botão para incrementar a quantidade -->
+            </div>
+        </article>
 
-            <article class="item-cardapio">
-                <h2>SQL Supreme</h2>
-                <p>Hamburguer de carne, queijo suíço, cogumelos e molho de
-                    alho.</p>
-                <img src="/static/img/SQL Supreme.jpeg" alt="SQL Supreme">
-                <p class="preco">R$ 26,99</p>
-                <label>
-                    <input class="checar" type="checkbox" name="pedido"
-                        value="26.99">
-                    Selecionar
-                </label>
-                <!-- Contador -->
-                <div class="contador">
-                    <button class="somar"
-                        onclick="decrementarContador (this)">-</button>
-                    <span>0</span>
-                    <button class="subtrair"
-                        onclick="incrementarContador (this)">+</button>
-                </div>
-            </article>
+        <article class="item-cardapio">
+            <h2>JavaScript Joy</h2>
+            <p>Hamburguer vegetariano com hambúrguer de quinoa, abobrinha
+                grelhada, alface e molho de ervas.</p>
+            <img src="/static/img/JavaScript Joy.jpg" alt="JavaScript Joy">
+            <p class="preco">R$ 23,99</p>
+            <label>
+                <input class="checar" type="checkbox" name="pedido" value="23.99">
+                Selecionar
+            </label>
+            <!-- Contador -->
+            <div class="contador">
+                <button class="somar" onclick="incrementarContador (this)">+</button>
+                <span>0</span>
+                <button class="subtrair" onclick="decrementarContador (this)">-</button>
+            </div>
+        </article>
 
-            <article class="item-cardapio">
-                <h2>React Vegano</h2>
-                <p>Hamburguer vegano com hambúrguer de grão-de-bico, abacate,
-                    tomate e molho vegano.</p>
-                <img src="/static/img/React Vegano.png" alt="React Vegano">
-                <p class="preco">R$ 21,99</p>
-                <label>
-                    <input class="checar" type="checkbox" name="pedido"
-                        value="21.99">
-                    Selecionar
-                </label>
-                <!-- Contador -->
-                <div class="contador">
-                    <button class="somar"
-                        onclick="decrementarContador (this)">-</button>
-                    <span>0</span>
-                    <button class="subtrair"
-                        onclick="incrementarContador (this)">+</button>
-                </div>
-            </article>
+        <article class="item-cardapio">
+            <h2>HTML Heat</h2>
+            <p>Hamburguer de carne, bacon, queijo pepper jack, jalapeños e
+                molho picante.</p>
+            <img src="/static/img/HTML Heat.jpg" alt="HTML Heat">
+            <p class="preco">R$ 29,99</p>
+            <label>
+                <input class="checar" type="checkbox" name="pedido" value="29.99">
+                Selecionar
+            </label>
+            <!-- Contador -->
+            <div class="contador">
+                <button class="somar" onclick="incrementarContador (this)">+</button>
+                <span>0</span>
+                <button class="subtrair" onclick="decrementarContador (this)">-</button>
+            </div>
+        </article>
 
-            <article class="item-cardapio">
-                <h2>Swift Sensation</h2>
-                <p>Hamburguer de frango, queijo suíço, cogumelos e maionese de
-                    mostarda.</p>
-                <img src="/static/img/Swift Sensation.jpeg"
-                    alt="Swift Sensation">
-                <p class="preco">R$ 28,99</p>
-                <label>
-                    <input class="checar" type="checkbox" name="pedido"
-                        value="28.99">
-                    Selecionar
-                </label>
-                <!-- Contador -->
-                <div class="contador">
-                    <button class="somar"
-                        onclick="decrementarContador (this)">-</button>
-                    <span>0</span>
-                    <button class="subtrair"
-                        onclick="incrementarContador (this)">+</button>
-                </div>
-            </article>
+        <article class="item-cardapio">
+            <h2>SQL Supreme</h2>
+            <p>Hamburguer de carne, queijo suíço, cogumelos e molho de
+                alho.</p>
+            <img src="/static/img/SQL Supreme.jpeg" alt="SQL Supreme">
+            <p class="preco">R$ 26,99</p>
+            <label>
+                <input class="checar" type="checkbox" name="pedido" value="26.99">
+                Selecionar
+            </label>
+            <!-- Contador -->
+            <div class="contador">
+                <button class="somar" onclick="incrementarContador (this)">+</button>
+                <span>0</span>
+                <button class="subtrair" onclick="decrementarContador (this)">-</button>
+            </div>
+        </article>
 
-            <article class="item-cardapio">
-                <h2>CSS Crunch</h2>
-                <p>Hamburguer vegetariano com hambúrguer de lentilha, cebola
-                    caramelizada, alface e maionese de alho.</p>
-                <img src="/static/img/CSS Crunch.webp" alt="CSS Crunch">
-                <p class="preco">R$ 24,99</p>
-                <label>
-                    <input class="checar" type="checkbox" name="pedido"
-                        value="24.99">
-                    Selecionar
-                </label>
-                <!-- Contador -->
-                <div class="contador">
-                    <button class="somar"
-                        onclick="decrementarContador (this)">-</button>
-                    <span>0</span>
-                    <button class="subtrair"
-                        onclick="incrementarContador (this)">+</button>
-                </div>
-            </article>
+        <article class="item-cardapio">
+            <h2>React Vegano</h2>
+            <p>Hamburguer vegano com hambúrguer de grão-de-bico, abacate,
+                tomate e molho vegano.</p>
+            <img src="/static/img/React Vegano.png" alt="React Vegano">
+            <p class="preco">R$ 21,99</p>
+            <label>
+                <input class="checar" type="checkbox" name="pedido" value="21.99">
+                Selecionar
+            </label>
+            <!-- Contador -->
+            <div class="contador">
+                <button class="somar" onclick="incrementarContador (this)">+</button>
+                <span>0</span>
+                <button class="subtrair" onclick="decrementarContador (this)">-</button>
+            </div>
+        </article>
 
-            <article class="item-cardapio">
-                <h2>Angular Adventure</h2>
-                <p>Hamburguer de carne, queijo suíço, picles, cebola roxa e
-                    molho de mostarda e mel.</p>
-                <img src="/static/img/Angular Adventure.jpg"
-                    alt="Angular Adventure">
-                <p class="preco">R$ 32,99</p>
-                <label>
-                    <input class="checar" type="checkbox" name="pedido"
-                        value="32.99">
-                    Selecionar
-                </label>
-                <!-- Contador -->
-                <div class="contador">
-                    <button class="somar"
-                        onclick="decrementarContador (this)">-</button>
-                    <span>0</span>
-                    <button class="subtrair"
-                        onclick="incrementarContador (this)">+</button>
-                </div>
-            </article>
+        <article class="item-cardapio">
+            <h2>Swift Sensation</h2>
+            <p>Hamburguer de frango, queijo suíço, cogumelos e maionese de
+                mostarda.</p>
+            <img src="/static/img/Swift Sensation.jpeg" alt="Swift Sensation">
+            <p class="preco">R$ 28,99</p>
+            <label>
+                <input class="checar" type="checkbox" name="pedido" value="28.99">
+                Selecionar
+            </label>
+            <!-- Contador -->
+            <div class="contador">
+                <button class="somar" onclick="incrementarContador (this)">+</button>
+                <span>0</span>
+                <button class="subtrair" onclick="decrementarContador (this)">-</button>
+            </div>
+        </article>
 
-            <article class="item-cardapio">
-                <h2>Ruby Royale</h2>
-                <p>Hamburguer vegetariano com hambúrguer de feijão preto,
-                    abacate, tomate e molho de iogurte.</p>
-                <img src="/static/img/Ruby Royale.jpeg" alt="Ruby Royale">
-                <p class="preco">R$ 25,99</p>
-                <label>
-                    <input class="checar" type="checkbox" name="pedido"
-                        value="25.99">
-                    Selecionar
-                </label>
-                <!-- Contador -->
-                <div class="contador">
-                    <button class="somar"
-                        onclick="decrementarContador (this)">-</button>
-                    <span>0</span>
-                    <button class="subtrair"
-                        onclick="incrementarContador (this)">+</button>
-                </div>
-            </article>
+        <article class="item-cardapio">
+            <h2>CSS Crunch</h2>
+            <p>Hamburguer vegetariano com hambúrguer de lentilha, cebola
+                caramelizada, alface e maionese de alho.</p>
+            <img src="/static/img/CSS Crunch.webp" alt="CSS Crunch">
+            <p class="preco">R$ 24,99</p>
+            <label>
+                <input class="checar" type="checkbox" name="pedido" value="24.99">
+                Selecionar
+            </label>
+            <!-- Contador -->
+            <div class="contador">
+                <button class="somar" onclick="incrementarContador (this)">+</button>
+                <span>0</span>
+                <button class="subtrair" onclick="decrementarContador (this)">-</button>
+            </div>
+        </article>
 
-            <article class="item-cardapio">
-                <h2>PHP Fusion</h2>
-                <p>Hamburguer de carne, queijo provolone, cogumelos salteados e
-                    molho de cebola caramelizada.</p>
-                <img src="/static/img/PHP Fusion.jpg" alt="PHP Fusion">
-                <p class="preco">R$ 30,99</p>
-                <label>
-                    <input class="checar" type="checkbox" name="pedido"
-                        value="30.99">
-                    Selecionar
-                </label>
-                <!-- Contador -->
-                <div class="contador">
-                    <button class="somar"
-                        onclick="decrementarContador (this)">-</button>
-                    <span>0</span>
-                    <button class="subtrair"
-                        onclick="incrementarContador (this)">+</button>
-                </div>
-            </article>
+        <article class="item-cardapio">
+            <h2>Angular Adventure</h2>
+            <p>Hamburguer de carne, queijo suíço, picles, cebola roxa e
+                molho de mostarda e mel.</p>
+            <img src="/static/img/Angular Adventure.jpg" alt="Angular Adventure">
+            <p class="preco">R$ 32,99</p>
+            <label>
+                <input class="checar" type="checkbox" name="pedido" value="32.99">
+                Selecionar
+            </label>
+            <!-- Contador -->
+            <div class="contador">
+                <button class="somar" onclick="incrementarContador (this)">+</button>
+                <span>0</span>
+                <button class="subtrair" onclick="decrementarContador (this)">-</button>
+            </div>
+        </article>
 
-            <article class="item-cardapio">
-                <h2>Go Gourmet</h2>
-                <p>Hamburguer vegetariano com hambúrguer de grão-de-bico,
-                    abobrinha grelhada, pimentões e molho de tahine.</p>
-                <img src="/static/img/Go Gourmet.jpg" alt="Go Gourmet">
-                <p class="preco">R$ 26,99</p>
-                <label>
-                    <input class="checar" type="checkbox" name="pedido"
-                        value="26.99">
-                    Selecionar
-                </label>
-                <!-- Contador -->
-                <div class="contador">
-                    <button class="somar"
-                        onclick="decrementarContador (this)">-</button>
-                    <span>0</span>
-                    <button class="subtrair"
-                        onclick="incrementarContador (this)">+</button>
-                </div>
-            </article>
+        <article class="item-cardapio">
+            <h2>Ruby Royale</h2>
+            <p>Hamburguer vegetariano com hambúrguer de feijão preto,
+                abacate, tomate e molho de iogurte.</p>
+            <img src="/static/img/Ruby Royale.jpeg" alt="Ruby Royale">
+            <p class="preco">R$ 25,99</p>
+            <label>
+                <input class="checar" type="checkbox" name="pedido" value="25.99">
+                Selecionar
+            </label>
+            <!-- Contador -->
+            <div class="contador">
+                <button class="somar" onclick="incrementarContador (this)">+</button>
+                <span>0</span>
+                <button class="subtrair" onclick="decrementarContador (this)">-</button>
+            </div>
+        </article>
 
-            <article class="item-cardapio">
-                <h2>TypeScript Tasty</h2>
-                <p>Hamburguer de frango, queijo gouda, abacate e maionese de
-                    ervas.</p>
-                <img src="/static/img/TypeScript Tasty.jpg"
-                    alt="TypeScript Tasty">
-                <p class="preco">R$ 31,99</p>
-                <label>
-                    <input class="checar" type="checkbox" name="pedido"
-                        value="31.99">
-                    Selecionar
-                </label>
-                <!-- Contador -->
-                <div class="contador">
-                    <button class="somar"
-                        onclick="decrementarContador (this)">-</button>
-                    <span>0</span>
-                    <button class="subtrair"
-                        onclick="incrementarContador (this)">+</button>
-                </div>
-            </article>
+        <article class="item-cardapio">
+            <h2>PHP Fusion</h2>
+            <p>Hamburguer de carne, queijo provolone, cogumelos salteados e
+                molho de cebola caramelizada.</p>
+            <img src="/static/img/PHP Fusion.jpg" alt="PHP Fusion">
+            <p class="preco">R$ 30,99</p>
+            <label>
+                <input class="checar" type="checkbox" name="pedido" value="30.99">
+                Selecionar
+            </label>
+            <!-- Contador -->
+            <div class="contador">
+                <button class="somar" onclick="incrementarContador (this)">+</button>
+                <span>0</span>
+                <button class="subtrair" onclick="decrementarContador (this)">-</button>
+            </div>
+        </article>
 
-            <article class="item-cardapio">
-                <h2>Perl Perfection</h2>
-                <p>Hamburguer vegetariano com hambúrguer de lentilha, queijo
-                    feta, azeitonas e molho de tzatziki.</p>
-                <img src="/static/img/Perl Perfection.jpg"
-                    alt="Perl Perfection">
-                <p class="preco">R$ 27,99</p>
-                <label>
-                    <input class="checar" type="checkbox" name="pedido"
-                        value="27.99">
-                    Selecionar
-                </label>
-                <!-- Contador -->
-                <div class="contador">
-                    <button class="somar"
-                        onclick="decrementarContador (this)">-</button>
-                    <span>0</span>
-                    <button class="subtrair"
-                        onclick="incrementarContador (this)">+</button>
-                </div>
-            </article>
+        <article class="item-cardapio">
+            <h2>Go Gourmet</h2>
+            <p>Hamburguer vegetariano com hambúrguer de grão-de-bico,
+                abobrinha grelhada, pimentões e molho de tahine.</p>
+            <img src="/static/img/Go Gourmet.jpg" alt="Go Gourmet">
+            <p class="preco">R$ 26,99</p>
+            <label>
+                <input class="checar" type="checkbox" name="pedido" value="26.99">
+                Selecionar
+            </label>
+            <!-- Contador -->
+            <div class="contador">
+                <button class="somar" onclick="incrementarContador (this)">+</button>
+                <span>0</span>
+                <button class="subtrair" onclick="decrementarContador (this)">-</button>
+            </div>
+        </article>
 
-            <article class="item-cardapio">
-                <h2>Scala Supreme</h2>
-                <p>Hamburguer de carne, queijo gorgonzola, cebola roxa
-                    caramelizada e rúcula.</p>
-                <img src="/static/img/Scala Supreme.jpg" alt="Scala Supreme">
-                <p class="preco">R$ 33,99</p>
-                <label>
-                    <input class="checar" type="checkbox" name="pedido"
-                        value="33.99">
-                    Selecionar
-                </label>
-                <!-- Contador -->
-                <div class="contador">
-                    <button class="somar"
-                        onclick="decrementarContador (this)">-</button>
-                    <span>0</span>
-                    <button class="subtrair"
-                        onclick="incrementarContador (this)">+</button>
-                </div>
-            </article>
+        <article class="item-cardapio">
+            <h2>TypeScript Tasty</h2>
+            <p>Hamburguer de frango, queijo gouda, abacate e maionese de
+                ervas.</p>
+            <img src="/static/img/TypeScript Tasty.jpg" alt="TypeScript Tasty">
+            <p class="preco">R$ 31,99</p>
+            <label>
+                <input class="checar" type="checkbox" name="pedido" value="31.99">
+                Selecionar
+            </label>
+            <!-- Contador -->
+            <div class="contador">
+                <button class="somar" onclick="incrementarContador (this)">+</button>
+                <span>0</span>
+                <button class="subtrair" onclick="decrementarContador (this)">-</button>
+            </div>
+        </article>
 
-            <article class="item-cardapio">
-                <h2>DevOps Delight</h2>
-                <p>Hamburguer de carne, bacon, queijo suíço, cogumelos e
-                    maionese de alho.</p>
-                <img src="/static/img/DevOps Delight.webp" alt="DevOps Delight">
-                <p class="preco">R$ 34,99</p>
-                <label>
-                    <input class="checar" type="checkbox" name="pedido"
-                        value="34.99">
-                    Selecionar
-                </label>
-                <!-- Contador -->
-                <div class="contador">
-                    <button class="somar"
-                        onclick="decrementarContador (this)">-</button>
-                    <span>0</span>
-                    <button class="subtrair"
-                        onclick="incrementarContador (this)">+</button>
-                </div>
-            </article>
+        <article class="item-cardapio">
+            <h2>Perl Perfection</h2>
+            <p>Hamburguer vegetariano com hambúrguer de lentilha, queijo
+                feta, azeitonas e molho de tzatziki.</p>
+            <img src="/static/img/Perl Perfection.jpg" alt="Perl Perfection">
+            <p class="preco">R$ 27,99</p>
+            <label>
+                <input class="checar" type="checkbox" name="pedido" value="27.99">
+                Selecionar
+            </label>
+            <!-- Contador -->
+            <div class="contador">
+                <button class="somar" onclick="incrementarContador (this)">+</button>
+                <span>0</span>
+                <button class="subtrair" onclick="decrementarContador (this)">-</button>
+            </div>
+        </article>
 
-            <article class="item-cardapio">
-                <h2>Vue Vegano</h2>
-                <p>Hamburguer vegano com hambúrguer de grão-de-bico, abobrinha
-                    grelhada, alface e maionese vegana.</p>
-                <img src="/static/img/Vue Vegano.jpeg" alt="Vue Vegano">
-                <p class="preco">R$ 28,99</p>
-                <label>
-                    <input class="checar" type="checkbox" name="pedido"
-                        value="28.99">
-                    Selecionar
-                </label>
-                <!-- Contador -->
-                <div class="contador">
-                    <button class="somar"
-                        onclick="decrementarContador (this)">-</button>
-                    <span>0</span>
-                    <button class="subtrair"
-                        onclick="incrementarContador (this)">+</button>
-                </div>
-            </article>
+        <article class="item-cardapio">
+            <h2>Scala Supreme</h2>
+            <p>Hamburguer de carne, queijo gorgonzola, cebola roxa
+                caramelizada e rúcula.</p>
+            <img src="/static/img/Scala Supreme.jpg" alt="Scala Supreme">
+            <p class="preco">R$ 33,99</p>
+            <label>
+                <input class="checar" type="checkbox" name="pedido" value="33.99">
+                Selecionar
+            </label>
+            <!-- Contador -->
+            <div class="contador">
+                <button class="somar" onclick="incrementarContador (this)">+</button>
+                <span>0</span>
+                <button class="subtrair" onclick="decrementarContador (this)">-</button>
+            </div>
+        </article>
 
-            <article class="item-cardapio">
-                <h2>Vegan Script</h2>
-                <p>Hamburguer vegano com hambúrguer de grão-de-bico, alface,
-                    tomate e molho vegano.</p>
-                <img src="/static/img/Vegan Script.jpg" alt="Vegan Script">
-                <p class="preco">R$ 19,99</p>
-                <label>
-                    <input class="checar" type="checkbox" name="pedido"
-                        value="19.99">
-                    Selecionar
-                </label>
-                <!-- Contador -->
-                <div class="contador">
-                    <button class="somar"
-                        onclick="decrementarContador (this)">-</button>
-                    <span>0</span>
-                    <button class="subtrair"
-                        onclick="incrementarContador (this)">+</button>
-                </div>
-            </article> <!-- Fim dos itens do cardápio -->
-        </section>
+        <article class="item-cardapio">
+            <h2>DevOps Delight</h2>
+            <p>Hamburguer de carne, bacon, queijo suíço, cogumelos e
+                maionese de alho.</p>
+            <img src="/static/img/DevOps Delight.webp" alt="DevOps Delight">
+            <p class="preco">R$ 34,99</p>
+            <label>
+                <input class="checar" type="checkbox" name="pedido" value="34.99">
+                Selecionar
+            </label>
+            <!-- Contador -->
+            <div class="contador">
+                <button class="somar" onclick="incrementarContador (this)">+</button>
+                <span>0</span>
+                <button class="subtrair" onclick="decrementarContador (this)">-</button>
+            </div>
+        </article>
 
-        <section class="resumo">
-            <h2>Resumo do Pedido</h2> <!-- Título da seção -->
-            <form id="formulario-pedido">
-                <!-- Formulário para enviar o pedido -->
-                <!-- O resumo do pedido será exibido aqui -->
-                <p id="total">Total: R$ 0,00</p> <!-- Total do pedido -->
-                <button type="button" class="glow-on-hover" id="enviar"
-                    onclick="enviarPedido()">Enviar Pedido</button>
-                <!-- Botão para enviar o pedido -->
-            </form>
-        </section>
+        <article class="item-cardapio">
+            <h2>Vue Vegano</h2>
+            <p>Hamburguer vegano com hambúrguer de grão-de-bico, abobrinha
+                grelhada, alface e maionese vegana.</p>
+            <img src="/static/img/Vue Vegano.jpeg" alt="Vue Vegano">
+            <p class="preco">R$ 28,99</p>
+            <label>
+                <input class="checar" type="checkbox" name="pedido" value="28.99">
+                Selecionar
+            </label>
+            <!-- Contador -->
+            <div class="contador">
+                <button class="somar" onclick="incrementarContador (this)">+</button>
+                <span>0</span>
+                <button class="subtrair" onclick="decrementarContador (this)">-</button>
+            </div>
+        </article>
 
-        <footer>
-            <p>&copy; 2024 DS Burgers. Todos os direitos reservados.</p>
-            <!-- Rodapé da página -->
-        </footer>
+        <article class="item-cardapio">
+            <h2>Vegan Script</h2>
+            <p>Hamburguer vegano com hambúrguer de grão-de-bico, alface,
+                tomate e molho vegano.</p>
+            <img src="/static/img/Vegan Script.jpg" alt="Vegan Script">
+            <p class="preco">R$ 19,99</p>
+            <label>
+                <input class="checar" type="checkbox" name="pedido" value="19.99">
+                Selecionar
+            </label>
+            <!-- Contador -->
+            <div class="contador">
+                <button class="somar" onclick="incrementarContador (this)">+</button>
+                <span>0</span>
+                <button class="subtrair" onclick="decrementarContador (this)">-</button>
+            </div>
+        </article> <!-- Fim dos itens do cardápio -->
+    </section>
 
-        <script src="./static/js/Index.js"></script>
-        <!-- Inclui o arquivo de script JavaScript -->
-    </body>
+    <section class="resumo">
+        <h2>Resumo do Pedido</h2> <!-- Título da seção -->
+        <form id="formulario-pedido">
+            <!-- Formulário para enviar o pedido -->
+            <!-- O resumo do pedido será exibido aqui -->
+            <p id="total">Total: R$ 0,00</p> <!-- Total do pedido -->
+            <button type="button" class="glow-on-hover" id="enviar" onclick="enviarPedido()">Enviar Pedido</button>
+            <!-- Botão para enviar o pedido -->
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 DS Burgers. Todos os direitos reservados.</p>
+        <!-- Rodapé da página -->
+    </footer>
+
+    <script src="./static/js/Index.js"></script>
+    <!-- Inclui o arquivo de script JavaScript -->
+</body>
+
 </html>
