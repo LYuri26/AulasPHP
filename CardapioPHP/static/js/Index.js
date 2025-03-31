@@ -1,229 +1,203 @@
-// Função para formatar número para duas casas decimais
-function formatarDuasCasasDecimais(numero) {
-  return parseFloat(numero).toFixed(2); // Converte o número para ponto flutuante e formata para duas casas decimais
-}
+// Funções de Controle do Carrinho
+function incrementarContador(botao) {
+  const item = botao.closest(".item-cardapio");
+  if (!item) return;
 
-// Função para incrementar o contador de um item no carrinho
-function incrementarContador(item) {
-  var contador = item.querySelector(".contador span"); // Seleciona o elemento do contador dentro do item
+  const contador = item.querySelector(".contador span");
   if (contador) {
-    var valorAtual = parseInt(contador.textContent); // Obtém o valor atual do contador convertendo para número inteiro
-    contador.textContent = valorAtual + 1; // Incrementa o contador em 1
-    atualizarTotalPedido(); // Atualiza o total do pedido após incrementar o contador
+    const valorAtual = parseInt(contador.textContent) || 0;
+    contador.textContent = valorAtual + 1;
+    atualizarTotalPedido();
   }
 }
 
-// Função para decrementar o contador de um item no carrinho
-function decrementarContador(item) {
-  var contador = item.querySelector(".contador span"); // Seleciona o elemento do contador dentro do item
+function decrementarContador(botao) {
+  const item = botao.closest(".item-cardapio");
+  if (!item) return;
+
+  const contador = item.querySelector(".contador span");
   if (contador) {
-    var valorAtual = parseInt(contador.textContent); // Obtém o valor atual do contador convertendo para número inteiro
+    const valorAtual = parseInt(contador.textContent) || 0;
     if (valorAtual > 0) {
-      contador.textContent = valorAtual - 1; // Decrementa o contador em 1 se o valor atual for maior que zero
-      atualizarTotalPedido(); // Atualiza o total do pedido após decrementar o contador
+      contador.textContent = valorAtual - 1;
+      atualizarTotalPedido();
     }
   }
 }
 
-// Função para limpar e bloquear checkboxes
-function checarCheckboxes() {
-  var checkboxes = document.querySelectorAll('input[name="pedido"]'); // Seleciona todos os checkboxes com o nome "pedido"
-  checkboxes.forEach(function (checkbox) {
-    checkbox.checked = false; // Desmarca todos os checkboxes
-    var item = checkbox.closest(".item-cardapio"); // Encontra o item do cardápio mais próximo do checkbox
-    item.querySelector(".contador span").textContent = "0"; // Define o contador do item como zero
-    item.querySelector(".subtrair").disabled = true; // Desativa o botão de subtrair do item
-    item.querySelector(".somar").disabled = true; // Desativa o botão de somar do item
-  });
-
-  atualizarTotalPedido(); // Atualiza o total do pedido após limpar os checkboxes
-}
-
-// Função para atualizar o total do pedido com base nos itens selecionados
 function atualizarTotalPedido() {
-  var total = 0; // Inicializa o total como zero
-  var checkboxes = document.querySelectorAll(".checar"); // Seleciona todos os checkboxes marcados
+  let total = 0;
+  const checkboxes = document.querySelectorAll('input[name="pedido"]');
 
-  checkboxes.forEach(function (checkbox) {
-    var preco = parseFloat(checkbox.value); // Obtém o preço do item convertendo para ponto flutuante
-    var item = checkbox.closest(".item-cardapio"); // Encontra o item do cardápio mais próximo do checkbox
-    var quantidadeElement = item.querySelector(".contador span"); // Seleciona o elemento do contador dentro do item
-    var quantidade = parseInt(quantidadeElement.textContent); // Obtém a quantidade do item convertendo para número inteiro
+  checkboxes.forEach((checkbox) => {
+    const item = checkbox.closest(".item-cardapio");
+    if (!item) return;
+
+    const preco = parseFloat(checkbox.value) || 0;
+    const contador = item.querySelector(".contador span");
+    const quantidade = contador ? parseInt(contador.textContent) || 0 : 0;
 
     if (checkbox.checked) {
-      // Se o checkbox estiver marcado
-      total += preco * quantidade; // Incrementa o total com o preço multiplicado pela quantidade
-      item.querySelector(".subtrair").disabled = false; // Ativa o botão de subtrair do item
-      item.querySelector(".somar").disabled = false; // Ativa o botão de somar do item
+      total += preco * quantidade;
+      item.querySelector(".subtrair").disabled = false;
+      item.querySelector(".somar").disabled = false;
     } else {
-      item.querySelector(".subtrair").disabled = true; // Desativa o botão de subtrair do item
-      item.querySelector(".somar").disabled = true; // Desativa o botão de somar do item
-
-      // Limpar o contador quando o checkbox é desmarcado
-      quantidadeElement.textContent = "0"; // Define o contador do item como zero
+      item.querySelector(".subtrair").disabled = true;
+      item.querySelector(".somar").disabled = true;
+      if (contador) contador.textContent = "0";
     }
   });
 
-  // Limitar a quantidade de dígitos após a vírgula para duas casas decimais e exibe o total no elemento "total"
-  document.getElementById("total").textContent =
-    "Total: R$ " + total.toFixed(2);
+  const totalElement = document.getElementById("total");
+  if (totalElement) {
+    totalElement.textContent = `Total: R$ ${total.toFixed(2)}`;
+  }
 }
 
-// Adicionar eventos de clique aos botões para incrementar/decrementar o contador
-const botoesIncrementar = document.querySelectorAll(".item-cardapio .subtrair");
-const botoesDecrementar = document.querySelectorAll(".item-cardapio .somar");
-
-botoesIncrementar.forEach((botao) => {
-  if (!botao.hasEventListener) {
-    botao.hasEventListener = true;
-    botao.addEventListener("click", function () {
-      incrementarContador(this.closest(".item-cardapio")); // Chama a função de incrementar contador passando o item do cardápio relacionado
-    });
-  }
-});
-
-botoesDecrementar.forEach((botao) => {
-  if (!botao.hasEventListener) {
-    botao.hasEventListener = true;
-    botao.addEventListener("click", function () {
-      decrementarContador(this.closest(".item-cardapio")); // Chama a função de decrementar contador passando o item do cardápio relacionado
-    });
-  }
-});
-
-// Adicionar eventos de mudança aos checkboxes
-const checkboxes = document.querySelectorAll('input[name="pedido"]');
-checkboxes.forEach((checkbox) => {
-  checkbox.addEventListener("change", function () {
-    atualizarTotalPedido(); // Chama a função de atualizar o total do pedido quando houver mudança nos checkboxes
+function limparCarrinho() {
+  const checkboxes = document.querySelectorAll('input[name="pedido"]');
+  checkboxes.forEach((checkbox) => {
+    checkbox.checked = false;
+    const item = checkbox.closest(".item-cardapio");
+    if (item) {
+      item.querySelector(".contador span").textContent = "0";
+      item.querySelector(".subtrair").disabled = true;
+      item.querySelector(".somar").disabled = true;
+    }
   });
-});
-
-// Adicionar efeito de imagem pulsante automático
-const imagens = document.querySelectorAll(".item-cardapio img");
-
-function pulsarImagens() {
-  imagens.forEach((imagem) => {
-    imagem.style.transition = "transform 0.5s"; // Define a transição de 0.5 segundos para a transformação da imagem
-    imagem.style.transform = "scale(1.03)"; // Aplica a transformação de escala na imagem
-
-    setTimeout(() => {
-      imagem.style.transform = "scale(1.0)"; // Restaura a escala original da imagem após 0.5 segundos
-    }, 500);
-  });
+  atualizarTotalPedido();
 }
 
-// Iniciar a pulsação automática a cada 3 segundos (ajuste conforme necessário)
-setInterval(pulsarImagens, 3000);
+// Funções de Efeitos Visuais
+function iniciarEfeitoPulsante() {
+  const imagens = document.querySelectorAll(".item-cardapio img");
 
-// Função para enviar pedido
-function enviarPedido() {
-  var totalText = document.getElementById("total").textContent;
-  var total = parseFloat(totalText.replace("Total: R$ ", "").replace(",", "."));
-
-  if (total <= 0) {
-    alert("Selecione pelo menos um item antes de enviar o pedido."); // Exibe um alerta se o total for menor ou igual a zero
-    return;
+  function pulsar() {
+    imagens.forEach((img) => {
+      img.style.transition = "transform 0.5s";
+      img.style.transform = "scale(1.03)";
+      setTimeout(() => (img.style.transform = "scale(1.0)"), 500);
+    });
   }
 
-  if (total > 600) {
-    // Se o total ultrapassar 600 reais, exibir um alerta com confirmação
-    var confirmacao = confirm(
-      "Tem certeza disso? Por acaso está brincando com a gente? Vai alimentar um batalhão?"
-    );
+  setInterval(pulsar, 3000);
+}
 
-    if (!confirmacao) {
-      // Se o usuário clicar em "Não, errei!", cancelar o envio e limpar a página
-      checarCheckboxes(); // Limpar checkboxes e resetar total
+// Função de Envio do Pedido com prevenção de duplo clique
+// Função de Envio do Pedido com validação de quantidade
+async function enviarPedido() {
+  const botaoEnviar = document.getElementById("enviar");
+  if (!botaoEnviar) return;
+
+  // Desabilita o botão para evitar múltiplos cliques
+  botaoEnviar.disabled = true;
+
+  try {
+    const totalElement = document.getElementById("total");
+    if (!totalElement) return;
+
+    const total =
+      parseFloat(
+        totalElement.textContent.replace("Total: R$ ", "").replace(",", ".")
+      ) || 0;
+
+    // Validação do total
+    if (total <= 0) {
+      alert("Selecione pelo menos um item antes de enviar o pedido.");
       return;
     }
+
+    // Coleta e validação dos itens
+    const itens = Array.from(
+      document.querySelectorAll('input[name="pedido"]:checked')
+    ).map((checkbox) => {
+      const item = checkbox.closest(".item-cardapio");
+      const quantidade =
+        parseInt(item.querySelector(".contador span")?.textContent) || 0;
+
+      return {
+        nome: item.querySelector("h2")?.textContent || "",
+        quantidade: quantidade,
+        preco: parseFloat(checkbox.value) || 0,
+      };
+    });
+
+    // Verifica se há pelo menos um item com quantidade > 0
+    const itensValidos = itens.filter((item) => item.quantidade > 0);
+    if (itensValidos.length === 0) {
+      alert("Pelo menos um item deve ter quantidade maior que zero.");
+      return;
+    }
+
+    // Confirmação para pedidos grandes
+    if (
+      total > 600 &&
+      !confirm("Tem certeza disso? Vai alimentar um batalhão?")
+    ) {
+      limparCarrinho();
+      return;
+    }
+
+    // Envia apenas os itens com quantidade > 0
+    const response = await fetch("/db/Registrar_Pedido.php", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        total: total.toFixed(2),
+        itens: itensValidos,
+      }),
+    });
+
+    if (response.ok) {
+      alert(`Pedido de R$ ${total.toFixed(2)} enviado com sucesso!`);
+      limparCarrinho();
+    } else {
+      throw new Error(await response.text());
+    }
+  } catch (error) {
+    console.error("Erro:", error);
+    alert("Erro ao enviar pedido. Tente novamente.");
+  } finally {
+    // Reabilita o botão após o processamento
+    botaoEnviar.disabled = false;
   }
+}
 
-  var checkboxes = document.querySelectorAll('input[name="pedido"]:checked');
-  var itensPedido = [];
+// Inicialização
+document.addEventListener("DOMContentLoaded", () => {
+  // Remove os event listeners inline do HTML para evitar duplicação
+  document
+    .querySelectorAll(".subtrair[onclick], .somar[onclick]")
+    .forEach((botao) => {
+      botao.removeAttribute("onclick");
+    });
 
-  checkboxes.forEach(function (checkbox) {
-    var item = checkbox.closest(".item-cardapio");
-    var quantidade = parseInt(item.querySelector(".contador span").textContent);
-    var preco = parseFloat(checkbox.value).toFixed(2); // Limitar a dois dígitos após a vírgula
-    var nomeItem = item.querySelector("h2").textContent;
-
-    itensPedido.push({
-      nome: nomeItem,
-      quantidade: quantidade,
-      preco: preco,
+  // Configura eventos dos botões de quantidade
+  document.querySelectorAll(".subtrair").forEach((botao) => {
+    botao.addEventListener("click", function () {
+      decrementarContador(this);
     });
   });
 
-  // Enviar dados para o PHP usando AJAX
-  var xhr = new XMLHttpRequest();
-  xhr.open("POST", "/db/Registrar_Pedido.php", true);
-  xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-
-  // Converter o objeto para uma string codificada
-  var parametros =
-    "total=" +
-    total.toFixed(2) + // Limitar a dois dígitos após a vírgula
-    "&itens=" +
-    encodeURIComponent(JSON.stringify(itensPedido));
-
-  xhr.onreadystatechange = function () {
-    if (xhr.readyState == 4) {
-      if (xhr.status == 200) {
-        // Pedido enviado com sucesso
-        console.log(xhr.responseText);
-        alert("Pedido de R$ " + total.toFixed(2) + " enviado com sucesso!");
-      } else {
-        // Erro no envio do pedido
-        alert("Erro ao enviar o pedido. Por favor, tente novamente.");
-      }
-    }
-  };
-
-  xhr.send(parametros);
-}
-
-// Função para registrar o pedido no banco de dados
-function registrarPedido() {
-  var totalText = document.getElementById("total").textContent;
-  var total = parseFloat(totalText.replace("Total: R$ ", "").replace(",", "."));
-
-  if (isNaN(total) || total <= 0) {
-    alert("Selecione pelo menos um item antes de enviar o pedido."); // Exibe um alerta se o total for inválido ou menor ou igual a zero
-    return;
-  }
-
-  var checkboxes = document.querySelectorAll('input[name="pedido"]:checked');
-  var itensPedido = [];
-
-  checkboxes.forEach(function (checkbox) {
-    var item = checkbox.closest(".item-cardapio");
-    var nomeItem = item.querySelector("h2").textContent;
-    var quantidade = parseInt(item.querySelector(".contador span").textContent);
-    var preco = parseFloat(checkbox.value);
-
-    itensPedido.push({
-      nome: nomeItem,
-      quantidade: quantidade,
-      preco: preco,
+  document.querySelectorAll(".somar").forEach((botao) => {
+    botao.addEventListener("click", function () {
+      incrementarContador(this);
     });
   });
 
-  // Criar um objeto com os dados do pedido
-  var pedido = {
-    total: total.toFixed(2), // Limitar a quantidade de dígitos após a vírgula para duas casas decimais
-    itens: itensPedido,
-  };
+  // Configura eventos dos checkboxes
+  document.querySelectorAll('input[name="pedido"]').forEach((checkbox) => {
+    checkbox.addEventListener("change", atualizarTotalPedido);
+  });
 
-  // Enviar dados para o PHP usando AJAX
-  var xhr = new XMLHttpRequest();
-  xhr.open("POST", "/db/Registrar_Pedido.php", true);
-  xhr.setRequestHeader("Content-Type", "application/json");
-  xhr.onreadystatechange = function () {
-    if (xhr.readyState == 4 && xhr.status == 200) {
-      // Resposta do servidor (pode implementar algum tratamento aqui se necessário)
-      console.log(xhr.responseText);
-    }
-  };
-  xhr.send(JSON.stringify(pedido));
-}
+  // Configura botão de enviar (apenas um listener)
+  const botaoEnviar = document.getElementById("enviar");
+  if (botaoEnviar) {
+    // Remove o onclick do HTML para evitar duplicação
+    botaoEnviar.removeAttribute("onclick");
+    botaoEnviar.addEventListener("click", enviarPedido);
+  }
+
+  // Inicia efeitos visuais
+  iniciarEfeitoPulsante();
+});
