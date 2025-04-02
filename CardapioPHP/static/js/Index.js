@@ -84,7 +84,6 @@ function iniciarEfeitoPulsante() {
 }
 
 // Função de Envio do Pedido com prevenção de duplo clique
-// Função de Envio do Pedido com validação de quantidade
 async function enviarPedido() {
   const botaoEnviar = document.getElementById("enviar");
   if (!botaoEnviar) return;
