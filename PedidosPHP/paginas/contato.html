@@ -1,40 +1,68 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Contato</title>
-        <link rel="stylesheet" href="../static/css/contato.css">
-        <script src="../static/js/script.js"></script>
-    </head>
-    <body>
-        <header>
-            <button id="sair" onclick="confirmRedirect('login')">Sair</button>
-            <button onclick="confirmRedirect('principal')" id="sair">Tela
-                Inicial</button>
-            <h1>Contato</h1>
-        </header>
 
-        <main>
-            <img id="logo"
-                class="img-hover"
-                src="../static/images/Logo Informática para Internet(semfundo).png"
-                alt="Logo">
-            <p>Desenvolvedor</p>
-            <p><a href="https://github.com/LYuri26">Lenon Yuri Silva</a></p>
-        </main>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/contato.css">
+    <script src="../static/js/script.js"></script>
+</head>
 
-        <footer>
-            <div class="contato">
-                <p>Entre em contato:</p>
-                <p>Email: <a
-                        href="mailto:09113875@senaimgdocente.com.br">09113875@senaimgdocente.com.br</a></p>
+<body class="d-flex flex-column min-vh-100">
+    <header class="bg-secondary text-white py-3">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
+                <h1 class="mb-0">Contato</h1>
+                <div class="d-flex gap-2">
+                    <button onclick="confirmRedirect('principal')" class="btn btn-success">
+                        Tela Inicial
+                    </button>
+                    <button onclick="confirmRedirect('login')" class="btn btn-success">
+                        Sair
+                    </button>
+                </div>
             </div>
-            <div class="informacoes-adicionais">
-                <p>&copy; 2024 GrãosBR. Todos os direitos reservados.</p>
-                <p>Endereço: Praça Frei Eugênio, R. São Benedito, 85, Uberaba -
-                    MG, 38010-280</p>
+        </div>
+    </header>
+
+    <main class="container my-auto py-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8 text-center">
+                <img id="logo" class="img-fluid mb-4"
+                    src="../static/images/Logo Informática para Internet(semfundo).png" alt="Logo">
+                <div class="bg-white p-4 rounded shadow">
+                    <h2 class="mb-3">Desenvolvedor</h2>
+                    <p class="fs-4">
+                        <a href="https://github.com/LYuri26" class="text-decoration-none">
+                            Lenon Yuri Silva
+                        </a>
+                    </p>
+                </div>
             </div>
-        </footer>
-    </body>
+        </div>
+    </main>
+
+    <footer class="bg-secondary text-white py-3 mt-auto">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="mb-1">Entre em contato:</p>
+                    <p class="mb-1">Email: <a href="mailto:09113875@senaimgdocente.com.br"
+                            class="text-white">09113875@senaimgdocente.com.br</a></p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="mb-1">&copy; 2024 GrãosBR. Todos os direitos reservados.</p>
+                    <p class="mb-0">Endereço: Praça Frei Eugênio, R. São Benedito, 85, Uberaba - MG, 38010-280</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
 </html>

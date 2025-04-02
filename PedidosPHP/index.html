@@ -1,36 +1,54 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SGI - Grãos BR</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./static/css/index.css">
     <script src="./static/js/script.js"></script>
+</head>
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>SGI - Grãos BR</title>
-    </head>
+<body class="d-flex flex-column min-vh-100">
+    <header class="bg-secondary text-white py-4 mb-4">
+        <div class="container">
+            <h1 class="mb-3">Bem-vindo ao Sistema de Gestão Integrada (SGI) da Grãos BR</h1>
+            <p class="lead">Olá! Este é o SGI da empresa Grãos BR. Clique no botão abaixo para acessar o login.</p>
+        </div>
+    </header>
 
-    <body>
-        <header>
-            <h1>Bem-vindo ao Sistema de Gestão Integrada (SGI) da Grãos BR</h1>
-            <p>Olá! Este é o SGI da empresa Grãos BR. Clique no botão abaixo
-                para acessar o login.</p>
-        </header>
-
-        <a href="login.php"><button id="loginButton"
-                onclick="showRedirectAlert()">Acessar Login</button></a>
-
-        <footer>
-            <div class="contato">
-                <p>Entre em contato:</p>
-                <p>Email: <a
-                        href="mailto:09113875@senaimgdocente.com.br">09113875@senaimgdocente.com.br</a></p>
+    <main class="container my-auto">
+        <div class="row justify-content-center">
+            <div class="col-md-6 text-center">
+                <a href="login.php" class="text-decoration-none">
+                    <button id="loginButton" class="btn btn-success btn-lg py-3 w-100" onclick="showRedirectAlert()">
+                        Acessar Login
+                    </button>
+                </a>
             </div>
-            <div class="informacoes-adicionais">
-                <p>&copy; 2024 GrãosBR. Todos os direitos reservados.</p>
-                <p>Endereço: Praça Frei Eugênio, R. São Benedito, 85, Uberaba -
-                    MG, 38010-280</p>
+        </div>
+    </main>
+
+    <footer class="bg-secondary text-white py-3 mt-auto">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="mb-1">Entre em contato:</p>
+                    <p class="mb-1">Email: <a href="mailto:09113875@senaimgdocente.com.br"
+                            class="text-white">09113875@senaimgdocente.com.br</a></p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="mb-1">&copy; 2024 GrãosBR. Todos os direitos reservados.</p>
+                    <p class="mb-0">Endereço: Praça Frei Eugênio, R. São Benedito, 85, Uberaba - MG, 38010-280</p>
+                </div>
             </div>
-        </footer>
-    </body>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 
 </html>

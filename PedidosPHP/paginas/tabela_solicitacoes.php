@@ -59,56 +59,84 @@ if (isset($_POST['logout'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tabela de Solicitações</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../static/css/tabela_solicitacoes.css">
     <script src="../static/js/script.js"></script>
 </head>
 
-<body>
-    <header>
-        <button id="sair" onclick="confirmRedirect('login')">Sair</button>
-        <button onclick="confirmRedirect('principal')" id="sair">Tela Inicial</button>
-        <h2>Tabela de Solicitações</h2>
-    </header>
-    <div>
-        <p>Usuário: <?php echo $usuario_nome; ?></p>
-        <p>Cargo: <?php echo $usuario_cargo; ?></p>
-    </div>
-    <table>
-        <thead>
-            <tr>
-                <th>ID do Funcionário</th>
-                <th>Nome do Material</th>
-                <th>Quantidade</th>
-                <th>Data da Solicitação</th>
-                <th>Status da Solicitação</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
-            // Loop através das solicitações e exibir cada uma como uma linha na tabela
-            foreach ($solicitacoes as $solicitacao) {
-                echo '<tr>';
-                echo '<td>' . $solicitacao['funcionario_id'] . '</td>';
-                echo '<td>' . $solicitacao['nome_material'] . '</td>';
-                echo '<td>' . $solicitacao['quantidade'] . '</td>';
-                echo '<td>' . $solicitacao['data_solicitacao'] . '</td>';
-                echo '<td>' . $solicitacao['status_solicitacao'] . '</td>';
-                echo '</tr>';
-            }
-            ?>
-        </tbody>
-    </table>
-    <footer>
-        <div class="contato">
-            <p>Entre em contato:</p>
-            <p>Email: <a href="mailto:09113875@senaimgdocente.com.br">09113875@senaimgdocente.com.br</a></p>
+<body class="d-flex flex-column min-vh-100">
+    <header class="bg-secondary text-white py-3">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
+                <h2 class="mb-0">Tabela de Solicitações</h2>
+                <div class="d-flex gap-2">
+                    <button onclick="confirmRedirect('principal')" class="btn btn-success">
+                        Tela Inicial
+                    </button>
+                    <button onclick="confirmRedirect('login')" class="btn btn-success">
+                        Sair
+                    </button>
+                </div>
+            </div>
         </div>
-        <div class="informacoes-adicionais">
-            <p>&copy; 2024 GrãosBR. Todos os direitos reservados.</p>
-            <p>Endereço: Praça Frei Eugênio, R. São Benedito, 85, Uberaba -
-                MG, 38010-280</p>
+    </header>
+
+    <div class="container text-center my-3">
+        <div class="bg-white p-3 rounded shadow-sm d-inline-block">
+            <p class="mb-1"><strong>Usuário:</strong> <?php echo $usuario_nome; ?></p>
+            <p class="mb-0"><strong>Cargo:</strong> <?php echo $usuario_cargo; ?></p>
+        </div>
+    </div>
+
+    <main class="container my-4">
+        <div class="table-responsive">
+            <table class="table table-striped table-hover table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th>ID do Funcionário</th>
+                        <th>Nome do Material</th>
+                        <th>Quantidade</th>
+                        <th>Data da Solicitação</th>
+                        <th>Status da Solicitação</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    // Loop através das solicitações e exibir cada uma como uma linha na tabela
+                    foreach ($solicitacoes as $solicitacao) {
+                        echo '<tr>';
+                        echo '<td>' . $solicitacao['funcionario_id'] . '</td>';
+                        echo '<td>' . $solicitacao['nome_material'] . '</td>';
+                        echo '<td>' . $solicitacao['quantidade'] . '</td>';
+                        echo '<td>' . $solicitacao['data_solicitacao'] . '</td>';
+                        echo '<td>' . $solicitacao['status_solicitacao'] . '</td>';
+                        echo '</tr>';
+                    }
+                    ?>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <footer class="bg-secondary text-white py-3 mt-auto">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="mb-1">Entre em contato:</p>
+                    <p class="mb-1">Email: <a href="mailto:09113875@senaimgdocente.com.br"
+                            class="text-white">09113875@senaimgdocente.com.br</a></p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="mb-1">&copy; 2024 GrãosBR. Todos os direitos reservados.</p>
+                    <p class="mb-0">Endereço: Praça Frei Eugênio, R. São Benedito, 85, Uberaba - MG, 38010-280</p>
+                </div>
+            </div>
         </div>
     </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

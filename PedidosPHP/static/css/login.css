@@ -1,78 +1,26 @@
-/* Estilos para o cabeçalho */
-header {
-  background-color: #808080; /* Cinza */
-  color: #fff;
-  padding: 20px;
-  text-align: center;
-  margin-bottom: 20px; /* Adiciona margem inferior */
-}
+/* Estilos personalizados que complementam o Bootstrap */
 
-/* Estilos para o rodapé */
-footer {
-  background-color: #808080; /* Cinza */
-  color: #fff;
-  padding: 10px;
-  text-align: center;
-  margin-top: 115px;
-}
-
-/* Estilos para o corpo da página */
 body {
   background-color: #f5deb3; /* Cor de palha */
-  font-family: Arial, sans-serif;
-  margin: 0;
 }
 
-/* Estilos para a área de login */
-.login-container {
-  background-color: #fff;
-  width: 400px;
-  margin: 20px auto; /* Centraliza horizontalmente e adiciona margem */
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+.card {
+  border-radius: 10px;
 }
 
-/* Estilos para os campos de formulário */
-.form-group {
-  margin-bottom: 20px;
+.btn-success {
+  border-radius: 20px;
+  transition: all 0.3s;
 }
 
-label {
-  font-weight: bold;
+.btn-success:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-input[type="email"],
-input[type="password"] {
-  width: calc(100% - 20px); /* Calcula a largura considerando o preenchimento */
-  padding: 10px; /* Adiciona preenchimento */
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-/* Estilos para o botão de login */
-button[type="submit"] {
-  width: calc(100% - 20px); /* Calcula a largura considerando o preenchimento */
-  padding: 10px; /* Adiciona preenchimento */
-  background-color: #28a745; /* Cor verde */
-  color: #fff;
-  border: none;
-  border-radius: 20px; /* Arredondamento do botão */
-  cursor: pointer;
-  transition: background-color 0.3s; /* Transição suave da cor de fundo */
-  margin-top: 10px; /* Adiciona margem superior */
-}
-
-button[type="submit"]:hover {
-  background-color: #218838; /* Cor verde mais escura no hover */
-}
-
-/* Estilos para o link */
-a {
-  text-decoration: none; /* Remove a linha de sublinhado */
-}
-
-#login-error {
-  color: red;
-  display: none;
+/* Ajustes para responsividade */
+@media (max-width: 576px) {
+  .card {
+    margin: 0 15px;
+  }
 }

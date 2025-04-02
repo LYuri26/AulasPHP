@@ -1,85 +1,202 @@
-// Função para exibir alerta de redirecionamento
-function showRedirectAlert() {
-  alert("Você será redirecionado para a página de login.");
-}
-// Função para exibir alerta de redirecionamento
+// Função para exibir modal de redirecionamento
 function showRedirectAlert(pageName) {
-  alert("Você será redirecionado para a página: " + pageName);
-}
+  const modal = new bootstrap.Modal(document.getElementById("redirectModal"));
+  const modalBody = document.getElementById("redirectModalBody");
 
-// Função para encerrar a sessão
-function logout() {
-  if (confirm("Tem certeza que deseja sair?")) {
-    window.location.href = "../login.php";
-  }
-}
-
-// Função para confirmar redirecionamento
-function confirmRedirect(destination) {
-  if (confirm("Tem certeza que deseja ir para a página " + destination + "?")) {
-    if (destination === "principal") {
-      window.location.href = "../paginas/principal.html";
-    } else if (destination === "login") {
-      window.location.href = "../login.php";
-    }
-  }
-}
-
-// Função para confirmar envio do formulário
-function confirmSubmission() {
-  return confirm("Tem certeza que deseja enviar o formulário?");
-}
-
-// Função para definir a data atual no campo de data
-function setTodayDate() {
-  var today = new Date();
-  var year = today.getFullYear();
-  var month = (today.getMonth() + 1).toString().padStart(2, "0");
-  var day = today.getDate().toString().padStart(2, "0");
-  var currentDate = year + "-" + month + "-" + day;
-  document.getElementById("data_solicitacao").value = currentDate;
-}
-
-// Chamar a função para definir a data atual ao carregar a página
-window.onload = function () {
-  setTodayDate();
-};
-
-// Função para exibir alerta de redirecionamento e redirecionar
-function showRedirectAlert(pageName) {
   if (pageName) {
-    if (
-      confirm(
-        "Você será redirecionado para a página: " +
-          pageName +
-          ". Deseja continuar?"
-      )
-    ) {
-      if (pageName === "Tabela de Solicitações") {
-        window.location.href = "./tabela_solicitacoes.php";
-      } else if (pageName === "Inserir Pedido") {
-        window.location.href = "./inserir_pedido.php";
-      } else if (pageName === "Contato") {
-        window.location.href = "./contato.html";
-      }
-    }
+    modalBody.innerHTML = `Você será redirecionado para a página: <strong>${pageName}</strong>. Deseja continuar?`;
+
+    // Configurar botões do modal
+    const modalFooter = document.querySelector("#redirectModal .modal-footer");
+    modalFooter.innerHTML = `
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+      <button type="button" class="btn btn-primary" id="confirmRedirect">Continuar</button>
+    `;
+
+    // Adicionar evento ao botão de confirmação
+    document
+      .getElementById("confirmRedirect")
+      .addEventListener("click", function () {
+        modal.hide();
+        if (pageName === "Tabela de Solicitações") {
+          window.location.href = "./tabela_solicitacoes.php";
+        } else if (pageName === "Inserir Pedido") {
+          window.location.href = "./inserir_pedido.php";
+        } else if (pageName === "Contato") {
+          window.location.href = "./contato.html";
+        }
+      });
   } else {
-    alert("Você será redirecionado para a página de login.");
-    // Adicione aqui o código para redirecionar para a página de login, caso necessário
+    modalBody.innerHTML = "Você será redirecionado para a página de login.";
+    modalFooter.innerHTML = `
+      <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
+    `;
   }
+
+  modal.show();
 }
 
-// Função para exibir alerta ao clicar no botão de login
-function showAlertOnLoginButtonClick() {
-  showRedirectAlert();
+// Função para encerrar a sessão com modal
+function logout() {
+  const modal = new bootstrap.Modal(document.getElementById("confirmModal"));
+  const modalBody = document.getElementById("confirmModalBody");
+
+  modalBody.innerHTML = "Tem certeza que deseja sair?";
+
+  const modalFooter = document.querySelector("#confirmModal .modal-footer");
+  modalFooter.innerHTML = `
+    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+    <button type="button" class="btn btn-danger" id="confirmLogout">Sair</button>
+  `;
+
+  document
+    .getElementById("confirmLogout")
+    .addEventListener("click", function () {
+      modal.hide();
+      window.location.href = "../login.php";
+    });
+
+  modal.show();
 }
 
+// Função para confirmar redirecionamento com modal
+function confirmRedirect(destination) {
+  const modal = new bootstrap.Modal(document.getElementById("confirmModal"));
+  const modalBody = document.getElementById("confirmModalBody");
+
+  modalBody.innerHTML = `Tem certeza que deseja ir para a página <strong>${destination}</strong>?`;
+
+  const modalFooter = document.querySelector("#confirmModal .modal-footer");
+  modalFooter.innerHTML = `
+    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+    <button type="button" class="btn btn-primary" id="confirmAction">Continuar</button>
+  `;
+
+  document
+    .getElementById("confirmAction")
+    .addEventListener("click", function () {
+      modal.hide();
+      if (destination === "principal") {
+        window.location.href = "../paginas/principal.html";
+      } else if (destination === "login") {
+        window.location.href = "../login.php";
+      }
+    });
+
+  modal.show();
+}
+
+// Função para confirmar envio do formulário com modal
+function confirmSubmission() {
+  const modal = new bootstrap.Modal(document.getElementById("confirmModal"));
+  const modalBody = document.getElementById("confirmModalBody");
+  let confirmed = false;
+
+  modalBody.innerHTML = "Tem certeza que deseja enviar o formulário?";
+
+  const modalFooter = document.querySelector("#confirmModal .modal-footer");
+  modalFooter.innerHTML = `
+    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+    <button type="button" class="btn btn-success" id="confirmSubmit">Enviar</button>
+  `;
+
+  document
+    .getElementById("confirmSubmit")
+    .addEventListener("click", function () {
+      confirmed = true;
+      modal.hide();
+    });
+
+  modal.show();
+
+  // Retorna o valor apenas após o usuário interagir com o modal
+  return new Promise((resolve) => {
+    modal._element.addEventListener("hidden.bs.modal", function () {
+      resolve(confirmed);
+    });
+  });
+}
+
+// Modificar os event listeners para usar async/await
 document.addEventListener("DOMContentLoaded", function () {
-  document.getElementById("logo").addEventListener("mouseover", function () {
-    this.style.transform = "rotate(5deg)"; // Rotação para a direita
+  // Evento para formulários
+  const forms = document.querySelectorAll(
+    'form[onsubmit="return confirmSubmission()"]'
+  );
+  forms.forEach((form) => {
+    form.addEventListener("submit", async function (e) {
+      e.preventDefault();
+      const confirmed = await confirmSubmission();
+      if (confirmed) {
+        this.submit();
+      }
+    });
   });
 
-  document.getElementById("logo").addEventListener("mouseout", function () {
-    this.style.transform = "rotate(0deg)"; // Rotação de volta à posição original
+  // Efeito hover na logo
+  document.getElementById("logo")?.addEventListener("mouseover", function () {
+    this.style.transform = "rotate(5deg)";
+    this.style.transition = "transform 0.3s ease";
   });
+
+  document.getElementById("logo")?.addEventListener("mouseout", function () {
+    this.style.transform = "rotate(0deg)";
+  });
+
+  // Função para definir a data atual no campo de data
+  function setTodayDate() {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = (today.getMonth() + 1).toString().padStart(2, "0");
+    const day = today.getDate().toString().padStart(2, "0");
+    const currentDate = `${year}-${month}-${day}`;
+    const dateField = document.getElementById("data_solicitacao");
+    if (dateField) dateField.value = currentDate;
+  }
+
+  setTodayDate();
 });
+
+// Adicionar os modais ao final do body (deve ser adicionado em cada página)
+function addModalElements() {
+  const modalHTML = `
+    <!-- Modal de confirmação genérico -->
+    <div class="modal fade" id="confirmModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Confirmação</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body" id="confirmModalBody"></div>
+          <div class="modal-footer">
+            <!-- Buttons serão inseridos dinamicamente -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal de redirecionamento -->
+    <div class="modal fade" id="redirectModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Redirecionamento</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body" id="redirectModalBody"></div>
+          <div class="modal-footer">
+            <!-- Buttons serão inseridos dinamicamente -->
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+
+  const modalContainer = document.createElement("div");
+  modalContainer.innerHTML = modalHTML;
+  document.body.appendChild(modalContainer);
+}
+
+// Chamar a função para adicionar os modais quando o DOM estiver pronto
+document.addEventListener("DOMContentLoaded", addModalElements);

@@ -1,71 +1,60 @@
-/* Estilos para o cabeçalho */
-header {
-  background-color: #808080; /* Cinza */
-  color: #fff;
-  padding: 10px;
-  text-align: center;
-  margin-bottom: 125px;
-}
+/* Estilos personalizados que complementam o Bootstrap */
 
-/* Estilos para o rodapé */
-footer {
-  background-color: #808080; /* Cinza */
-  color: #fff;
-  padding: 10px;
-  text-align: center;
-  margin-top: 128px;
-}
-
-/* Estilos para o corpo da página */
 body {
   background-color: #f5deb3; /* Cor de palha */
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
 }
 
-/* Estilos para o botão de login */
 .menu-button {
-  width: 400px; /* Largura definida */
-  padding: 10px;
-  background-color: #28a745; /* Cor verde */
-  color: #fff;
-  border: none;
-  border-radius: 20px; /* Arredondamento do botão */
-  cursor: pointer;
-  transition: background-color 0.3s; /* Transição suave da cor de fundo */
-  margin: 10px auto; /* Centraliza horizontalmente */
-  display: block; /* Torna o botão um bloco para centralizar */
-  font-weight: bold; /* Deixa o texto em negrito */
-  font-size: 32px; /* Tamanho da fonte */
-  text-decoration: none; /* Remove a linha de baixo do link */
+  font-weight: bold;
+  transition: all 0.3s;
+  border-radius: 20px !important;
 }
 
 .menu-button:hover {
-  background-color: #218838; /* Cor verde mais escura no hover */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Estilos para o link */
-a {
-    text-decoration: none; /* Remover sublinhado do link */
+#sair {
+  border-radius: 20px !important;
+  transition: all 0.3s;
+}
+
+#sair:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Ajustes para responsividade */
+@media (max-width: 768px) {
+  header {
+    margin-bottom: 50px !important;
   }
-  
+
+  .menu-button {
+    font-size: 1.5rem;
+    padding: 0.75rem !important;
+  }
+
+  footer {
+    margin-top: 50px !important;
+  }
+
+  footer .row {
+    flex-direction: column;
+    text-align: center !important;
+  }
+
+  footer .text-md-end {
+    text-align: center !important;
+  }
+
+  header div {
+    flex-direction: column !important;
+    gap: 1rem;
+  }
+
   #sair {
-    width: 200px; /* Largura definida */
-    padding: 10px;
-    background-color: #28a745; /* Cor verde */
-    color: #fff;
-    border: none;
-    border-radius: 20px; /* Arredondamento do botão */
-    cursor: pointer;
-    transition: background-color 0.3s; /* Transição suave da cor de fundo */
-    margin: 10px auto; /* Centraliza horizontalmente */
-    display: block; /* Torna o botão um bloco para centralizar */
-    text-decoration: none; /* Remove a linha de baixo do link */
-    font-weight: bold; /* Deixa o texto em negrito */
+    width: 100% !important;
   }
-  
-  #sair:hover {
-    background-color: #218838; /* Cor verde mais escura no hover */
-  }
-  
+}

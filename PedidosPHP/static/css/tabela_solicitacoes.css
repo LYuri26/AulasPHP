@@ -1,95 +1,78 @@
-/* Estilos para o cabeçalho */
-header {
-  background-color: #808080; /* Cinza */
-  color: #fff;
-  padding: 10px;
-  text-align: center;
-  margin: 0;
-}
+/* Estilos personalizados que complementam o Bootstrap */
 
-/* Estilos para o rodapé */
-footer {
-  background-color: #808080; /* Cinza */
-  color: #fff;
-  padding: 10px;
-  text-align: center;
-  margin: 0;
-}
-
-/* Estilos para o corpo da página */
 body {
   background-color: #f5deb3; /* Cor de palha */
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  text-align: center;
 }
 
-/* Estilos para o botão de login */
-.menu-button {
-  width: 400px; /* Largura definida */
-  padding: 10px;
-  background-color: #28a745; /* Cor verde */
-  color: #fff;
-  border: none;
-  border-radius: 20px; /* Arredondamento do botão */
-  cursor: pointer;
-  transition: background-color 0.3s; /* Transição suave da cor de fundo */
-  margin: 10px auto; /* Centraliza horizontalmente */
-  display: block; /* Torna o botão um bloco para centralizar */
-  font-weight: bold; /* Deixa o texto em negrito */
-  font-size: 32px; /* Tamanho da fonte */
-  text-decoration: none; /* Remove a linha de baixo do link */
+/* Estilos para os botões */
+.btn-success {
+  border-radius: 20px;
+  font-weight: bold;
+  transition: all 0.3s;
 }
 
-.menu-button:hover {
-  background-color: #218838; /* Cor verde mais escura no hover */
-}
-
-/* Estilos para o link */
-a {
-  text-decoration: none; /* Remover sublinhado do link */
-}
-
-#sair {
-  width: 200px; /* Largura definida */
-  padding: 10px;
-  background-color: #28a745; /* Cor verde */
-  color: #fff;
-  border: none;
-  border-radius: 20px; /* Arredondamento do botão */
-  cursor: pointer;
-  transition: background-color 0.3s; /* Transição suave da cor de fundo */
-  margin: 10px auto; /* Centraliza horizontalmente */
-  display: block; /* Torna o botão um bloco para centralizar */
-  text-decoration: none; /* Remove a linha de baixo do link */
-  font-weight: bold; /* Deixa o texto em negrito */
-}
-
-#sair:hover {
-  background-color: #218838; /* Cor verde mais escura no hover */
+.btn-success:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* Estilos para a tabela */
-table {
-  width: 80%; /* Define a largura da tabela */
-  margin: 20px auto; /* Centraliza horizontalmente */
-  border-collapse: collapse; /* Combina as bordas das células */
-  border-radius: 10px; /* Arredondamento da borda da tabela */
-  overflow: hidden; /* Esconde o conteúdo que ultrapassa as células */
-  background-color: #fff; /* Cor de fundo da tabela */
+.table {
+  border-radius: 10px;
+  overflow: hidden;
 }
 
-/* Estilos para as células da tabela */
-th,
-td {
-  padding: 10px; /* Adiciona preenchimento interno às células */
-  text-align: left; /* Alinha o texto à esquerda */
-  
+.table thead th {
+  background-color: #6c757d;
+  color: white;
 }
 
-/* Estilos para o cabeçalho da tabela */
-th {
-  background-color: #808080; /* Cor de fundo do cabeçalho */
-  color: #fff; /* Cor do texto do cabeçalho */
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+.table-hover tbody tr:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Estilos para os links */
+a {
+  color: #28a745;
+  transition: all 0.3s;
+}
+
+a:hover {
+  color: #218838;
+  text-decoration: underline;
+}
+
+/* Ajustes para responsividade */
+@media (max-width: 768px) {
+  header .d-flex {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  header h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  footer .row {
+    flex-direction: column;
+    text-align: center !important;
+  }
+
+  footer .text-md-end {
+    text-align: center !important;
+  }
+
+  .table-responsive {
+    width: 95%;
+    margin: 0 auto;
+  }
+
+  .container.text-center.my-3 div {
+    width: 100%;
+  }
 }
