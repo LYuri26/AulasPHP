@@ -31,7 +31,6 @@ if (!isset($data['total']) || !isset($data['itens']) || !is_array($data['itens']
 }
 
 try {
-    require_once 'Conexao.php';
     $conexao = conectar();
 
     if (!$conexao) {
