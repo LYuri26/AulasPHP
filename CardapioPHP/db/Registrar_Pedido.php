@@ -1,5 +1,4 @@
 <?php
-include 'Conexao.php'; // Inclui o arquivo de conexão com o banco de dados
 include 'Tabelas.php'; // Inclui o arquivo de conexão com o banco de dados
 
 error_reporting(E_ALL);
