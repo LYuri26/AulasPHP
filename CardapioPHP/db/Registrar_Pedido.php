@@ -1,4 +1,7 @@
 <?php
+include 'Conexao.php'; // Inclui o arquivo de conexão com o banco de dados
+include 'Tabelas.php'; // Inclui o arquivo de conexão com o banco de dados
+
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 header('Content-Type: application/json');

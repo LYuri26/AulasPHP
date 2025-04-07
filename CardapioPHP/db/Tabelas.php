@@ -57,7 +57,7 @@ try {
     $conexao->exec($sqlCriacaoTrigger);
 
     // Mensagem para o console.log do navegador - Trigger criado
-    // echo "<script>console.log('Trigger criado com sucesso.');</script>";
+    echo "<script>console.log('Trigger criado com sucesso.');</script>";
 } catch (PDOException $e) {
     echo "<script>console.error('Erro na criação das tabelas ou trigger: " . $e->getMessage() . "');</script>";
 } finally {
