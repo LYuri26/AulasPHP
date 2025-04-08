@@ -3,9 +3,11 @@
 
 <head>
     <meta charset="UTF-8"> <!-- Define a codificação de caracteres -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Define a escala inicial para dispositivos móveis -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Define a escala inicial para dispositivos móveis -->
     <title>Visualizar Pedidos</title> <!-- Título da página -->
-    <link rel="stylesheet" type="text/css" href="./static/css/VisualizarPedidos.css"> <!-- Inclui o arquivo de estilo CSS -->
+    <link rel="stylesheet" type="text/css" href="./static/css/Visualizar_Pedidos.css">
+    <!-- Inclui o arquivo de estilo CSS -->
 </head>
 
 <body>
