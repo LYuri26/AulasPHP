@@ -1,0 +1,115 @@
+/* vendas.css */
+
+/* Corpo da página */
+body {
+  background-color: #f4f6f9; /* Cor de fundo suave e clara */
+  font-family: "Arial", sans-serif; /* Tipografia moderna e fácil de ler */
+  color: #333; /* Texto escuro para boa legibilidade */
+}
+
+/* Cabeçalho */
+h1 {
+  color: #2c3e50; /* Cor escura para o título principal */
+  font-weight: bold;
+}
+
+/* Estilo para o formulário */
+form {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombras suaves para profundidade */
+}
+
+.form-label {
+  font-weight: bold; /* Destacar as labels */
+}
+
+/* Estilo do botão */
+.btn-primary {
+  background-color: #3498db;
+  border-color: #2980b9;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #2980b9;
+  border-color: #1d6fa5;
+}
+
+/* Tabela de vendas */
+table {
+  margin-top: 30px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombras nas tabelas */
+}
+
+table th,
+table td {
+  text-align: center; /* Centralizar os textos */
+  padding: 10px;
+}
+
+table th {
+  background-color: #3498db; /* Cor azul para cabeçalho da tabela */
+  color: white;
+}
+
+table tbody tr:hover {
+  background-color: #ecf0f1; /* Efeito de destaque ao passar o mouse */
+}
+
+table tbody tr:nth-child(even) {
+  background-color: #f4f6f7; /* Cor alternada nas linhas para melhorar a legibilidade */
+}
+
+/* Margens e espaçamentos */
+.container {
+  margin-top: 50px;
+}
+
+/* Estilo para os inputs do formulário */
+textarea,
+input[type="number"] {
+  resize: none; /* Impede o redimensionamento de textarea */
+}
+
+/* Ajustes de Responsividade */
+@media (max-width: 768px) {
+  /* Para telas menores (tablets e celulares) */
+  .container {
+    padding: 0 15px; /* Margens reduzidas em dispositivos móveis */
+  }
+
+  table th,
+  table td {
+    font-size: 14px; /* Reduzir o tamanho da fonte nas tabelas */
+  }
+
+  .form-control {
+    font-size: 14px; /* Ajuste no tamanho das fontes do formulário */
+  }
+
+  .btn-primary {
+    font-size: 14px; /* Ajuste no tamanho do botão */
+  }
+}
+
+/* Estilo adicional para os inputs do formulário */
+.form-control {
+  border-radius: 8px; /* Borda arredondada nos campos */
+  border: 1px solid #ccc; /* Borda clara */
+  padding: 10px; /* Mais espaço dentro dos campos */
+}
+
+.form-control:focus {
+  border-color: #3498db; /* Cor de foco do input */
+  box-shadow: 0 0 5px rgba(52, 152, 219, 0.5); /* Efeito de brilho ao focar */
+}
+
+/* Estilo para as mensagens de erro ou sucesso */
+.alert {
+  margin-top: 20px;
+}
