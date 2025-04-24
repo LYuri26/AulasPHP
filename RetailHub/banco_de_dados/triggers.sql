@@ -1,9 +1,8 @@
 USE retailhub_sgi;
 
--- Trigger para o log de cadastro de produtos
--- Trigger para o log de cadastro de produtos
 DELIMITER //
 
+-- Trigger para o log de cadastro de produtos
 CREATE TRIGGER IF NOT EXISTS after_insert_cadastro_produto
 AFTER INSERT ON cadastro_produtos
 FOR EACH ROW
@@ -60,6 +59,7 @@ FOR EACH ROW
 BEGIN
     INSERT INTO log_movimentacoes_estoque (id_movimentacao_estoque, acao_realizada)
     VALUES (NEW.id, 'entrada');
+    -- Atualiza o estoque após a entrada
     UPDATE cadastro_produtos SET quantidade_estoque = quantidade_estoque + NEW.quantidade WHERE id = NEW.id_produto;
 END;
 
@@ -70,8 +70,12 @@ FOR EACH ROW
 BEGIN
     INSERT INTO log_movimentacoes_estoque (id_movimentacao_estoque, acao_realizada)
     VALUES (NEW.id, 'alteração');
-    -- Atualizar o estoque após alteração
-    UPDATE cadastro_produtos SET quantidade_estoque = quantidade_estoque - NEW.quantidade WHERE id = NEW.id_produto;
+    -- Atualiza o estoque após alteração (considera se é saída ou entrada)
+    IF NEW.tipo_movimentacao = 'entrada' THEN
+        UPDATE cadastro_produtos SET quantidade_estoque = quantidade_estoque + NEW.quantidade WHERE id = NEW.id_produto;
+    ELSE
+        UPDATE cadastro_produtos SET quantidade_estoque = quantidade_estoque - NEW.quantidade WHERE id = NEW.id_produto;
+    END IF;
 END;
 
 CREATE TRIGGER IF NOT EXISTS after_delete_movimentacao_estoque
@@ -80,11 +84,13 @@ FOR EACH ROW
 BEGIN
     INSERT INTO log_movimentacoes_estoque (id_movimentacao_estoque, acao_realizada)
     VALUES (OLD.id, 'exclusão');
-    -- Reverter a movimentação no estoque
-    UPDATE cadastro_produtos SET quantidade_estoque = quantidade_estoque + OLD.quantidade WHERE id = OLD.id_produto;
+    -- Reverte a movimentação no estoque
+    IF OLD.tipo_movimentacao = 'entrada' THEN
+        UPDATE cadastro_produtos SET quantidade_estoque = quantidade_estoque - OLD.quantidade WHERE id = OLD.id_produto;
+    ELSE
+        UPDATE cadastro_produtos SET quantidade_estoque = quantidade_estoque + OLD.quantidade WHERE id = OLD.id_produto;
+    END IF;
 END;
-
-DELIMITER ;
 
 -- Trigger para atualização de estoque após venda
 CREATE TRIGGER IF NOT EXISTS after_insert_item_venda
@@ -94,3 +100,5 @@ BEGIN
     -- Subtrair do estoque com base na quantidade de produtos vendidos
     UPDATE cadastro_produtos SET quantidade_estoque = quantidade_estoque - NEW.quantidade WHERE id = NEW.id_produto;
 END;
+
+DELIMITER ;

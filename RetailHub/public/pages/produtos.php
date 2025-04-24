@@ -1,8 +1,10 @@
 <?php
-require_once '../backend/config/db.php';
-require_once '../backend/clientes.php';
-require_once '../backend/produtos.php';
-require_once '../backend/vendas.php';
+require_once '../../backend/config/db.php';
+require_once '../../backend/clientes.php';
+require_once '../../backend/produtos.php';
+require_once '../../backend/vendas.php';
+require_once '../../backend/itens_vendas.php';
+require_once '../../backend/movimentacoes_estoque.php';
 
 // Cadastro de produto
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -71,13 +73,13 @@ $produtos = $query->fetchAll(PDO::FETCH_ASSOC);
             </thead>
             <tbody>
                 <?php foreach ($produtos as $produto): ?>
-                    <tr>
-                        <td><?= $produto['id'] ?></td>
-                        <td><?= $produto['nome'] ?></td>
-                        <td><?= $produto['descricao'] ?></td>
-                        <td>R$ <?= number_format($produto['preco'], 2, ',', '.') ?></td>
-                        <td><?= $produto['quantidade_estoque'] ?></td>
-                    </tr>
+                <tr>
+                    <td><?= $produto['id'] ?></td>
+                    <td><?= $produto['nome'] ?></td>
+                    <td><?= $produto['descricao'] ?></td>
+                    <td>R$ <?= number_format($produto['preco'], 2, ',', '.') ?></td>
+                    <td><?= $produto['quantidade_estoque'] ?></td>
+                </tr>
                 <?php endforeach; ?>
             </tbody>
         </table>

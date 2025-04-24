@@ -28,8 +28,8 @@ CREATE TABLE vendas (
     FOREIGN KEY (id_cliente) REFERENCES cadastro_clientes(id)
 );
 
--- Tabela de Itens de Vendas
-CREATE TABLE itens_vendas (
+-- Criação da tabela de Itens de Vendas
+CREATE TABLE IF NOT EXISTS itens_vendas (
     id INT AUTO_INCREMENT PRIMARY KEY,
     id_venda INT,
     id_produto INT,

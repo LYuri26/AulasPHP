@@ -1,9 +1,11 @@
 <?php
 // Conexão com o banco de dados
-require_once '../backend/config/db.php';
-require_once '../backend/clientes.php';
-require_once '../backend/produtos.php';
-require_once '../backend/vendas.php';
+require_once '../../backend/config/db.php';
+require_once '../../backend/clientes.php';
+require_once '../../backend/produtos.php';
+require_once '../../backend/vendas.php';
+require_once '../../backend/itens_vendas.php';
+require_once '../../backend/movimentacoes_estoque.php';
 
 // Cadastro de novo cliente
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -64,12 +66,12 @@ $clientes = $query->fetchAll(PDO::FETCH_ASSOC);
             </thead>
             <tbody>
                 <?php foreach ($clientes as $cliente): ?>
-                    <tr>
-                        <td><?= $cliente['id'] ?></td>
-                        <td><?= $cliente['nome'] ?></td>
-                        <td><?= $cliente['email'] ?></td>
-                        <td><?= $cliente['telefone'] ?></td>
-                    </tr>
+                <tr>
+                    <td><?= $cliente['id'] ?></td>
+                    <td><?= $cliente['nome'] ?></td>
+                    <td><?= $cliente['email'] ?></td>
+                    <td><?= $cliente['telefone'] ?></td>
+                </tr>
                 <?php endforeach; ?>
             </tbody>
         </table>
