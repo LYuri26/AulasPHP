@@ -21,8 +21,40 @@ require_once './backend/movimentacoes_estoque.php';
 
 <body>
     <div class="container mt-5">
+
+        <!-- Logomarca -->
+        <div class="text-center mb-4">
+            <img src="./public/images/logo.png" alt="RetailHub Logo" class="img-fluid" style="max-height: 100px;">
+        </div>
+
         <h1 class="text-center mb-4">RetailHub</h1>
         <p class="lead text-center mb-5">Sistema de Gerenciamento Integrado de Vendas, Estoque e Clientes</p>
+
+        <!-- Carrossel de Imagens -->
+        <div id="carouselRetailHub" class="carousel slide mb-5" data-bs-ride="carousel">
+            <div class="carousel-inner rounded">
+                <div class="carousel-item active">
+                    <img src="./public/images/carrossel1.jpg" class="d-block w-100" alt="Imagem 1">
+                </div>
+                <div class="carousel-item">
+                    <img src="./public/images/carrossel2.jpg" class="d-block w-100" alt="Imagem 2">
+                </div>
+                <div class="carousel-item">
+                    <img src="./public/images/carrossel3.jpg" class="d-block w-100" alt="Imagem 3">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselRetailHub"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+                <span class="visually-hidden">Anterior</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselRetailHub"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+                <span class="visually-hidden">Próximo</span>
+            </button>
+        </div>
+
 
         <div class="row row-cols-1 row-cols-md-3 g-4">
 

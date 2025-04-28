@@ -86,3 +86,23 @@ a {
 a:hover {
   text-decoration: underline; /* Sublinha o link ao passar o mouse */
 }
+
+/* Estilo da Logomarca */
+.logo {
+  max-height: 100px;
+  margin-bottom: 20px;
+}
+
+/* Estilo do Carrossel */
+.carousel-inner img {
+  height: 400px; /* Altura padrão do carrossel */
+  object-fit: cover; /* Garante que a imagem preencha sem distorcer */
+  border-radius: 10px; /* Arredondar bordas para combinar com cards */
+}
+
+/* Ajuste de responsividade para o carrossel */
+@media (max-width: 768px) {
+  .carousel-inner img {
+    height: 250px; /* Menor altura em telas pequenas */
+  }
+}
