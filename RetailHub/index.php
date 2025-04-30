@@ -24,7 +24,7 @@ require_once './backend/movimentacoes_estoque.php';
 
         <!-- Logomarca -->
         <div class="text-center mb-4">
-            <img src="./public/images/logo.png" alt="RetailHub Logo" class="img-fluid" style="max-height: 100px;">
+            <img src="./public/images/logo.png" alt="RetailHub Logo" class="img-fluid logo">
         </div>
 
         <h1 class="text-center mb-4">RetailHub</h1>
