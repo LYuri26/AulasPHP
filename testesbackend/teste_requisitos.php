@@ -40,4 +40,3 @@ if ($execution_time < 1) {
 
 // Fecha a conexão com o banco de dados
 $conn->close();
-?>

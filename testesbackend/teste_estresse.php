@@ -32,4 +32,3 @@ echo "Teste de Estresse - Simulação de Múltiplas Inserções: $num_insercoes 
 
 // Fecha a conexão com o banco de dados
 $conn->close();
-?>
