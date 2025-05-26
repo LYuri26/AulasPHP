@@ -29,7 +29,3 @@ for ($i = 1; $i <= $num_acessos; $i++) {
 }
 
 echo "Teste de Carga - Simulação de $num_acessos acessos simultâneos concluída.<br>";
-<<<<<<< Updated upstream
-?>
-=======
->>>>>>> Stashed changes
