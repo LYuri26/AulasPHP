@@ -28,4 +28,3 @@ if ($result->num_rows > 0) {
 
 // Fecha a conexão com o banco de dados
 $conn->close();
-?>

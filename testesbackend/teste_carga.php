@@ -1,6 +1,7 @@
 <?php
 // Função para realizar consulta ao banco de dados
-function consultarProdutos() {
+function consultarProdutos()
+{
     // Conexão com o banco de dados
     $conn = new mysqli('localhost', 'root', '', 'estoque');
 
@@ -28,4 +29,7 @@ for ($i = 1; $i <= $num_acessos; $i++) {
 }
 
 echo "Teste de Carga - Simulação de $num_acessos acessos simultâneos concluída.<br>";
+<<<<<<< Updated upstream
 ?>
+=======
+>>>>>>> Stashed changes

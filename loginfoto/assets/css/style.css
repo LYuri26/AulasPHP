@@ -1,0 +1,68 @@
+body {
+  min-height: 100vh;
+}
+
+.toggle-password {
+  cursor: pointer;
+}
+
+.progress {
+  height: 5px;
+}
+
+.progress-bar {
+  transition: width 0.3s ease;
+}
+
+.rounded-circle {
+  object-fit: cover;
+}
+
+/* Adicione isso ao seu style.css existente */
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  flex: 1;
+}
+
+.card {
+  border: none;
+  border-radius: 10px;
+}
+
+.card-header {
+  border-radius: 10px 10px 0 0 !important;
+}
+
+.progress {
+  height: 5px;
+  background-color: #e9ecef;
+}
+
+.invalid-feedback,
+.valid-feedback {
+  display: none;
+  width: 100%;
+  margin-top: 0.25rem;
+  font-size: 0.875em;
+}
+
+.was-validated .form-control:invalid ~ .invalid-feedback,
+.was-validated .form-control:invalid ~ .invalid-tooltip,
+.form-control.is-invalid ~ .invalid-feedback,
+.form-control.is-invalid ~ .invalid-tooltip {
+  display: block;
+}
+
+.toggle-password {
+  cursor: pointer;
+}
+
+.form-check-input:checked {
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+}
