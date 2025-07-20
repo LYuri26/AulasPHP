@@ -1,0 +1,250 @@
+/**
+ * ESTILOS GERAIS
+ * Define configurações base para toda a aplicação
+ */
+body {
+  background-color: #f8f9fa; /* Cor de fundo suave (cinza claro do Bootstrap) */
+  padding-top: 20px; /* Espaçamento no topo para não colar no navegador */
+}
+
+/**
+ * CARD PRINCIPAL
+ * Estilização do container principal que envolve o conteúdo
+ */
+.card {
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075); /* Sombra sutil */
+  margin-bottom: 20px; /* Espaçamento na parte inferior */
+  border: none; /* Remove borda padrão para ficar mais clean */
+  border-radius: 0.5rem; /* Bordas arredondadas */
+  transition: all 0.3s ease; /* Transição suave para hover */
+}
+
+.card:hover {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1); /* Sombra mais pronunciada no hover */
+}
+
+/**
+ * CABEÇALHO DO CARD
+ * Estilo para a área de título do card
+ */
+.card-header {
+  background-color: #f1f1f1; /* Cor de fundo cinza claro */
+  padding: 15px 20px; /* Espaçamento interno */
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1); /* Linha de separação sutil */
+  border-radius: 0.5rem 0.5rem 0 0 !important; /* Bordas arredondadas apenas no topo */
+}
+
+/**
+ * TABELA DE CLIENTES
+ * Estilização específica para a tabela de exibição de clientes
+ */
+.table {
+  margin-bottom: 0; /* Remove margem padrão do Bootstrap */
+}
+
+.table th {
+  background-color: #f1f1f1; /* Cor de fundo para cabeçalho */
+  vertical-align: middle; /* Alinhamento vertical centralizado */
+  font-weight: 600; /* Peso da fonte mais forte */
+  color: #495057; /* Cor do texto mais escura */
+  border-top: none; /* Remove borda superior */
+}
+
+.table td {
+  vertical-align: middle; /* Alinhamento vertical centralizado */
+  padding: 12px 16px; /* Espaçamento interno maior para melhor legibilidade */
+}
+
+/**
+ * BADGES DE STATUS
+ * Estilização para os badges que mostram status (ativo/inativo)
+ */
+.badge {
+  font-size: 0.9em; /* Tamanho de fonte reduzido */
+  padding: 0.5em 0.75em; /* Espaçamento interno */
+  font-weight: 500; /* Peso da fonte */
+  letter-spacing: 0.5px; /* Espaçamento entre letras */
+}
+
+.bg-success {
+  background-color: #28a745 !important; /* Verde para status ativo */
+}
+
+.bg-secondary {
+  background-color: #6c757d !important; /* Cinza para status inativo */
+}
+
+/**
+ * FORMULÁRIO
+ * Estilização específica para o formulário de clientes
+ */
+.form-label {
+  font-weight: 500; /* Peso da fonte intermediário */
+  color: #495057; /* Cor do texto mais escura */
+  margin-bottom: 0.5rem; /* Espaçamento inferior */
+}
+
+.form-control,
+.form-select {
+  border-radius: 0.375rem; /* Bordas arredondadas */
+  border: 1px solid #ced4da; /* Borda sutil */
+  padding: 0.5rem 0.75rem; /* Espaçamento interno */
+  transition: all 0.2s ease; /* Transição suave para focus */
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: #86b7fe; /* Cor da borda no focus */
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25); /* Sombra azul no focus */
+}
+
+/**
+ * VALIDAÇÃO DE FORMULÁRIO
+ * Estilos para campos inválidos e mensagens de erro
+ */
+.is-invalid {
+  border-color: #dc3545 !important; /* Borda vermelha para campos inválidos */
+}
+
+.invalid-feedback {
+  display: none; /* Esconde por padrão */
+  width: 100%; /* Largura total */
+  margin-top: 0.25rem; /* Espaçamento superior */
+  font-size: 0.875em; /* Tamanho de fonte reduzido */
+  color: #dc3545; /* Cor do texto vermelho */
+}
+
+.is-invalid ~ .invalid-feedback {
+  display: block; /* Mostra apenas quando o campo é inválido */
+}
+
+/**
+ * CONTAINER DO FORMULÁRIO
+ * Estilo para a área que contém o formulário
+ */
+#formContainer {
+  transition: all 0.3s ease; /* Transição suave para mostrar/esconder */
+  background-color: #f8f9fa; /* Cor de fundo */
+  padding: 20px; /* Espaçamento interno */
+  border-radius: 0.5rem; /* Bordas arredondadas */
+  margin-bottom: 20px; /* Espaçamento inferior */
+}
+
+/**
+ * BOTÕES
+ * Estilização consistente para todos os botões
+ */
+.btn {
+  font-weight: 500; /* Peso da fonte */
+  letter-spacing: 0.5px; /* Espaçamento entre letras */
+  border-radius: 0.375rem; /* Bordas arredondadas */
+  padding: 0.5rem 1rem; /* Espaçamento interno */
+  transition: all 0.2s ease; /* Transição suave */
+}
+
+.btn-primary {
+  background-color: #0d6efd; /* Azul primário */
+  border-color: #0d6efd; /* Borda azul */
+}
+
+.btn-primary:hover {
+  background-color: #0b5ed7; /* Azul mais escuro no hover */
+  border-color: #0a58ca; /* Borda mais escura no hover */
+}
+
+.btn-danger {
+  background-color: #dc3545; /* Vermelho */
+  border-color: #dc3545; /* Borda vermelha */
+}
+
+.btn-danger:hover {
+  background-color: #bb2d3b; /* Vermelho mais escuro no hover */
+  border-color: #b02a37; /* Borda mais escura no hover */
+}
+
+.btn-secondary {
+  background-color: #6c757d; /* Cinza */
+  border-color: #6c757d; /* Borda cinza */
+}
+
+.btn-secondary:hover {
+  background-color: #5c636a; /* Cinza mais escuro no hover */
+  border-color: #565e64; /* Borda mais escura no hover */
+}
+
+/**
+ * ALERTAS
+ * Estilização para mensagens de feedback
+ */
+.alert {
+  border-radius: 0.375rem; /* Bordas arredondadas */
+  padding: 0.75rem 1.25rem; /* Espaçamento interno */
+  margin-bottom: 1rem; /* Espaçamento inferior */
+  border: 1px solid transparent; /* Borda transparente */
+}
+
+.alert-success {
+  background-color: #d1e7dd; /* Verde claro de fundo */
+  color: #0f5132; /* Verde escuro de texto */
+  border-color: #badbcc; /* Borda verde */
+}
+
+.alert-danger {
+  background-color: #f8d7da; /* Vermelho claro de fundo */
+  color: #842029; /* Vermelho escuro de texto */
+  border-color: #f5c2c7; /* Borda vermelha */
+}
+
+/**
+ * RESPONSIVIDADE
+ * Ajustes para dispositivos móveis
+ */
+@media (max-width: 768px) {
+  /* Permite rolagem horizontal em tabelas */
+  .table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch; /* Scroll suave no iOS */
+  }
+
+  /* Reduz tamanho dos botões */
+  .btn {
+    padding: 0.375rem 0.5rem;
+    font-size: 0.875rem;
+  }
+
+  /* Ajusta espaçamento do card */
+  .card-header {
+    padding: 10px 15px;
+  }
+
+  /* Reduz espaçamento das células da tabela */
+  .table td {
+    padding: 8px 12px;
+  }
+}
+
+/**
+ * EFEITOS ESPECIAIS
+ * Melhorias visuais adicionais
+ */
+.btn-sm {
+  min-width: 70px; /* Largura mínima para botões pequenos */
+}
+
+/* Efeito de hover nos itens da tabela */
+.table-hover tbody tr:hover {
+  background-color: rgba(0, 0, 0, 0.02); /* Cor de fundo sutil no hover */
+}
+
+/* Espaçamento entre botões de ação */
+.btn-action {
+  margin-right: 5px;
+}
+
+/* Ajuste fino para o botão de novo cliente */
+#btnNovoCliente {
+  margin-left: auto; /* Alinha à direita */
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
